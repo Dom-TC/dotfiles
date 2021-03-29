@@ -44,7 +44,7 @@ function put_spacing() {
 
   # Calculate space neeeded
   local termwidth
-  (( termwidth = ${COLUMNS} + 1 - ${#HOST} - ${#$(get_pwd)} - ${bat} - ${git} - ${#$(put_username)}))
+  (( termwidth = ${COLUMNS} - ${#HOST} - ${#$(get_pwd)} - ${#$(get_pyenv)} - ${bat} - ${git} - ${#$(put_username)}))
 
   # Generate spacing
   local spacing=""
@@ -84,7 +84,7 @@ get_pyenv() {
   local virtualenv_path="$VIRTUAL_ENV"
   if [[ -n $virtualenv_path && -n $VIRTUAL_ENV_DISABLE_PROMPT ]]; then
     PYENV_VER=$(pyenv version-name)
-    echo "$fg[yellow]PyEnv: ${PYENV_VER%%:*}$reset_color"
+    echo "$fg[yellow](${PYENV_VER%%:*})$reset_color"
   fi
 }
 
@@ -93,5 +93,5 @@ set_terminal_theme
 
 # Set Prompt
 PROMPT='
-$fg[cyan]$(put_username)%m: $fg[yellow]$(get_pwd)$(put_spacing)$(git_prompt_info) $(battery_charge)
+$fg[cyan]$(put_username)%m: $fg[yellow]$(get_pwd)$(put_spacing)$(get_pyenv) $(git_prompt_info) $(battery_charge)
 $reset_color➜ '
