@@ -70,6 +70,8 @@
   [ -e ~/.ssh/known_hosts ] && mv -f ~/.ssh/known_hosts ~/.dotBackups/$backupFolder/ssh
   [ -e ~/.ssh/main_id_rsa ] && mv -f ~/.ssh/main_id_rsa ~/.dotBackups/$backupFolder/ssh
   [ -e ~/.ssh/main_id_rsa.pub ] && mv -f ~/.ssh/main_id_rsa.pub ~/.dotBackups/$backupFolder/ssh
+  [ -e ~/.ssh/Nixten-Bitbucket ] && mv -f ~/.ssh/Nixten-Bitbucket ~/.dotBackups/$backupFolder/ssh
+  [ -e ~/.ssh/Nixten-Bitbucket.pub ] && mv -f ~/.ssh/Nixten-Bitbucket.pub ~/.dotBackups/$backupFolder/ssh
 
   # Git
   echo $prefix"Backing up git configurations..."
@@ -176,7 +178,8 @@
   ln -sf $resourceFolder/ssh/known_hosts ~/.ssh
   ln -sf $resourceFolder/ssh/main_id_rsa ~/.ssh
   ln -sf $resourceFolder/ssh/main_id_rsa.pub ~/.ssh
-
+  ln -sf $resourceFolder/ssh/Nixten-Bitbucket ~/.ssh
+  ln -sf $resourceFolder/ssh/Nixten-Bitbucket.pub ~/.ssh
   # Git
   echo $prefix"Setting up git symlinks..."
   ln -sf $resourceFolder/git/.gitconfig ~
