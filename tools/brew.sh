@@ -40,6 +40,7 @@ echo $YELLOW$prefix"Installing packages"$NOCOLOR
 if ! $reducedInstall; then
   echo $prefix"Installing pyenv"
   brew install pyenv
+  brew install pyenv-virtualenv
   export LDFLAGS="-L/usr/local/opt/zlib/lib -L/usr/local/opt/sqlite/lib"
   export CPPFLAGS="-I/usr/local/opt/zlib/include -I/usr/local/opt/sqlite/include"
   echo $prefix"Installing zlib and sqlite"
@@ -53,8 +54,8 @@ if ! $reducedInstall; then
   echo $YELLOW$prefix"Current python version:"$NOCOLOR
   pyenv version
 
-  echo $prefix"Installing virtualenvwrapper"$NOCOLOR
-  $(pyenv which python3) -m pip install virtualenvwrapper
+  # echo $prefix"Installing virtualenvwrapper"$NOCOLOR
+  # $(pyenv which python3) -m pip install virtualenvwrapper
 fi
 
 #-------------------------

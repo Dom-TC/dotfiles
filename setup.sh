@@ -40,7 +40,7 @@
 
 # Check if local or remote machine
   echo $YELLOW$prefix"A slimmed down set of scripts can be installed if this is a remote machine"
-  read "isRemote?"$prefix"Would you like a reduced set of tools to be installed? (y/n) "
+  read "isRemote?"$prefix"Is this a remote machine? (y/n) "
   if [ $isRemote = "y" -o $isRemote = "Y" ]; then
       echo $RED$prefix"A reduced script selection will be run"$NOCOLOR
       reducedInstall=true

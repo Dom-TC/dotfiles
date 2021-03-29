@@ -33,6 +33,7 @@
 [commit]
 	# Sign all commits
 	gpgsign = true
+	template = /Users/dom/.stCommitMsg
 
 # Substitues :gh to github in urls
 [url "https://github.com/"]
