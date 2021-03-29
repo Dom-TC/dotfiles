@@ -79,6 +79,15 @@ function set_terminal_theme() {
   fi
 }
 
+# Get Pyenv Environment
+get_pyenv() {
+  local virtualenv_path="$VIRTUAL_ENV"
+  if [[ -n $virtualenv_path && -n $VIRTUAL_ENV_DISABLE_PROMPT ]]; then
+    PYENV_VER=$(pyenv version-name)
+    echo "$fg[yellow]PyEnv: ${PYENV_VER%%:*}$reset_color"
+  fi
+}
+
 # Set terminal dark mode
 set_terminal_theme
 
