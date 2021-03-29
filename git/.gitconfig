@@ -1,0 +1,45 @@
+# User settings
+[user]
+	name = Dom Chester
+	email = dom.chester@me.com
+
+	# GPG key
+	signingkey = 079BB9619878F192
+
+
+[tag]
+	# Always sign tags
+	gpgSign = true
+
+	# Always sign annotated tags
+	forceSignAnnotated = true
+
+[core]
+	# Use Atom text editor
+	editor = atom
+
+	# use global custom gittignore
+	excludesfile = /Users/dom/.gitignore
+
+[color]
+	# Use coloured output
+  ui = auto
+
+[push]
+	# Defaults 'git push origin' to push the current branch only
+  default = current
+
+
+[commit]
+	# Sign all commits
+	gpgsign = true
+
+# Substitues :gh to github in urls
+[url "https://github.com/"]
+    insteadOf = gh:
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true

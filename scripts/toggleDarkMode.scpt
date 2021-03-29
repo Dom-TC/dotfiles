@@ -1,0 +1,32 @@
+#!/usr/bin/env osascript
+
+on run argv
+  # If no arguments, toggle dark mode
+	if (length of argv) is not equal to 1 then
+    tell application "System Events"
+      tell appearance preferences
+        set dark mode to not dark mode
+      end tell
+    end tell
+	else
+    if (item 1 of argv) = "light" then
+      tell application "System Events"
+        tell appearance preferences
+          set dark mode to false
+        end tell
+      end tell
+    else if (item 1 of argv) = "dark" then
+      tell application "System Events"
+        tell appearance preferences
+          set dark mode to true
+        end tell
+      end tell
+    else
+      tell application "System Events"
+        tell appearance preferences
+          set dark mode to not dark mode
+        end tell
+      end tell
+    end if
+	end if
+end run
