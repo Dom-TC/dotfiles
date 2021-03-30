@@ -23,4 +23,4 @@ alias showFiles="defaults write com.apple.finder AppleShowAllFiles -bool true &&
 alias hideFiles="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
 
 # Python
-alias py='/usr/local/bin/python3'
+alias py='python'
