@@ -23,6 +23,7 @@ if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv virtualenv-init -)"
   export PYENV_VIRTUALENV_DISABLE_PROMPT=1
   export VIRTUAL_ENV_DISABLE_PROMPT=1
+  export PIPENV_VERBOSITY=-1
 fi
 
 # Set up Python Virtual Environments
