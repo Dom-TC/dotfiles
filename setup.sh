@@ -180,6 +180,9 @@
   ln -sf $resourceFolder/ssh/main_id_rsa.pub ~/.ssh
   ln -sf $resourceFolder/ssh/Nixten-Bitbucket ~/.ssh
   ln -sf $resourceFolder/ssh/Nixten-Bitbucket.pub ~/.ssh
+  ln -sf $resourceFolder/ssh/Dom-TC-GitHub ~/.ssh
+  ln -sf $resourceFolder/ssh/Dom-TC-GitHub.pub ~/.ssh
+
   # Git
   echo $prefix"Setting up git symlinks..."
   ln -sf $resourceFolder/git/.gitconfig ~
