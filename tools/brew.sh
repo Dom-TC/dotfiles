@@ -56,6 +56,13 @@ if ! $reducedInstall; then
 
   # echo $prefix"Installing virtualenvwrapper"$NOCOLOR
   # $(pyenv which python3) -m pip install virtualenvwrapper
+
+  echo $prefix"Installing hledger"
+  brew install hledger
+  echo $prefix"Checking hledger version"
+  hledger --version
+  hledger-ui --version
+  hledger web --version
 fi
 
 #-------------------------

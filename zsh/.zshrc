@@ -31,6 +31,9 @@ source ~/.pyenv/versions/3.9.2/bin/virtualenvwrapper.sh
 
 # User configuration
 
+# Set hledger file location
+export LEDGER_FILE="~/Dropbox/2 Areas/Personal/Finances/current.journal"
+
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
