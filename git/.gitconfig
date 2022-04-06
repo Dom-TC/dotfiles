@@ -6,7 +6,6 @@
 	# GPG key
 	signingkey = 079BB9619878F192
 
-
 [tag]
 	# Always sign tags
 	gpgSign = true
@@ -29,7 +28,6 @@
 	# Defaults 'git push origin' to push the current branch only
   default = current
 
-
 [commit]
 	# Sign all commits
 	gpgsign = true
@@ -38,18 +36,26 @@
 # Substitues :gh to github in urls
 [url "https://github.com/"]
     insteadOf = gh:
+
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
+	path =
+
 [mergetool "sourcetree"]
 	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
+
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+
 [init]
 	defaultBranch = main
+
 [pull]
 	rebase = false
+
+[github]
+	user = Dom-TC
