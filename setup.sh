@@ -152,6 +152,8 @@
       zsh $resourceFolder/tools/brew.sh
     fi
 
+    echo $prefix"Disabling brew analytics"
+    brew analytics off
 
     echo $prefix"Updating brew plugins"
     brew upgrade
