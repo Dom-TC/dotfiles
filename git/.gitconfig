@@ -19,7 +19,7 @@
 	editor = atom
 
 	# use global custom gittignore
-	excludesfile = /Users/dom/.gitignore
+	excludesfile = /Users/dom/.gitignore_global
 
 [color]
 	# Use coloured output
