@@ -63,6 +63,11 @@ if ! $reducedInstall; then
   hledger --version
   hledger-ui --version
   hledger web --version
+
+  echo $prefix"Installing youtube-dl"
+  brew install youtube-dl
+  echo $prefix"Installing FFmpeg"
+  brew install FFmpeg
 fi
 
 #-------------------------
