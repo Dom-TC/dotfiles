@@ -67,9 +67,6 @@
   # SSH
   echo $prefix"Backing up ssh configurations..."
   [ -e ~/.ssh/config ] && mv -f ~/.ssh/config ~/.dotBackups/$backupFolder/ssh
-  [ -e ~/.ssh/known_hosts ] && mv -f ~/.ssh/known_hosts ~/.dotBackups/$backupFolder/ssh
-  [ -e ~/.ssh/id_ed25519 ] && mv -f ~/.ssh/id_ed25519 ~/.dotBackups/$backupFolder/ssh
-  [ -e ~/.ssh/id_ed25519.pub ] && mv -f ~/.ssh/id_ed25519.pub ~/.dotBackups/$backupFolder/ssh
 
   # Git
   echo $prefix"Backing up git configurations..."
@@ -175,9 +172,6 @@
   echo $prefix"Setting up ssh symlinks..."
   mkdir -p ~/.ssh
   ln -sf $resourceFolder/ssh/config ~/.ssh
-  ln -sf $resourceFolder/ssh/known_hosts ~/.ssh
-  ln -sf $resourceFolder/ssh/id_ed25519 ~/.ssh
-  ln -sf $resourceFolder/ssh/id_ed25519.pub ~/.ssh
 
   # Git
   echo $prefix"Setting up git symlinks..."
