@@ -69,6 +69,9 @@ if ! $reducedInstall; then
   brew install youtube-dl
   echo $prefix"Installing FFmpeg"
   brew install FFmpeg
+
+  echo $prefix"Installing git filter-repo"
+  brew install git-filter-repo
 fi
 
 #-------------------------
