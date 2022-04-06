@@ -24,3 +24,6 @@ alias hideFiles="defaults write com.apple.finder AppleShowAllFiles -bool false &
 
 # Python
 alias py='python'
+
+# Commands
+alias reload='source ~/.oh-my-zsh/custom/aliases.zsh; source ~/.oh-my-zsh/custom/functions.zsh; source ~/.zshrc'
