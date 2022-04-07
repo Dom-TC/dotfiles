@@ -1,8 +1,4 @@
-# You can put files here to add functionality separated per file, which
-# will be ignored by git.
-# Files on the custom/ directory will be automatically loaded by the init
-# script, in alphabetical order.
-
+#!/usr/bin/env bash
 
 # Change working directory to the top-most Finder window location
 function cdf() { # short for `cdfinder`
