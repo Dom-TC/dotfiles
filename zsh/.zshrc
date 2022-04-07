@@ -36,6 +36,10 @@ source ~/.pyenv/versions/3.9.2/bin/virtualenvwrapper.sh
 
 # User configuration
 
+# Enable suggested corrections
+setopt CORRECT
+setopt CORRECT_ALL
+
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
