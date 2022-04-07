@@ -59,10 +59,19 @@
 
   mkdir -p ~/$backupRoot
   mkdir ~/$backupRoot$backupFolder
+  mkdir ~/$backupRoot$backupFolder/atom
   mkdir ~/$backupRoot$backupFolder/ssh
   mkdir ~/$backupRoot$backupFolder/git
   mkdir ~/$backupRoot$backupFolder/scripts
   mkdir ~/$backupRoot$backupFolder/zsh
+
+  # Atom
+  echo $prefix"Backing up atom configurations..."
+  [ -e ~/.atom/config.cson ] && mv -f ~/.atom/config.cson ~/.dotBackups/$backupFolder/atom
+  [ -e ~/.atom/init.coffee ] && mv -f ~/.atom/init.coffee ~/.dotBackups/$backupFolder/atom
+  [ -e ~/.atom/keymap.cson ] && mv -f ~/.atom/keymap.cson ~/.dotBackups/$backupFolder/atom
+  [ -e ~/.atom/snippets.cson ] && mv -f ~/.atom/snippets.cson ~/.dotBackups/$backupFolder/atom
+  [ -e ~/.atom/styles.less ] && mv -f ~/.atom/styles.less ~/.dotBackups/$backupFolder/atom
 
   # SSH
   echo $prefix"Backing up ssh configurations..."
@@ -167,6 +176,15 @@
 
 # Set Up Symlinks
   echo -e $GREEN$prefix"Setting up symlinks..."$NOCOLOR
+
+  # Atom
+  echo $prefix"Setting up Atom symlinks..."
+  mkdir -p ~/.atom
+  ln -sf $resourceFolder/atom/config.cson ~/.atom
+  ln -sf $resourceFolder/atom/init.coffee ~/.atom
+  ln -sf $resourceFolder/atom/keymap.cson ~/.atom
+  ln -sf $resourceFolder/atom/snippets.cson ~/.atom
+  ln -sf $resourceFolder/atom/styles.less ~/.atom
 
   # SSH
   echo $prefix"Setting up ssh symlinks..."
