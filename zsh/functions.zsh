@@ -34,7 +34,10 @@ function mkd() {
     mkdir -p "$@" && cd "$@"
 }
 
-
+# Open man pages in new tab
+function man() {
+	open x-man-page://$@ ;
+}
 
 
 # Change Dark Mode
