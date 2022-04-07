@@ -211,19 +211,6 @@
   ln -sf $resourceFolder/zsh/DomsTheme.zsh-theme ~/.oh-my-zsh/custom/themes
 
 #-------------------------
-#-- Install ZSH Plugins --
-#-------------------------
-  echo -e $GREEN$prefix"Installing Oh-My-Zsh plugins"$NOCOLOR
-
-  if [ -d ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/ ]; then
-    echo $prefix"Updating zsh-syntax-highlighting"
-    git -C " ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting" pull
-  else
-    echo $prefix"Installing zsh-syntax-highlighting"
-    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-  fi
-
-#-------------------------
 #------- Finished --------
 #-------------------------
   echo -e $GREEN$prefix"All done"$NOCOLOR
