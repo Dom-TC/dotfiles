@@ -13,8 +13,6 @@
   NOCOLOR="\033[0m"
 
 # List available devices
-  # devices=$(ls /dev/tty.*)
-  # devices=$(ls)
   devices=(${(f)"$(ls /dev/tty.*)"})
 
   echo $GREEN$prefix"Pick a device"$NOCOLOR
@@ -26,7 +24,6 @@
       echo $NOCOLOR$deviceNum" "$device$YELLOW
   done
 
-  # echo $YELLOW
   read "deviceID?"$prefix"Which device would you like to use? (1-"$deviceNum") "
 
   if [[ ! $deviceID =~ [0-9] ]]; then
@@ -43,8 +40,13 @@
   selectedDevice=$devices[$deviceID]
 
   echo $NOCOLOR$prefix"Connecting to "$selectedDevice"..."$NOCOLOR
-  echo $NOCOLOR$prefix"To exit, press \`CTRL+a+k\` to exit."$NOCOLOR
+  echo $NOCOLOR$prefix"To exit, press \`CTRL-a+k\` to exit."$NOCOLOR
 
-  sleep 2
+  delay=5
+  while (( delay > 1 )); do
+    echo -ne "Connecting in "$delay"…)\r"
+    sleep 1
+    (( delay = delay - 1 ))
+  done
 
   screen $selectedDevice 9600
