@@ -1,5 +1,5 @@
 #Add folders to $PATH
-path+=('~/.scripts')
+PATH="$PATH":~/.scripts
 export PATH
 
 # Path to your oh-my-zsh installation.
