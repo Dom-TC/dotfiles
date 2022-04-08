@@ -5,7 +5,7 @@
 - Rewrite setup.sh
     - Consider separating update parts into update.sh
 - Allow for different customisations by hostname
-- Sync atom plugins
+- Sync atom plugins.  Submodules?
 
 # Setup.sh
 - Install Xcode Command Line Tools `xcode-select --install`
