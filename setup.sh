@@ -183,6 +183,7 @@
   ln -sf $resourceFolder/atom/config.cson ~/.atom
   ln -sf $resourceFolder/atom/init.coffee ~/.atom
   ln -sf $resourceFolder/atom/keymap.cson ~/.atom
+  ln -sf $resourceFolder/atom/packages.cson ~/.atom
   ln -sf $resourceFolder/atom/snippets.cson ~/.atom
   ln -sf $resourceFolder/atom/styles.less ~/.atom
 

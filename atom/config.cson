@@ -15,5 +15,8 @@
     fileExtension: ".md, .mmark, .markdown, .txt"
   "mojave-dark-mode":
     notifyOnChange: false
+  "package-sync":
+    createOnChange: true
+    forceOverwrite: true
   welcome:
     showOnStartup: false
