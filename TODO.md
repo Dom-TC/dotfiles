@@ -3,9 +3,8 @@
 - Consider Mackup
 - Rewrite brew.sh as proper brew file
 - Rewrite setup.sh
-    - Consider separating update parts into update.sh
-- Allow for different customisations by hostname
-- Sync atom plugins.  Submodules?
+- Allow for different customisations (brewfile etc.) by hostname
+- Sync atom plugins.  Submodules?  `apm list --installed --bare > ~/.atom/package.list` and `apm install --packages-file ~/.atom/package.list`
 
 # Setup.sh
 - Install Xcode Command Line Tools `xcode-select --install`
