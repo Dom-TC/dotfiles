@@ -5,6 +5,7 @@
 - Rewrite setup.sh
     - Consider separating update parts into update.sh
 - Allow for different customisations by hostname
+- Sync atom plugins
 
 # Setup.sh
 - Install Xcode Command Line Tools `xcode-select --install`
@@ -27,9 +28,3 @@
   - ssh
   - zsh (copy all plugins)
 - Install fonts
-
-# Manual Steps
-
-## Fresh Install
-- Install package-sync in Atom https://atom.io/packages/package-sync
-- Run `Package Sync: Sync` in Atom to pull in all Atom packages
