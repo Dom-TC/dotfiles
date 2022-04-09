@@ -14,13 +14,13 @@
   - Disable brew analytics
   - Update oh-my-zsh
   - Update homebrew
+  - Update brew plugins
 - If install:
   - Install brew plugins
     - Global `brew-global.sh`
     - Host specific `brew-hostname.sh`
   - Setup Python environment
 - If install or update:
-  - Update brew plugins
   - Clean outdated brew plugins
 - If install, update, or relink:
   - Build symlinks
@@ -29,6 +29,7 @@
     - scripts (copy all contents)
     - ssh
     - zsh (copy all plugins)
+    - .hushlogin
 - If install:
   - Install fonts https://github.com/powerline/fonts/blob/master/install.sh
     - Equity
