@@ -30,6 +30,7 @@
     - ssh
     - zsh (copy all plugins)
     - .hushlogin
+    - .screenrc
 - If install:
   - Install fonts https://github.com/powerline/fonts/blob/master/install.sh
     - Equity
