@@ -38,14 +38,19 @@
     - Inconsolata
     - DinPro
     - Raleway
+  - Install terminal themes
+  - Print list of uninstalled, suggested apps
 
 # brew-global.sh
-- pyenv
-- pyenv-virtualenv
-- zlib
-- sqlite
-- git-filter-repo
-- FFmpeg
+- brew
+  - pyenv
+  - pyenv-virtualenv
+  - zlib
+  - sqlite
+  - git-filter-repo
+  - FFmpeg
+- brew-cask
+  -
 
 # brew-Doms-Mac-Mini
 - youtube-dl
