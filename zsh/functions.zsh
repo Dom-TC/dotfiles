@@ -35,6 +35,13 @@ function man() {
 	open x-man-page://$@ ;
 }
 
+# Check if a command exists, can be a binary in PATH or a shell
+# alias/function.
+# Use as:
+# if has cd; then ...; fi
+function has() {
+  type $1 &>/dev/null
+}
 
 # Change Dark Mode
 function goDark() {
