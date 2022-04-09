@@ -40,8 +40,10 @@
     - Inconsolata
     - DinPro
     - Raleway
-  - Install terminal themes
-  - Print list of uninstalled, suggested apps
+    - Install terminal themes
+    - Print list of uninstalled, suggested apps
+    - Set MacOS Dock
+      - Host specific
 
 # brew-global.sh
 - brew
