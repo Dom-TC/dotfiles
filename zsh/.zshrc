@@ -17,7 +17,7 @@ source $ZSH/oh-my-zsh.sh
 export VIRTUALENVWRAPPER_PYTHON=~/.pyenv/versions/3.9.2/bin/python3.9
 export VIRTUALENVWRAPPER_VIRTUALENV=~/.pyenv/versions/3.9.2/bin/virtualenv
 
-if command -v pyenv 1>/dev/null 2>&1; then
+if has pyenv; then
   eval "$(pyenv init -)"
   eval "$(pyenv virtualenv-init -)"
   export PYENV_VIRTUALENV_DISABLE_PROMPT=1

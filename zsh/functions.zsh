@@ -45,23 +45,19 @@ function has() {
 
 # Change Dark Mode
 function goDark() {
-  if [ -e ~/.scripts/toggleDarkMode.scpt ]
-  then
-      osascript ~/.scripts/toggleDarkMode.scpt dark
-			if [ -e ~/.scripts/setTerminalTheme.scpt ]
-			then
-					osascript ~/.scripts/setTerminalTheme.scpt "Solarized Light" "Solarized Dark"
+  if has toggleDarkMode; then
+      toggleDarkMode dark
+			if has setTerminalTheme; then
+					setTerminalTheme "Solarized Light" "Solarized Dark"
 			fi
   fi
 }
 
 function goLight() {
-  if [ -e ~/.scripts/toggleDarkMode.scpt ]
-  then
-      osascript ~/.scripts/toggleDarkMode.scpt light
-			if [ -e ~/.scripts/setTerminalTheme.scpt ]
-			then
-					osascript ~/.scripts/setTerminalTheme.scpt "Solarized Light" "Solarized Dark"
+  if has toggleDarkMode; then
+      toggleDarkMode light
+			if has setTerminalTheme; then
+					setTerminalTheme "Solarized Light" "Solarized Dark"
 			fi
   fi
 }

@@ -62,9 +62,8 @@ function git_prompt_info() {
 
 # Print battery level
 function battery_charge() {
-    if [ -e ~/.scripts/BatCharge.py ]
-    then
-        echo `python2 ~/.scripts/BatCharge.py`
+    if has BatCharge; then
+        BatCharge
         # echo '';
     else
         echo '';
@@ -73,9 +72,8 @@ function battery_charge() {
 
 # Get Terminal Theme
 function set_terminal_theme() {
-  if [ -e ~/.scripts/setTerminalTheme.scpt ]
-  then
-      osascript ~/.scripts/setTerminalTheme.scpt $TERMINAL_THEME_LIGHT $TERMINAL_THEME_DARK
+  if has setTerminalTheme; then
+      setTerminalTheme $TERMINAL_THEME_LIGHT $TERMINAL_THEME_DARK
   fi
 }
 
