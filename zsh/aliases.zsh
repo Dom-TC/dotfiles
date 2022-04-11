@@ -23,6 +23,7 @@ alias hideFiles="defaults write com.apple.finder AppleShowAllFiles -bool false &
 
 # Commands
 alias reload='exec zsh'
+alias tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"
 
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
