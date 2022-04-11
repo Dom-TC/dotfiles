@@ -10,6 +10,11 @@
   - Optional: Generate ssh keys https://github.com/driesvints/dotfiles/blob/main/ssh.sh
   - Install oh-my-zsh
   - Install homebrew - `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)”`
+  - Install python environment https://www.laac.dev/blog/python-development-environment-2021/
+    - asdf
+    - pipx
+    - pipenv
+  - Install ruby environment
 - If install or update:
   - Disable brew analytics
   - Update oh-my-zsh
