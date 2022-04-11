@@ -22,7 +22,7 @@ alias showFiles="defaults write com.apple.finder AppleShowAllFiles -bool true &&
 alias hideFiles="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
 
 # Commands
-alias reload='source ~/.oh-my-zsh/custom/aliases.zsh; source ~/.oh-my-zsh/custom/functions.zsh; source ~/.zshrc'
+alias reload='exec zsh'
 
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
