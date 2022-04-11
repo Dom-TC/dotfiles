@@ -10,23 +10,27 @@
   - Optional: Generate ssh keys https://github.com/driesvints/dotfiles/blob/main/ssh.sh
   - Install oh-my-zsh
   - Install homebrew - `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)”`
-  - Install python environment https://www.laac.dev/blog/python-development-environment-2021/
-    - Install asdf
+  - Install development environments
+    - asdf
       - `git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.9.0`
       - `asdf update`
-    - Install python
+    - python
       - `asdf plugin add python`
       - `asdf install python 3.10.4`
       - `asdf global python 3.10.4`
-    - Install nodejs
-      - `asdf plugin add nodejs`
-      - `asdf install nodejs lts`
-      - `asdf global nodejs lts`
     - pipx
       - `brew install pipx`
       - `pipx ensurepath`
     - pipenv
-  - Install ruby environment
+      - `pipx install pipenv`
+    - nodejs
+      - `asdf plugin add nodejs`
+      - `asdf install nodejs lts`
+      - `asdf global nodejs lts`
+    - ruby
+      - `asdf plugin add ruby`
+      - `asdf install ruby latest`
+      - `asdf global ruby latest`
 - If install or update:
   - Disable brew analytics
   - Update oh-my-zsh
