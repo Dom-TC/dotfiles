@@ -84,7 +84,7 @@
 
   # Scripts
   echo $prefix"Backing up scripts..."
-  [ -e ~/.scripts/BatCharge.py ] && mv -f ~/.scripts/BatCharge.py ~/.dotBackups/$backupFolder/scripts
+  [ -e ~/.scripts/batcharge.py ] && mv -f ~/.scripts/batcharge.py ~/.dotBackups/$backupFolder/scripts
   [ -e ~/.scripts/setTerminalTheme.scpt ] && mv -f ~/.scripts/setTerminalTheme.scpt ~/.dotBackups/$backupFolder/scripts
   [ -e ~/.scripts/toggleDarkMode.scpt ] && mv -f ~/.scripts/toggleDarkMode.scpt ~/.dotBackups/$backupFolder/scripts
 
@@ -199,7 +199,7 @@
   # Scripts
   echo $prefix"Setting up script symlinks..."
   mkdir -p ~/.scripts
-  ln -sf $resourceFolder/scripts/BatCharge.py ~/.scripts
+  ln -sf $resourceFolder/scripts/batcharge.py ~/.scripts
   ln -sf $resourceFolder/scripts/setTerminalTheme.scpt ~/.scripts
   ln -sf $resourceFolder/scripts/toggleDarkMode.scpt ~/.scripts
 

@@ -68,8 +68,8 @@ function git_prompt_info() {
 
 # Print battery level
 function battery_charge() {
-    if has BatCharge; then
-        BatCharge
+    if has batcharge; then
+        batcharge
     else
         echo '';
     fi

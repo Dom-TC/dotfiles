@@ -1,6 +1,6 @@
 #Add folders to $PATH
-PATH="$PATH":~/.scripts
-export PATH
+export PATH="$PATH":~/.scripts
+export PATH="$PATH:/Users/dom/.local/bin"
 
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/dom/.oh-my-zsh"
@@ -18,6 +18,13 @@ plugins=(
 )
 
 source $ZSH/oh-my-zsh.sh
+
+# Enable pipx autocompletions
+if has pipx; then
+  autoload -U bashcompinit
+  bashcompinit
+  eval "$(register-python-argcomplete pipx)"
+fi
 
 # Enable suggested corrections
 setopt CORRECT
