@@ -1,3 +1,6 @@
 [submodule "zsh/plugins/zsh-syntax-highlighting"]
 	path = zsh/plugins/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
+[submodule "zsh/plugins/zsh-asdf-prompt"]
+	path = zsh/plugins/zsh-asdf-prompt
+	url = https://github.com/CurryEleison/zsh-asdf-prompt

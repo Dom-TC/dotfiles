@@ -9,7 +9,7 @@ export ZSH="/Users/dom/.oh-my-zsh"
 ZSH_THEME="DomsTheme"
 
 # Load plugins
-plugins=(git zsh-syntax-highlighting)
+plugins=(git zsh-syntax-highlighting asdf zsh-asdf-prompt)
 
 source $ZSH/oh-my-zsh.sh
 

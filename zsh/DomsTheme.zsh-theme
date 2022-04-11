@@ -2,12 +2,18 @@
   # Terminal Themes
   TERMINAL_THEME_DARK="Solarized Dark"
   TERMINAL_THEME_LIGHT="Solarized Light"
+
   # Git Themes
   ZSH_THEME_GIT_PROMPT_PREFIX="[git:"
   ZSH_THEME_GIT_PROMPT_SUFFIX="]$reset_color"
   ZSH_THEME_GIT_PROMPT_DIRTY="$fg[red]+"
   ZSH_THEME_GIT_PROMPT_CLEAN="$fg[green]"
 
+  # asdf Prompt Themes
+  ZSH_THEME_ASDF_PROMPT_PREFIX="%{$fg[yellow]%}{"
+  ZSH_THEME_ASDF_PROMPT_POSTFIX="}%{$reset_color%} "
+  ZSH_THEME_ASDF_PROMPT_FILTER="COMPACT"
+  ZSH_THEME_ASDF_PROMPT_VERSION_DETAIL="PATCH"
 
 #Functions
 # Print username when in ssh
@@ -44,7 +50,7 @@ function put_spacing() {
 
   # Calculate space neeeded
   local termwidth
-  (( termwidth = ${COLUMNS} - ${#HOST} - ${#$(get_pwd)} - ${#$(get_pyenv)} - ${bat} - ${git} - ${#$(put_username)}))
+  (( termwidth = ${COLUMNS} - ${#HOST} - ${#$(get_pwd)} - ${#$(asdf_prompt_info)} - ${bat} - ${git} - ${#$(put_username)}))
 
   # Generate spacing
   local spacing=""
@@ -76,15 +82,10 @@ function set_terminal_theme() {
   fi
 }
 
-# Get Pyenv Environment
-get_pyenv() {
-  return ''
-}
-
 # Set terminal dark mode
 set_terminal_theme
 
 # Set Prompt
 PROMPT='
-$fg[cyan]$(put_username)%m: $fg[yellow]$(get_pwd)$(put_spacing)$(get_pyenv) $(git_prompt_info) $(battery_charge)
+$fg[cyan]$(put_username)%m: $fg[yellow]$(get_pwd)$(put_spacing)$(asdf_prompt_info) $(git_prompt_info) $(battery_charge)
 $reset_color➜ '
