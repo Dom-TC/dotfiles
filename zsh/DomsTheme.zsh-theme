@@ -64,7 +64,6 @@ function git_prompt_info() {
 function battery_charge() {
     if has BatCharge; then
         BatCharge
-        # echo '';
     else
         echo '';
     fi
@@ -79,11 +78,7 @@ function set_terminal_theme() {
 
 # Get Pyenv Environment
 get_pyenv() {
-  local virtualenv_path="$VIRTUAL_ENV"
-  if [[ -n $virtualenv_path && -n $VIRTUAL_ENV_DISABLE_PROMPT ]]; then
-    PYENV_VER=$(pyenv version-name)
-    echo "$fg[yellow](${PYENV_VER%%:*})$reset_color"
-  fi
+  return ''
 }
 
 # Set terminal dark mode

@@ -1,5 +1,8 @@
 # Ideas
 - Sync atom plugins.  Submodules?  `apm list --installed --bare > ~/.atom/package.list` and `apm install --packages-file ~/.atom/package.list`
+- Consider oh-my-zsh plugins
+  - ruby
+  - python
 
 # setup.sh
 - Check if install, update, or relink
@@ -52,10 +55,6 @@
 
 # brew-global.sh
 - brew
-  - pyenv
-  - pyenv-virtualenv
-  - zlib
-  - sqlite
   - git-filter-repo
   - FFmpeg
 - brew-cask
