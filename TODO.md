@@ -1,5 +1,5 @@
 # Ideas
-- Sync atom plugins.  Submodules?  `apm list --installed --bare > ~/.atom/package.list` and `apm install --packages-file ~/.atom/package.list`
+- Sync atom plugins.  `apm list --installed --bare > ~/.atom/package.list` and `apm install --packages-file ~/.atom/package.list`
 
 # setup.sh
 - Check if install, update, or relink
@@ -11,8 +11,20 @@
   - Install oh-my-zsh
   - Install homebrew - `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)”`
   - Install python environment https://www.laac.dev/blog/python-development-environment-2021/
-    - asdf
+    - Install asdf
+      - `git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.9.0`
+      - `asdf update`
+    - Install python
+      - `asdf plugin add python`
+      - `asdf install python 3.10.4`
+      - `asdf global python 3.10.4`
+    - Install nodejs
+      - `asdf plugin add nodejs`
+      - `asdf install nodejs lts`
+      - `asdf global nodejs lts`
     - pipx
+      - `brew install pipx`
+      - `pipx ensurepath`
     - pipenv
   - Install ruby environment
 - If install or update:
