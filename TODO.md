@@ -1,5 +1,6 @@
 # Ideas
 - Sync atom plugins.  `apm list --installed --bare > ~/.atom/package.list` and `apm install --packages-file ~/.atom/package.list`
+- Fix asdf-prompt-info
 
 # setup.sh
 - Check if install, update, or relink
@@ -9,7 +10,8 @@
   - Ensure using zsh
   - Optional: Generate ssh keys https://github.com/driesvints/dotfiles/blob/main/ssh.sh
   - Install oh-my-zsh
-  - Install homebrew - `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)”`
+  - Install homebrew
+    - `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)”`
   - Install development environments
     - asdf
       - `git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.9.0`
@@ -40,7 +42,6 @@
   - Install brew plugins
     - Global `brew-global.sh`
     - Host specific `brew-hostname.sh`
-  - Setup Python environment
 - If install or update:
   - Clean outdated brew plugins
 - If install, update, or relink:
