@@ -11,7 +11,7 @@
 
   # asdf Prompt Themes
   ZSH_THEME_ASDF_PROMPT_PREFIX="%{$fg[yellow]%}{"
-  ZSH_THEME_ASDF_PROMPT_POSTFIX="}%{$reset_color%} "
+  ZSH_THEME_ASDF_PROMPT_POSTFIX="}%{$reset_color%}"
   ZSH_THEME_ASDF_PROMPT_FILTER="COMPACT"
   ZSH_THEME_ASDF_PROMPT_VERSION_DETAIL="PATCH"
 
@@ -41,16 +41,28 @@ function put_spacing() {
   fi
 
   # Calculate battery charactors
-  local bat=$(battery_charge)
-  if [ ${#bat} != 0 ]; then
-      ((bat = ${#bat} - 20))
-  else
-      bat=0
+  if has batcharge; then
+    local bat=$(battery_charge)
+    if [ ${#bat} != 0 ]; then
+        ((bat = ${#bat} - 20))
+    else
+        bat=0
+    fi
+  fi
+
+  # Calculate asdf_prompt_info charactors
+  if has asdf; then
+    local asdf=$(asdf_prompt_info)
+    if [ ${#asdf} != 0 ]; then
+        ((asdf = ${#asdf} - 18))
+    else
+        asdf=0
+    fi
   fi
 
   # Calculate space neeeded
   local termwidth
-  (( termwidth = ${COLUMNS} - ${#HOST} - ${#$(get_pwd)} - ${#$(asdf_prompt_info)} - ${bat} - ${git} - ${#$(put_username)}))
+  (( termwidth = ${COLUMNS} - ${#HOST} - ${#$(get_pwd)} - ${asdf} - ${bat} - ${git} - ${#$(put_username)}))
 
   # Generate spacing
   local spacing=""
