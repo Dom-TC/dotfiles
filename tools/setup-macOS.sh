@@ -50,3 +50,19 @@
       echo $RED$prefix"Please pick an option from 1–3"
     fi
   done
+
+#-------------------------
+#----- Installation ------
+#-------------------------
+
+# If install…
+  if [[ $installCode == 1 ]]; then
+    echo $GREEN$prefix"Installing system tools"$NOCOLOR
+
+    if has xcode-select; then
+      echo $prefix"xcode-select already installed.  Skipping..."
+    else
+      echo $prefix"Installing xcode-select"
+      xcode-select --install
+    fi
+  fi
