@@ -69,6 +69,7 @@
 
 # brew-global.sh
 - brew
+  - git
   - git-filter-repo
   - FFmpeg
 - brew-cask
