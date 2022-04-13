@@ -6,7 +6,7 @@
 - Check if install, update, or relink
 - If install:
   - Install Xcode Command Line Tools `xcode-select --install`
-  - Set MacOS System Preferences
+  - Set MacOS System Preferences https://github.com/kevinSuttle/macOS-Defaults
   - Ensure using zsh
   - Optional: Generate ssh keys https://github.com/driesvints/dotfiles/blob/main/ssh.sh
   - Install oh-my-zsh
