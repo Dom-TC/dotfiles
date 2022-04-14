@@ -37,6 +37,9 @@
 #---- Initialisation -----
 #-------------------------
 
+# Ensure we're running in the directory we expect
+  cd $(dirname $0)
+
 # Check if installing, updating, or re-linking
   while [[ $installCode != 1 && $installCode != 2 && $installCode != 3 ]]; do
     echo $YELLOW$prefix"Would you like to:"$NOCOLOR
