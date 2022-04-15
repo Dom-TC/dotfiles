@@ -2,12 +2,12 @@
 - Sync atom plugins.  `apm list --installed --bare > ~/.atom/package.list` and `apm install --packages-file ~/.atom/package.list`
 - Fix asdf-prompt-info
 
-# setup.sh
+# setup-macos.sh
 - Check if install, update, or relink
 - If install:
   - Install Xcode Command Line Tools `xcode-select --install`
   - Set MacOS System Preferences https://github.com/kevinSuttle/macOS-Defaults
-  - Ensure using zsh
+  - Ensure using zsh https://linuxhint.com/know-bash-or-zsh/
   - Optional: Generate ssh keys https://github.com/driesvints/dotfiles/blob/main/ssh.sh
   - Install oh-my-zsh
   - Install homebrew
@@ -77,3 +77,7 @@
 
 # brew-Doms-Mac-Mini
 - youtube-dl
+
+# setup.sh
+- If MacOS - `if [[ "$OSTYPE" == "darwin"* ]]; then ... ; fi`
+  - exec setup-macos.sh
