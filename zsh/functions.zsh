@@ -43,6 +43,12 @@ function has() {
   type $1 &>/dev/null
 }
 
+# Where is a function defined?
+whichfunc() {
+        whence -v $1
+        type -a $1
+}
+
 # Change Dark Mode
 function goDark() {
   if has toggleDarkMode; then
