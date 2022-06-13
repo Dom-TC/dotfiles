@@ -1,6 +1,9 @@
 # Ideas
 - Sync atom plugins.  `apm list --installed --bare > ~/.atom/package.list` and `apm install --packages-file ~/.atom/package.list`
 - Fix asdf-prompt-info
+- Consider: lazygit https://github.com/jesseduffield/lazygit
+- Consider: laxydocker https://github.com/jesseduffield/lazydocker
+- Consider: iTerm https://iterm2.com/
 
 # setup-macos.sh
 - Check if install, update, or relink
