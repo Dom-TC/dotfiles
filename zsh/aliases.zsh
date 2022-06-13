@@ -16,6 +16,7 @@ alias areas='cd ~/Dropbox/2\ Areas'
 alias resources='cd ~/Dropbox/3\ Resources'
 alias archive='cd ~/Dropbox/4\ Archive'
 alias dotfiles='cd ~/Dropbox/3\ Resource/Libraries/dotfiles'
+alias cdd="cd ~/Desktop"
 
 # Show/hide hidden files in Finder
 alias showFiles="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
