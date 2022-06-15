@@ -15,6 +15,7 @@ plugins=(
   asdf
   zsh-asdf-prompt
   dotenv
+  poetry
 )
 
 source $ZSH/oh-my-zsh.sh
