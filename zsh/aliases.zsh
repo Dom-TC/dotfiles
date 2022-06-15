@@ -5,7 +5,8 @@ alias cls='clear'
 alias '?=man'
 alias !='sudo'
 alias '?'='status'
-alias py='python'
+alias py='python3'
+alias python='python3'
 
 # Enable aliases to be sudo’ed
 alias sudo='sudo '
