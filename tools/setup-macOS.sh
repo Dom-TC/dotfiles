@@ -26,6 +26,7 @@
 # Initialise Variables
   installCode=0
   generateSSH=0
+  needRestart=false
 
 #-------------------------
 #------- Functions -------
@@ -67,7 +68,7 @@
 
     # Install Xcode Command Line Tools
     if has xcode-select; then
-      echo $prefix"xcode-select already installed.  Skipping..."
+      echo $prefix"xcode-select is already installed.  Skipping..."
     else
       echo $prefix"Installing xcode-select"
       xcode-select --install
@@ -95,6 +96,13 @@
     fi
 
     # Install oh-my-zsh
+    if [ -e ~/.oh-my-zsh/oh-my-zsh.sh ]; then
+      echo $prefix"Oh-My-Zsh is already installed.  Skipping..."
+    else
+      echo $prefix"Installing Oh-My-Zsh"$NOCOLOR
+      sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" --unattended
+      needRestart=true
+    fi
 
     # Install homebrew
 
