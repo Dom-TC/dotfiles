@@ -1,7 +1,6 @@
 # Ideas
-- Sync atom plugins.  `apm list --installed --bare > ~/.atom/package.list` and `apm install --packages-file ~/.atom/package.list`
+- Sync Sublime settings
 - Fix asdf-prompt-info
-- Consider: lazygit https://github.com/jesseduffield/lazygit
 - Consider: laxydocker https://github.com/jesseduffield/lazydocker
 - Consider: iTerm https://iterm2.com/
 
@@ -49,7 +48,7 @@
   - Clean outdated brew plugins
 - If install, update, or relink:
   - Build symlinks
-    - atom
+    - sublime
     - git
     - scripts (copy all contents)
     - ssh
