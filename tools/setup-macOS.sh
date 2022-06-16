@@ -97,21 +97,20 @@
 
     # Install oh-my-zsh
     if [ -e ~/.oh-my-zsh/oh-my-zsh.sh ]; then
-      echo $prefix"Oh-My-Zsh is already installed.  Skipping..."
+      echo $NOCOLOR$prefix"Oh-My-Zsh is already installed.  Skipping..."
     else
-      echo $prefix"Installing Oh-My-Zsh"$NOCOLOR
+      echo $NOCOLOR$prefix"Installing Oh-My-Zsh"$NOCOLOR
       sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" --unattended
       needRestart=true
     fi
 
     # Install homebrew
     if has brew; then 
-      echo $prefix"Homebrew is already installed.  Skipping..."$NOCOLOR
+      echo $NOCOLOR$prefix"Homebrew is already installed.  Skipping..."$NOCOLOR
     else
-      echo $prefix"Installing Homebrew"$NOCOLOR
+      echo $NOCOLOR$prefix"Installing Homebrew"$NOCOLOR
       NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     fi  
-
 
     # Install development environments
 
