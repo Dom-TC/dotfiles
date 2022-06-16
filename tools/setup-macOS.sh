@@ -20,9 +20,12 @@
 # Resource Folder Location (where this script is)
   resourceFolder=${0:a:h}"/"
 
+# General
+  email="dom.chester@me.com"
+
 # Initialise Variables
   installCode=0
-  needRestart=false
+  generateSSH=0
 
 #-------------------------
 #------- Functions -------
@@ -73,6 +76,23 @@
     # Set MacOS Defaults
 
     # Generate SSH keys
+    while [[ $generateSSH != "Y" && $generateSSH != "y" && $generateSSH != "N" && $generateSSH != "n" ]]; do
+      echo $YELLOW
+      read "generateSSH?"$prefix"Would you like to generate a SSH key? (Y/N): "
+
+      if [[ $generateSSH != "Y" && $generateSSH != "y" && $generateSSH != "N" && $generateSSH != "n" ]]; then
+        echo $RED$prefix"Please select Y or N"
+      fi
+    done
+
+    if [[ $generateSSH == "Y" || $generateSSH == "y" ]]; then
+      echo $NOCOLOR$prefix"Generating SSH key..."$NOCOLOR
+      ssh-keygen -t ed25519 -C $email -f ~/.ssh/id_ed25519
+      eval "$(ssh-agent -s)"
+      ssh-add -K ~/.ssh/id_ed25519
+
+      echo $YELLOW$prefix"Run 'pbcopy < ~/.ssh/id_ed25519.pub' to get public key"$NOCOLOR
+    fi
 
     # Install oh-my-zsh
 
