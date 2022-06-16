@@ -139,4 +139,15 @@
       asdf plugin add ruby
       asdf install ruby latest
       asdf global ruby latest
+
+      # pipx
+      if has pipx; then 
+        echo $NOCOLOR$prefix"Pipx is already installed.  Skipping..."$NOCOLOR
+      else
+        echo $NOCOLOR$prefix"Installing pipx"$NOCOLOR
+        brew install pipx
+        pipx ensurepath
+      fi
+      
+      # poetry / pipenv
   fi
