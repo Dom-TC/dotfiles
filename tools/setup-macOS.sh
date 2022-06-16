@@ -42,11 +42,11 @@
 
 # Check if installing, updating, or re-linking
   while [[ $installCode != 1 && $installCode != 2 && $installCode != 3 ]]; do
-    echo $YELLOW$prefix"Would you like to:"$NOCOLOR
-    echo $YELLOW$prefix"1 - Install"$NOCOLOR
-    echo $YELLOW$prefix"2 - Update"$NOCOLOR
-    echo $YELLOW$prefix"3 - Relink"$NOCOLOR
-
+    echo $YELLOW
+    echo $prefix"Would you like to:"
+    echo $prefix"1 - Install"
+    echo $prefix"2 - Update"
+    echo $prefix"3 - Relink"
     read "installCode?"$prefix"Please pick an option: "
 
     if [[ $installCode != 1 && $installCode != 2 && $installCode != 3 ]]; then
@@ -62,10 +62,33 @@
   if [[ $installCode == 1 ]]; then
     echo $GREEN$prefix"Installing system tools"$NOCOLOR
 
+    # Install Xcode Command Line Tools
     if has xcode-select; then
       echo $prefix"xcode-select already installed.  Skipping..."
     else
       echo $prefix"Installing xcode-select"
       xcode-select --install
     fi
+
+    # Set MacOS Defaults
+
+    # Generate SSH keys
+
+    # Install oh-my-zsh
+
+    # Install homebrew
+
+    # Install development environments
+
+      # asdf
+
+      # python
+
+      # pipx
+
+      # poetry / pipenv
+
+      # nodejs
+
+      # ruby
   fi
