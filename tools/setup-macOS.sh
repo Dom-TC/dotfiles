@@ -87,7 +87,7 @@
     done
 
     if [[ $generateSSH == "Y" || $generateSSH == "y" ]]; then
-      echo $NOCOLOR$prefix"Generating SSH key..."$NOCOLOR
+      echo $NOCOLOR$prefix"Generating SSH key"$NOCOLOR
       ssh-keygen -t ed25519 -C $email -f ~/.ssh/id_ed25519
       eval "$(ssh-agent -s)"
       ssh-add -K ~/.ssh/id_ed25519
@@ -113,16 +113,30 @@
     fi  
 
     # Install development environments
-
       # asdf
+      if has asdf; then
+        echo $NOCOLOR$prefix"asdf is already installed.  Skipping..."$NOCOLOR
+      else
+        echo $NOCOLOR$prefix"Installing asdf"$NOCOLOR
+        git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.10.0
+        asdf update
+      fi
 
       # python
-
-      # pipx
-
-      # poetry / pipenv
+      echo $NOCOLOR$prefix"Installing python asdf plugin"$NOCOLOR
+      asdf plugin add python
+      asdf install python latest
+      asdf global python latest
 
       # nodejs
+      echo $NOCOLOR$prefix"Installing nodejs asdf plugin"$NOCOLOR
+      asdf plugin add nodejs
+      asdf install nodejs latest
+      asdf global nodejs latest
 
       # ruby
+      echo $NOCOLOR$prefix"Installing ruby asdf plugin"$NOCOLOR
+      asdf plugin add ruby
+      asdf install ruby latest
+      asdf global ruby latest
   fi
