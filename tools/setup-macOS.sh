@@ -105,6 +105,13 @@
     fi
 
     # Install homebrew
+    if has brew; then 
+      echo $prefix"Homebrew is already installed.  Skipping..."$NOCOLOR
+    else
+      echo $prefix"Installing Homebrew"$NOCOLOR
+      NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    fi  
+
 
     # Install development environments
 
