@@ -149,5 +149,12 @@
         pipx ensurepath
       fi
       
-      # poetry / pipenv
+      # poetry 
+      if has poetry; then 
+        echo $NOCOLOR$prefix"Poetry is already installed.  Skipping..."$NOCOLOR
+      else
+        echo $NOCOLOR$prefix"Installing poetry"$NOCOLOR
+        curl -sSL https://install.python-poetry.org | python3 -
+        poetry self update
+      fi
   fi
