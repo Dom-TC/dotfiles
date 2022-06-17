@@ -5,64 +5,6 @@
 - Consider: iTerm https://iterm2.com/
 
 # setup-macos.sh
-- Check if install, update, or relink
-- If install:
-  - Install Xcode Command Line Tools `xcode-select --install`
-  - Set MacOS System Preferences https://github.com/kevinSuttle/macOS-Defaults
-  - Ensure using zsh https://linuxhint.com/know-bash-or-zsh/
-  - Optional: Generate ssh keys https://github.com/driesvints/dotfiles/blob/main/ssh.sh
-  - Install oh-my-zsh
-  - Install homebrew
-    - `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)”`
-    - Disable brew analytics
-  - Install development environments
-    - asdf
-      - `git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.9.0`
-      - `asdf update`
-    - python
-      - `asdf plugin add python`
-      - `asdf install python 3.10.4`
-      - `asdf global python 3.10.4`
-    - pipx
-      - `brew install pipx`
-      - `pipx ensurepath`
-    - pipenv
-      - `pipx install pipenv`
-    - nodejs
-      - `asdf plugin add nodejs`
-      - `asdf install nodejs lts`
-      - `asdf global nodejs lts`
-    - ruby
-      - `asdf plugin add ruby`
-      - `asdf install ruby latest`
-      - `asdf global ruby latest`
-- If update:
-  - Update oh-my-zsh
-  - Update homebrew
-  - Update brew plugins
-  - Update asdf
-  - Update python
-  - Update node js
-  - Update ruby
-  - Update pipx
-  - Update poetry
-- If install:
-  - Install brew plugins
-    - Global `brew-global.sh`
-    - Host specific `brew-hostname.sh`
-
-    
-- If install or update:
-  - Clean outdated brew plugins
-- If install, update, or relink:
-  - Build symlinks
-    - sublime
-    - git
-    - scripts (copy all contents)
-    - ssh
-    - zsh (copy all plugins)
-    - .hushlogin
-    - .screenrc
 - If install:
   - Install fonts https://github.com/powerline/fonts/blob/master/install.sh
     - Equity
@@ -91,3 +33,6 @@
 # setup.sh
 - If MacOS - `if [[ "$OSTYPE" == "darwin"* ]]; then ... ; fi`
   - exec setup-macos.sh
+
+# macos-settings-global.sh
+- https://github.com/kevinSuttle/macOS-Defaults

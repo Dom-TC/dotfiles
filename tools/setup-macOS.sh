@@ -13,12 +13,16 @@
   YELLOW="\033[1;33m"
   NOCOLOR="\033[0m"
 
-# Backup Folder Location
+# Folder Location
+  dotFolder=$HOME"/dotfiles"
+  gitFolder=$dotFolder"/git"
+  scriptsFolder=$dotFolder"/scripts"
+  sshFolder=$dotFolder"/ssh"
+  toolsFolder=$dotFolder"/tools"
+  zshFolder=$dotFolder"/zsh"
+
   backupRoot=".dotBackups/"
   backupFolder=$(date +"%Y-%m-%d_%H%M%S")
-
-# Resource Folder Location (where this script is)
-  resourceFolder=${0:a:h}
 
 # General
   email="dom.chester@me.com"
@@ -82,12 +86,12 @@
 
     # Set global MacOS defaults
     echo $NOCOLOR$prefix"Setting MacOS defaults"$NOCOLOR
-    zsh $resourceFolder/macos-settings-global.sh
+    zsh $toolsFolder/macos-settings-global.sh
 
     # Install host-specific brew formulae
-    if [ -e $resourceFolder/macos-settings-$hostname.sh ]; then
+    if [ -e $toolsFolder/macos-settings-$hostname.sh ]; then
       echo $NOCOLOR$prefix"Setting host-specific MacOS settings"$NOCOLOR
-      zsh $resourceFolder/macos-settings-$hostname.sh
+      zsh $toolsFolder/macos-settings-$hostname.sh
     else
       echo $YELLOW$prefix"No host-specific MacOS settings file provided"$NOCOLOR
    fi
@@ -173,6 +177,8 @@
         echo $NOCOLOR$prefix"Installing poetry"$NOCOLOR
         curl -sSL https://install.python-poetry.org | python3 -
         poetry self update
+        mkdir $ZSH_CUSTOM/plugins/poetry
+        poetry completions zsh > $ZSH_CUSTOM/plugins/poetry/_poetry
       fi
   fi
 
@@ -219,16 +225,16 @@
     poetry self update
   fi
 
-  # If install or update
+  # If install or update...
   if [[ $installCode == 1 || $installCode == 2 ]]; then
     # Install global brew formulae
     echo $NOCOLOR$prefix"Installing global brew formulae"$NOCOLOR
-    zsh $resourceFolder/brew-global.sh
+    zsh $toolsFolder/brew-global.sh
 
     # Install host-specific brew formulae
-    if [ -e $resourceFolder/brew-$hostname.sh ]; then
+    if [ -e $toolsFolder/brew-$hostname.sh ]; then
       echo $NOCOLOR$prefix"Installing host-specific brew formulae"$NOCOLOR
-      zsh $resourceFolder/brew-$hostname.sh
+      zsh $toolsFolder/brew-$hostname.sh
     else
       echo $YELLOW$prefix"No host-specific brew file provided"$NOCOLOR
    fi
@@ -236,4 +242,39 @@
     # Clean outdated brew plugins
     echo $NOCOLOR$prefix"Cleaning up brew"$NOCOLOR
     brew cleanup
+  fi
+
+  # If install, update or relink...
+  if [[ $installCode == 1 || $installCode == 2 || $installCode == 3 ]]; then
+    # Build symlinks
+      # git
+      echo $NOCOLOR$prefix"Creating git symlinks"$NOCOLOR
+      ln -sf $gitFolder/.gitconfig ~
+      ln -sf $gitFolder/.gitignore ~
+
+      # ssh
+      echo $NOCOLOR$prefix"Creating ssh symlinks"$NOCOLOR
+      mkdir -p ~/.ssh
+      ln -sf $sshFolder/config ~/.ssh
+
+      # zsh
+      echo $NOCOLOR$prefix"Creating zsh symlinks"$NOCOLOR
+      ln -sf $zshFolder/.zshrc ~
+      ln -sf $zshFolder/aliases.zsh ~/.oh-my-zsh/custom
+      ln -sf $zshFolder/functions.zsh ~/.oh-my-zsh/custom
+      ln -sf $zshFolder/DomsTheme.zsh-theme ~/.oh-my-zsh/custom/themes
+      for plugin in $zshFolder/plugins/*; do 
+        ln -sf $plugin ~/.oh-my-zsh/custom/plugins
+      done 
+
+      # scripts
+      echo $NOCOLOR$prefix"Creating scripts symlinks"$NOCOLOR
+      for script in $scriptsFolder/*; do 
+        ln -sf $script ~/.scripts
+      done 
+
+      # other
+      echo $NOCOLOR$prefix"Creating remaining symlinks"$NOCOLOR
+      ln -sf $dotFolder/.hushlogin ~
+      ln -sf $dotFolder/.screenrc ~
   fi
