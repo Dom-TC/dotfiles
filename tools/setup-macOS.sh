@@ -169,8 +169,10 @@
     echo $GREEN$prefix"Updating system tools"$NOCOLOR
 
     # Update oh-my-zsh
-    echo $NOCOLOR$prefix"Updating oh-my-zsh"$NOCOLOR
-    omz update
+    if [ -e ~/.oh-my-zsh/tools/upgrade.sh ]; then
+      echo $NOCOLOR$prefix"Updating oh-my-zsh"$NOCOLOR
+      zsh ~/.oh-my-zsh/tools/upgrade.sh
+    fi
 
     # Update homebrew
     echo $NOCOLOR$prefix"Updating homebrew"$NOCOLOR
