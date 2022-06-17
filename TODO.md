@@ -40,6 +40,12 @@
   - Update oh-my-zsh
   - Update homebrew
   - Update brew plugins
+  - Update asdf
+  - Update python
+  - Update node js
+  - Update ruby
+  - Update pipx
+  - Update poetry
 - If install:
   - Install brew plugins
     - Global `brew-global.sh`
