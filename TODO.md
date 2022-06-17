@@ -50,6 +50,8 @@
   - Install brew plugins
     - Global `brew-global.sh`
     - Host specific `brew-hostname.sh`
+
+    
 - If install or update:
   - Clean outdated brew plugins
 - If install, update, or relink:

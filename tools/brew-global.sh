@@ -1,0 +1,1 @@
+echo "brew-global.sh"

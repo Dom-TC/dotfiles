@@ -18,10 +18,12 @@
   backupFolder=$(date +"%Y-%m-%d_%H%M%S")
 
 # Resource Folder Location (where this script is)
-  resourceFolder=${0:a:h}"/"
+  resourceFolder=${0:a:h}
 
 # General
   email="dom.chester@me.com"
+  hostname_full=$(hostname)
+  hostname=${hostname_full//.local/}
 
 # Initialise Variables
   installCode=0
@@ -205,4 +207,23 @@
     # Update poetry
     echo $NOCOLOR$prefix"Updating poetry"$NOCOLOR
     poetry self update
+  fi
+
+  # If install or update
+  if [[ $installCode == 1 || $installCode == 2 ]]; then
+    # Install global brew formulae
+    echo $NOCOLOR$prefix"Installing global brew formulae"$NOCOLOR
+    zsh $resourceFolder/brew-global.sh
+
+    # Install host-specific brew formulae
+    if [ -e $resourceFolder/brew-$hostname.sh ]; then
+      echo $NOCOLOR$prefix"Installing host-specific brew formulae"$NOCOLOR
+      zsh $resourceFolder/brew-$hostname.sh
+    else
+      echo $YELLOW$prefix"No host-specific brew file provided"$NOCOLOR
+   fi
+
+    # Clean outdated brew plugins
+    echo $NOCOLOR$prefix"Cleaning up brew"$NOCOLOR
+    brew cleanup
   fi
