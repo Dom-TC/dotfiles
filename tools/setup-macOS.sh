@@ -80,7 +80,17 @@
       xcode-select --install
     fi
 
-    # Set MacOS Defaults
+    # Set global MacOS defaults
+    echo $NOCOLOR$prefix"Setting MacOS defaults"$NOCOLOR
+    zsh $resourceFolder/macos-settings-global.sh
+
+    # Install host-specific brew formulae
+    if [ -e $resourceFolder/macos-settings-$hostname.sh ]; then
+      echo $NOCOLOR$prefix"Setting host-specific MacOS settings"$NOCOLOR
+      zsh $resourceFolder/macos-settings-$hostname.sh
+    else
+      echo $YELLOW$prefix"No host-specific MacOS settings file provided"$NOCOLOR
+   fi
 
     # Generate SSH keys
     while [[ $generateSSH != "Y" && $generateSSH != "y" && $generateSSH != "N" && $generateSSH != "n" ]]; do
