@@ -62,9 +62,13 @@
 #----- Installation ------
 #-------------------------
 
-# If install…
+# If install...
   if [[ $installCode == 1 ]]; then
     echo $GREEN$prefix"Installing system tools"$NOCOLOR
+
+    # Set default terminal
+    echo $NOCOLOR$prefix"Ensure zsh is default terminal"$NOCOLOR
+    chsh -s /usr/local/bin/zsh
 
     # Install Xcode Command Line Tools
     if has xcode-select; then
@@ -110,6 +114,7 @@
     else
       echo $NOCOLOR$prefix"Installing Homebrew"$NOCOLOR
       NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+      brew analytics off
     fi  
 
     # Install development environments
@@ -157,4 +162,45 @@
         curl -sSL https://install.python-poetry.org | python3 -
         poetry self update
       fi
+  fi
+
+  # If update...
+  if [[ $installCode == 2 ]]; then
+    echo $GREEN$prefix"Updating system tools"$NOCOLOR
+
+    # Update oh-my-zsh
+    echo $NOCOLOR$prefix"Updating oh-my-zsh"$NOCOLOR
+    omz update
+
+    # Update homebrew
+    echo $NOCOLOR$prefix"Updating homebrew"$NOCOLOR
+    brew update
+    echo $NOCOLOR$prefix"Updating homebrew formulae"$NOCOLOR
+    brew upgrade
+
+    # Update asdf
+    echo $NOCOLOR$prefix"Updating asdf"$NOCOLOR
+    asdf update
+
+    # Update python
+    echo $NOCOLOR$prefix"Updating python asdf plugin"$NOCOLOR
+    asdf plugin update python
+    asdf install python latest
+    asdf global python latest
+
+    # nodejs
+    echo $NOCOLOR$prefix"Updating nodejs asdf plugin"$NOCOLOR
+    asdf plugin update nodejs
+    asdf install nodejs latest
+    asdf global nodejs latest
+
+    # ruby
+    echo $NOCOLOR$prefix"Updating ruby asdf plugin"$NOCOLOR
+    asdf plugin update ruby
+    asdf install ruby latest
+    asdf global ruby latest
+
+    # Update poetry
+    echo $NOCOLOR$prefix"Updating poetry"$NOCOLOR
+    poetry self update
   fi

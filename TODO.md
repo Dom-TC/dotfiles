@@ -14,6 +14,7 @@
   - Install oh-my-zsh
   - Install homebrew
     - `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)”`
+    - Disable brew analytics
   - Install development environments
     - asdf
       - `git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.9.0`
@@ -35,8 +36,7 @@
       - `asdf plugin add ruby`
       - `asdf install ruby latest`
       - `asdf global ruby latest`
-- If install or update:
-  - Disable brew analytics
+- If update:
   - Update oh-my-zsh
   - Update homebrew
   - Update brew plugins
