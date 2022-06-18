@@ -6,18 +6,10 @@
 
 # setup-macos.sh
 - If install:
-  - Install fonts https://github.com/powerline/fonts/blob/master/install.sh
-    - Equity
-    - Triplicate
-    - Concourse
-    - Advocate
-    - Inconsolata
-    - DinPro
-    - Raleway
-    - Install terminal themes
-    - Print list of uninstalled, suggested apps
-    - Set MacOS Dock
-      - Host specific
+  - Install terminal themes
+  - Print list of uninstalled, suggested apps
+  - Set MacOS Dock
+    - Host specific
 
 # brew-global.sh
 - brew

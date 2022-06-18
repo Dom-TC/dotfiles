@@ -20,6 +20,7 @@
   sshFolder=$dotFolder"/ssh"
   toolsFolder=$dotFolder"/tools"
   zshFolder=$dotFolder"/zsh"
+  fontsFolder=$dotFolder"/fonts"
 
   backupRoot=".dotBackups/"
   backupFolder=$(date +"%Y-%m-%d_%H%M%S")
@@ -33,6 +34,7 @@
   installCode=0
   generateSSH=0
   needRestart=false
+  installFonts=0
 
 #-------------------------
 #------- Functions -------
@@ -277,4 +279,28 @@
       echo $NOCOLOR$prefix"Creating remaining symlinks"$NOCOLOR
       ln -sf $dotFolder/.hushlogin ~
       ln -sf $dotFolder/.screenrc ~
+  fi
+
+  # If install...
+  if [[ $installCode == 1 ]]; then
+    # Install fonts
+    while [[ $installFonts != "Y" && $installFonts != "y" && $installFonts != "N" && $installFonts != "n" ]]; do
+      echo $YELLOW
+      read "installFonts?"$prefix"Would you like to install font files? (Y/N): "
+
+      if [[ $installFonts != "Y" && $installFonts != "y" && $installFonts != "N" && $installFonts != "n" ]]; then
+        echo $RED$prefix"Please select Y or N"$NOCOLOR
+      fi
+
+      if [[ $installFonts == "Y" || $installFonts == "y" ]]; then
+        echo $NOCOLOR$prefix"Installing fonts"$NOCOLOR
+        for font in $fontsFolder/*; do 
+          font_name=$font:t
+          if [ ! -e $HOME"/Library/Fonts/"$font_name ]; then
+            echo $NOCOLOR$prefix"Installing "$font_name$NOCOLOR
+            cp $font $HOME"/Library/Fonts/"
+          fi
+        done 
+      fi
+    done
   fi
