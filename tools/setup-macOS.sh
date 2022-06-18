@@ -22,8 +22,8 @@
   zshFolder=$dotFolder"/zsh"
   fontsFolder=$dotFolder"/fonts"
 
-  backupRoot=".dotBackups/"
-  backupFolder=$(date +"%Y-%m-%d_%H%M%S")
+  backupRoot=$HOME"/.dotBackups/"
+  backupFolder=$backupRoot$(date +"%Y-%m-%d_%H%M%S")
 
 # General
   email="dom.chester@me.com"
@@ -252,16 +252,33 @@
   if [[ $installCode == 1 || $installCode == 2 || $installCode == 3 ]]; then
     # Build symlinks
       # git
+      echo $NOCOLOR$prefix"Backing up git configurations"$NOCOLOR
+      mkdir -p $backupFolder/git
+      [ -e ~/.gitconfig ] && mv -f ~/.gitconfig $backupFolder/git
+      [ -e ~/.gitignore ] && mv -f ~/.gitignore $backupFolder/git
+
       echo $NOCOLOR$prefix"Creating git symlinks"$NOCOLOR
       ln -sf $gitFolder/.gitconfig ~
       ln -sf $gitFolder/.gitignore ~
 
       # ssh
+      echo $NOCOLOR$prefix"Backing up ssh configurations"$NOCOLOR
+      mkdir -p $backupFolder/ssh
+      [ -e ~/.ssh/config ] && mv -f ~/.ssh/config $backupFolder/ssh
+
       echo $NOCOLOR$prefix"Creating ssh symlinks"$NOCOLOR
       mkdir -p ~/.ssh
       ln -sf $sshFolder/config ~/.ssh
 
       # zsh
+      echo $prefix"Backing up zsh configurations"
+      mkdir -p $backupFolder/zsh
+      [ -e ~/.zshrc ] && mv -f ~/.zshrc $backupFolder/zsh
+      [ -e ~/.oh-my-zsh/custom/aliases.zsh ] && mv -f ~/.oh-my-zsh/custom/aliases.zsh $backupFolder/zsh
+      [ -e ~/.oh-my-zsh/custom/functions.zsh ] && mv -f ~/.oh-my-zsh/custom/functions.zsh $backupFolder/zsh
+      [ -e ~/.oh-my-zsh/custom/themes/DomsTheme.zsh-theme ] && mv -f ~/.oh-my-zsh/custom/themes/DomsTheme.zsh-theme $backupFolder/zsh
+
+
       echo $NOCOLOR$prefix"Creating zsh symlinks"$NOCOLOR
       ln -sf $zshFolder/.zshrc ~
       ln -sf $zshFolder/aliases.zsh ~/.oh-my-zsh/custom
@@ -272,15 +289,29 @@
       done 
 
       # scripts
+      echo $prefix"Backing up scripts"
+      mkdir -p $backupFolder/scripts
+      for script in $scriptsFolder/*; do 
+        scriptName=$script:t
+        mv -f ~/.scripts/$scriptName $backupFolder/scripts
+      done 
+
       echo $NOCOLOR$prefix"Creating scripts symlinks"$NOCOLOR
       for script in $scriptsFolder/*; do 
         ln -sf $script ~/.scripts
       done 
 
       # other
+      echo $NOCOLOR$prefix"Backing up remaining configurations"$NOCOLOR
+      mkdir -p $backupFolder/other
+      [ -e ~/.hushlogin ] && mv -f ~/.hushlogin $backupFolder/other
+      [ -e ~/.screenrc ] && mv -f ~/.screenrc $backupFolder/other
+
       echo $NOCOLOR$prefix"Creating remaining symlinks"$NOCOLOR
       ln -sf $dotFolder/.hushlogin ~
       ln -sf $dotFolder/.screenrc ~
+
+      echo $NOCOLOR$prefix"Old configurations backed up to "$backupFolder$NOCOLOR
   fi
 
   # If install...
