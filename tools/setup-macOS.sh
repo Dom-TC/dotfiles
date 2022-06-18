@@ -53,7 +53,7 @@
   cd $(dirname $0)
 
 # Check if installing, updating, or re-linking
-  while [[ $installCode != 1 && $installCode != 2 && $installCode != 3 ]]; do
+  while [[ $installCode =~ [^123] ]]; do
     echo $YELLOW
     echo $prefix"Would you like to:"
     echo $prefix"1 - Install"
@@ -61,7 +61,7 @@
     echo $prefix"3 - Relink"
     read "installCode?"$prefix"Please pick an option: "
 
-    if [[ $installCode != 1 && $installCode != 2 && $installCode != 3 ]]; then
+    if [[ $installCode =~ [^123] ]]; then
       echo $RED$prefix"Please pick an option from 1–3"
     fi
   done
@@ -101,16 +101,16 @@
    fi
 
     # Generate SSH keys
-    while [[ $generateSSH != "Y" && $generateSSH != "y" && $generateSSH != "N" && $generateSSH != "n" ]]; do
+    while [[ $generateSSH =~ [^YyNn] ]]; do
       echo $YELLOW
       read "generateSSH?"$prefix"Would you like to generate a SSH key? (Y/N): "
 
-      if [[ $generateSSH != "Y" && $generateSSH != "y" && $generateSSH != "N" && $generateSSH != "n" ]]; then
+      if [[ $generateSSH =~ [^YyNn] ]]; then
         echo $RED$prefix"Please select Y or N"
       fi
     done
 
-    if [[ $generateSSH == "Y" || $generateSSH == "y" ]]; then
+    if [[ $generateSSH =~ [Yy] ]]; then
       echo $NOCOLOR$prefix"Generating SSH key"$NOCOLOR
       ssh-keygen -t ed25519 -C $email -f ~/.ssh/id_ed25519
       eval "$(ssh-agent -s)"
@@ -125,7 +125,6 @@
     else
       echo $NOCOLOR$prefix"Installing Oh-My-Zsh"$NOCOLOR
       sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" --unattended
-      needRestart=true
     fi
 
     # Install homebrew
@@ -230,7 +229,7 @@
   fi
 
   # If install or update...
-  if [[ $installCode == 1 || $installCode == 2 ]]; then
+  if [[ $installCode =~ [12] ]]; then
     # Install global brew formulae
     echo $NOCOLOR$prefix"Installing global brew formulae"$NOCOLOR
     zsh $toolsFolder/brew-global.sh
@@ -249,7 +248,7 @@
   fi
 
   # If install, update or relink...
-  if [[ $installCode == 1 || $installCode == 2 || $installCode == 3 ]]; then
+  if [[ $installCode =~ [123] ]]; then
     # Build symlinks
       # git
       echo $NOCOLOR$prefix"Backing up git configurations"$NOCOLOR
@@ -277,7 +276,6 @@
       [ -e ~/.oh-my-zsh/custom/aliases.zsh ] && mv -f ~/.oh-my-zsh/custom/aliases.zsh $backupFolder/zsh
       [ -e ~/.oh-my-zsh/custom/functions.zsh ] && mv -f ~/.oh-my-zsh/custom/functions.zsh $backupFolder/zsh
       [ -e ~/.oh-my-zsh/custom/themes/DomsTheme.zsh-theme ] && mv -f ~/.oh-my-zsh/custom/themes/DomsTheme.zsh-theme $backupFolder/zsh
-
 
       echo $NOCOLOR$prefix"Creating zsh symlinks"$NOCOLOR
       ln -sf $zshFolder/.zshrc ~
@@ -317,15 +315,15 @@
   # If install...
   if [[ $installCode == 1 ]]; then
     # Install fonts
-    while [[ $installFonts != "Y" && $installFonts != "y" && $installFonts != "N" && $installFonts != "n" ]]; do
+    while [[ $installFonts =~ [^YyNn] ]]; do
       echo $YELLOW
       read "installFonts?"$prefix"Would you like to install font files? (Y/N): "
 
-      if [[ $installFonts != "Y" && $installFonts != "y" && $installFonts != "N" && $installFonts != "n" ]]; then
+      if [[ $installFonts =~ [^YyNn] ]]; then
         echo $RED$prefix"Please select Y or N"$NOCOLOR
       fi
 
-      if [[ $installFonts == "Y" || $installFonts == "y" ]]; then
+      if [[ $installFonts =~ [Yy] ]]; then
         echo $NOCOLOR$prefix"Installing fonts"$NOCOLOR
         for font in $fontsFolder/*; do 
           font_name=$font:t
