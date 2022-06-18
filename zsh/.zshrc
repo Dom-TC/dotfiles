@@ -1,6 +1,7 @@
 #Add folders to $PATH
 export PATH="$PATH":~/.scripts
 export PATH="$PATH:/Users/dom/.local/bin"
+export PATH="$(brew --prefix)/opt/coreutils/libexec/gnubin:$PATH"
 
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/dom/.oh-my-zsh"
