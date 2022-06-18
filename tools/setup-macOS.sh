@@ -21,9 +21,16 @@
   toolsFolder=$dotFolder"/tools"
   zshFolder=$dotFolder"/zsh"
   fontsFolder=$dotFolder"/fonts"
+  sublimeTextFolder=$dotFolder"/sublime-text"
+  sublimeMergeFolder=$dotFolder"/sublime-merge"
+
 
   backupRoot=$HOME"/.dotBackups/"
   backupFolder=$backupRoot$(date +"%Y-%m-%d_%H%M%S")
+
+  applicationSupportFolder=$HOME"/Library/Application Support"
+  sublimeTextDestinationFolder=$applicationSupportFolder"/Sublime Text"
+  sublimeMergeDestinationFolder=$applicationSupportFolder"/Sublime Merge"
 
 # General
   email="dom.chester@me.com"
@@ -292,6 +299,28 @@
 
         echo $NOCOLOR$prefix"Creating scripts symlinks"$NOCOLOR
         ln -sf $scriptsFolder ~/.scripts
+
+      # sublime text
+        echo $NOCOLOR$prefix"Backing up Sublime Text settings"$NOCOLOR
+        mkdir -p $backupFolder/sublime-text
+        [ -e $sublimeTextDestinationFolder"/Installed Packages/Package Control.sublime-package" ] && mv -f $sublimeTextDestinationFolder"/Installed Packages/Package Control.sublime-package" $backupFolder/sublime-text
+        [ -e $sublimeTextDestinationFolder"/Local/License.sublime_license" ] && mv -f $sublimeTextDestinationFolder"/Local/License.sublime_license" $backupFolder/sublime-text
+        [ -e $sublimeTextDestinationFolder"/Packages/User" ] && mv -f $sublimeTextDestinationFolder"/Packages/User" $backupFolder/sublime-text
+
+        echo $NOCOLOR$prefix"Creating Sublime Text symlinks"$NOCOLOR
+        ln -sf $sublimeTextFolder"/Package Control.sublime-package" $sublimeTextDestinationFolder"/Installed Packages"
+        ln -sf $sublimeTextFolder"/License.sublime_license" $sublimeTextDestinationFolder"/Local"
+        ln -sf $sublimeTextFolder"/user-packages" $sublimeTextDestinationFolder"/Packages/User"
+
+      # sublime merge
+        echo $NOCOLOR$prefix"Backing up Sublime Merge settings"$NOCOLOR
+        mkdir -p $backupFolder/sublime-merge
+        [ -e $sublimeMergeDestinationFolder"/Local/License.sublime_license" ] && mv -f $sublimeMergeDestinationFolder"/Local/License.sublime_license" $backupFolder/sublime-merge
+        [ -e $sublimeMergeDestinationFolder"/Packages/User" ] && mv -f $sublimeMergeDestinationFolder"/Packages/User" $backupFolder/sublime-merge
+
+        echo $NOCOLOR$prefix"Creating Sublime Merge symlinks"$NOCOLOR
+        ln -sf $sublimeMergeFolder"License.sublime_license" $sublimeMergeDestinationFolder"/Local"
+        ln -sf $sublimeMergeFolder"/user-packages" $sublimeMergeDestinationFolder"/Packages/User"
 
       # other
         echo $NOCOLOR$prefix"Backing up remaining configurations"$NOCOLOR

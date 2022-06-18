@@ -20,17 +20,23 @@
 # Save Homebrew’s installed location.
   BREW_PREFIX=$(brew --prefix)
 
-# Install GNU core utilities (those that come with macOS are outdated).
+# Updating outdated Mac utilities
   echo $NOCOLOR$prefix"Installing coreutils"$NOCOLOR
   brew install coreutils
   ln -s "${BREW_PREFIX}/bin/gsha256sum" "${BREW_PREFIX}/bin/sha256sum"
 
-# Install git and utilities
+# Utilities
   echo $NOCOLOR$prefix"Installing git"$NOCOLOR
   brew install git
   echo $NOCOLOR$prefix"Installing git-filter-repo"$NOCOLOR
   brew install git-filter-repo
+  echo $NOCOLOR$prefix"Installing ffmpeg"$NOCOLOR
+  brew install ffmpeg
 
-# ffmpeg
-   echo $NOCOLOR$prefix"Installing ffmpeg"$NOCOLOR
-   brew install ffmpeg
+# Apps
+  echo $NOCOLOR$prefix"Installing Sublime Text"$NOCOLOR
+  brew install --cask sublime-text
+  echo $NOCOLOR$prefix"Installing Sublime Merge"$NOCOLOR
+  brew install --cask sublime-merge
+
+

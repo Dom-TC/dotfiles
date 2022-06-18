@@ -1,8 +1,9 @@
 # Ideas
-- Sync Sublime settings
 - Fix asdf-prompt-info
-- Consider: laxydocker https://github.com/jesseduffield/lazydocker
-- Consider: iTerm https://iterm2.com/
+- Consider: laxydocker 
+  - `https://github.com/jesseduffield/lazydocker`
+- Consider: iTerm 
+  - `https://iterm2.com/`
 - Install terminal themes
 
 # setup-macos.sh
