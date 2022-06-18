@@ -20,12 +20,6 @@
 # General
   email="dom.chester@me.com"
 
-# Initialise Variables
-  installCode=0
-  generateSSH=0
-  needRestart=false
-  installFonts=0
-
 #-------------------------
 #------- Functions -------
 #-------------------------
