@@ -289,15 +289,10 @@
       # scripts
         echo $prefix"Backing up scripts"
         mkdir -p $backupFolder/scripts
-        for script in $scriptsFolder/*; do 
-          scriptName=$script:t
-          mv -f ~/.scripts/$scriptName $backupFolder/scripts
-        done 
+        [ -e ~/.scripts ] && mv -f ~/.scripts $backupFolder/scripts
 
         echo $NOCOLOR$prefix"Creating scripts symlinks"$NOCOLOR
-        for script in $scriptsFolder/*; do 
-          ln -sf $script ~/.scripts
-        done 
+        ln -sf $scriptsFolder ~/.scripts
 
       # other
         echo $NOCOLOR$prefix"Backing up remaining configurations"$NOCOLOR
