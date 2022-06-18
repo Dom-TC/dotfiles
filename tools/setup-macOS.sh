@@ -335,3 +335,11 @@
       fi
     done
   fi
+
+  # Run host specific postflight
+  if [ -e $toolsFolder/postflight-$hostname.sh ]; then
+    echo $NOCOLOR$prefix"Running host-specific postflight"$NOCOLOR
+    zsh $toolsFolder/postflight-$hostname.sh $installCode
+  else
+    echo $YELLOW$prefix"No host-specific postflight provided"$NOCOLOR
+  fi
