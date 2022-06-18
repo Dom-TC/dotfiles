@@ -276,15 +276,14 @@
         [ -e ~/.oh-my-zsh/custom/aliases.zsh ] && mv -f ~/.oh-my-zsh/custom/aliases.zsh $backupFolder/zsh
         [ -e ~/.oh-my-zsh/custom/functions.zsh ] && mv -f ~/.oh-my-zsh/custom/functions.zsh $backupFolder/zsh
         [ -e ~/.oh-my-zsh/custom/themes/DomsTheme.zsh-theme ] && mv -f ~/.oh-my-zsh/custom/themes/DomsTheme.zsh-theme $backupFolder/zsh
+        [ -e ~/.oh-my-zsh/custom/plugins ] && mv -f ~/.oh-my-zsh/custom/plugins $backupFolder/zsh
 
         echo $NOCOLOR$prefix"Creating zsh symlinks"$NOCOLOR
         ln -sf $zshFolder/.zshrc ~
         ln -sf $zshFolder/aliases.zsh ~/.oh-my-zsh/custom
         ln -sf $zshFolder/functions.zsh ~/.oh-my-zsh/custom
         ln -sf $zshFolder/DomsTheme.zsh-theme ~/.oh-my-zsh/custom/themes
-        for plugin in $zshFolder/plugins/*; do 
-          ln -sf $plugin ~/.oh-my-zsh/custom/plugins
-        done 
+        ln -sf $zshFolder/plugins ~/.oh-my-zsh/custom/plugins
 
       # scripts
         echo $prefix"Backing up scripts"
