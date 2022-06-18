@@ -229,7 +229,7 @@
   fi
 
   # If install or update...
-  if [[ $installCode =~ [12] ]]; then
+  if [[ $installCode =~ [1] ]]; then
     # Install global brew formulae
     echo $NOCOLOR$prefix"Installing global brew formulae"$NOCOLOR
     zsh $toolsFolder/brew-global.sh
