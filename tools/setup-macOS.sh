@@ -74,9 +74,11 @@
   if [[ $installCode == 1 ]]; then
     echo $GREEN$prefix"Installing system tools"$NOCOLOR
 
-    # Set default terminal
-    echo $NOCOLOR$prefix"Ensure zsh is default terminal"$NOCOLOR
-    chsh -s /usr/local/bin/zsh
+    # Set default shell to zsh
+    if [[ ! $(echo $SHELL) == $(which zsh) ]]; then
+      echo $NOCOLOR$prefix"Setting default shell to zsh"$NOCOLOR
+      chsh -s $(which zsh)
+    fi
 
     # Install Xcode Command Line Tools
     if has xcode-select; then
