@@ -34,6 +34,8 @@
 #--------- MAIN ----------
 #-------------------------
 
+sudo -v
+
 echo $GREEN$prefix"Setting up system"$NOCOLOR
 if [[ "$OSTYPE" == "darwin"* ]]; then 
   echo $NOCOLOR$prefix"Detected system type:  MacOS"$NOCOLOR
