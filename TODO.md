@@ -11,8 +11,5 @@
   - Set MacOS Dock
     - Host specific
 
-# brew-Doms-Mac-Mini
-- youtube-dl
-
 # macos-settings-global.sh
 - https://github.com/kevinSuttle/macOS-Defaults
