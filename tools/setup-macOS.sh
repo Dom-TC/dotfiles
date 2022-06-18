@@ -5,7 +5,7 @@
 #-------------------------
 
 # Command Prefix
-  prefix="[Dot-Setup] "
+  prefix="[Dot-Setup-MacOS] "
 
 # Colours
   RED="\033[1;31m"
