@@ -92,7 +92,7 @@
     echo $NOCOLOR$prefix"Setting MacOS defaults"$NOCOLOR
     zsh $toolsFolder/macos-settings-global.sh
 
-    # Install host-specific brew formulae
+    # Install host-specific MacOS defaults
     if [ -e $toolsFolder/macos-settings-$hostname.sh ]; then
       echo $NOCOLOR$prefix"Setting host-specific MacOS settings"$NOCOLOR
       zsh $toolsFolder/macos-settings-$hostname.sh
