@@ -11,21 +11,21 @@ ZSH_THEME="DomsTheme"
 
 # Load plugins
 plugins=(
-  git
-  zsh-syntax-highlighting
-  asdf
-  zsh-asdf-prompt
-  dotenv
-  poetry
+    git
+    zsh-syntax-highlighting
+    asdf
+    zsh-asdf-prompt
+    dotenv
+    poetry
 )
 
 source $ZSH/oh-my-zsh.sh
 
 # Enable pipx autocompletions
 if has pipx; then
-  autoload -U bashcompinit
-  bashcompinit
-  eval "$(register-python-argcomplete pipx)"
+    autoload -U bashcompinit
+    bashcompinit
+    eval "$(register-python-argcomplete pipx)"
 fi
 
 # Enable suggested corrections

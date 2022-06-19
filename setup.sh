@@ -5,20 +5,20 @@
 #-------------------------
 
 # Command Prefix
-  prefix="[Dot-Setup] "
+prefix="[Dot-Setup] "
 
 # Colours
-  RED="\033[1;31m"
-  GREEN="\033[1;32m"
-  YELLOW="\033[1;33m"
-  NOCOLOR="\033[0m"
+RED="\033[1;31m"
+GREEN="\033[1;32m"
+YELLOW="\033[1;33m"
+NOCOLOR="\033[0m"
 
 # Folder Location
-  dotFolder=$HOME"/dotfiles"
-  toolsFolder=$dotFolder"/tools"
+dotFolder=$HOME"/dotfiles"
+toolsFolder=$dotFolder"/tools"
 
 # General
-  email="dom.chester@me.com"
+email="dom.chester@me.com"
 
 #-------------------------
 #------- Functions -------
@@ -35,10 +35,10 @@ sudo -v
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 echo $GREEN$prefix"Setting up system"$NOCOLOR
-if [[ "$OSTYPE" == "darwin"* ]]; then 
-  echo $NOCOLOR$prefix"Detected system type:  MacOS"$NOCOLOR
-  zsh $toolsFolder"/setup-macos.sh" 
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    echo $NOCOLOR$prefix"Detected system type:  MacOS"$NOCOLOR
+    zsh $toolsFolder"/setup-macos.sh"
 else
-  echo $RED$prefix"Unknown system type.  Exiting..."$NOCOLOR
+    echo $RED$prefix"Unknown system type.  Exiting..."$NOCOLOR
 fi
 echo $GREEN$prefix"Setup complete"$NOCOLOR
