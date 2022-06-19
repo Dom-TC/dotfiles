@@ -333,7 +333,7 @@
         [ -e $sublimeMergeDestinationFolder"/Packages/User" ] && mv -f $sublimeMergeDestinationFolder"/Packages/User" $backupFolder/sublime-merge
 
         echo $NOCOLOR$prefix"Creating Sublime Merge symlinks"$NOCOLOR
-        ln -sf $sublimeMergeFolder"License.sublime_license" $sublimeMergeDestinationFolder"/Local"
+        ln -sf $sublimeMergeFolder"/License.sublime_license" $sublimeMergeDestinationFolder"/Local"
         ln -sf $sublimeMergeFolder"/user-packages" $sublimeMergeDestinationFolder"/Packages/User"
 
       # other
