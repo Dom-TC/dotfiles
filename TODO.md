@@ -5,6 +5,7 @@
 - Consider: iTerm 
   - `https://iterm2.com/`
 - Install terminal themes
+- Remove battery status from terminal?
 
 # setup-macos.sh
 - If install:
