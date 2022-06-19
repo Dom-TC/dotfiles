@@ -12,5 +12,8 @@
   - Set MacOS Dock
     - Host specific
 
+- Create Sublime Text / Merge folders if they don't exist.  Needed for 1st install
+- Fix sublime license
+
 # macos-settings-global.sh
 - https://github.com/kevinSuttle/macOS-Defaults
