@@ -204,6 +204,14 @@
           mkdir $ZSH_CUSTOM/plugins/poetry
           poetry completions zsh > $ZSH_CUSTOM/plugins/poetry/_poetry
         fi
+
+      # pre-commit
+        if has pre-commit; then 
+          echo $NOCOLOR$prefix"Pre-commit is already installed.  Skipping..."$NOCOLOR
+        else
+          echo $NOCOLOR$prefix"Installing pre-commit"$NOCOLOR
+          pipx install pre-commit
+        fi
     fi
 
 # If update...
