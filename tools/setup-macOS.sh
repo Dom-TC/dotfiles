@@ -163,6 +163,7 @@
         else
           echo $NOCOLOR$prefix"Installing asdf"$NOCOLOR
           git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.10.0
+          . $HOME/.asdf/asdf.sh
           asdf update
         fi
 
