@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 
+"""Get's the remaining battery on Mac Laptops and outputs it for incorperation into a terminal."""
+
 
 import logging
 import math
@@ -47,9 +49,9 @@ try:
     elif sys.version[:1] == "3":
         out = color_out + out.decode() + color_reset  # Python 3
 
-except Exception:
+# System is desktop not laptop
+except IndexError:
     out = ""
-    logging.exception("An error occured")
 
 finally:
     print(out)
