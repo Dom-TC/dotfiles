@@ -212,6 +212,14 @@ if [[ $installCode == 1 ]]; then
         echo $NOCOLOR$prefix"Installing pre-commit"$NOCOLOR
         pipx install pre-commit
     fi
+
+    # Hugo
+    if has hugo; then
+        echo $NOCOLOR$prefix"Hugo is already installed.  Skipping..."$NOCOLOR
+    else
+        echo $NOCOLOR$prefix"Installing hugo"$NOCOLOR
+        brew install hugo
+    fi
 fi
 
 # If update...
