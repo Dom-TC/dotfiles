@@ -50,6 +50,9 @@ try:
         out = color_out + out.decode() + color_reset  # Python 3
 
 # System is desktop not laptop
+except ZeroDivisionError:
+    out = ""
+
 except IndexError:
     out = ""
 
