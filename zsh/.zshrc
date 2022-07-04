@@ -12,9 +12,8 @@ ZSH_THEME="DomsTheme"
 # Load plugins
 plugins=(
     git
-    asdf
     zsh-syntax-highlighting
-    zsh-interactive-cd
+    asdf
     zsh-asdf-prompt
     dotenv
     poetry
