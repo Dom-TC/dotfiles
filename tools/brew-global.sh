@@ -34,6 +34,9 @@ echo $NOCOLOR$prefix"Installing ffmpeg"$NOCOLOR
 brew install ffmpeg
 echo $NOCOLOR$prefix"Installing bat"$NOCOLOR
 brew install bat
+echo $NOCOLOR$prefix"Installing fzf"$NOCOLOR
+brew install fzf
+$(brew --prefix)/opt/fzf/install # Install useful key bindings and fuzzy completion
 
 # Apps
 echo $NOCOLOR$prefix"Installing Sublime Text"$NOCOLOR
