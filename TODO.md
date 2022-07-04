@@ -6,7 +6,6 @@
 - Consider: iTerm
   - `https://iterm2.com/`
 - Install terminal themes
-- Remove battery status from terminal?
 
 # setup-macos.sh
 
@@ -17,7 +16,6 @@
     - Host specific
 
 - Create Sublime Text / Merge folders if they don't exist. Needed for 1st install
-- Fix sublime license
 
 # macos-settings-global.sh
 
