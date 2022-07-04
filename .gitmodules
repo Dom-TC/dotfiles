@@ -4,3 +4,6 @@
 [submodule "zsh/plugins/zsh-asdf-prompt"]
 	path = zsh/plugins/zsh-asdf-prompt
 	url = https://github.com/CurryEleison/zsh-asdf-prompt
+[submodule "scripts/z"]
+	path = scripts/z
+	url = git@github.com:rupa/z.git

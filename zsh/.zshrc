@@ -20,6 +20,7 @@ plugins=(
 )
 
 source $ZSH/oh-my-zsh.sh
+source ~/scripts/z/z.sh
 
 # Enable pipx autocompletions
 if has pipx; then
