@@ -89,11 +89,15 @@ if [[ $installCode == 1 ]]; then
     fi
 
     # Install Xcode Command Line Tools
-    if has xcode-select; then
-        echo $prefix"xcode-select is already installed.  Skipping..."
+    echo $NOCOLOR$prefix"Installing xcode-select"$NOCOLOR
+    xcode-select --install
+
+    # If M-series chip...
+    if [[ $CPUTYPE == arm64 ]]; then
+        echo $NOCOLOR$prefix"Installing rosetta"$NOCOLOR
+        softwareupdate --install-rosetta --agree-to-license
     else
-        echo $prefix"Installing xcode-select"
-        xcode-select --install
+        echo $NOCOLOR$prefix"Mac has an intel chip.  Rosetta not needed.  Skipping..."$NOCOLOR
     fi
 
     # Set MacOS defaults preferences
