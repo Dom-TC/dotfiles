@@ -342,6 +342,9 @@ if [[ $installCode =~ [123] ]]; then
     [ -e $sublimeTextDestinationFolder"/Packages/User" ] && mv -f $sublimeTextDestinationFolder"/Packages/User" $backupFolder/sublime-text
 
     echo $NOCOLOR$prefix"Creating Sublime Text symlinks"$NOCOLOR
+    mkdir -p $sublimeTextDestinationFolder"/Installed Packages"
+    mkdir -p $sublimeTextDestinationFolder"/Local"
+    mkdir -p $sublimeTextDestinationFolder"/Packages/"
     ln -sf $sublimeTextFolder"/Package Control.sublime-package" $sublimeTextDestinationFolder"/Installed Packages"
     ln -sf $sublimeTextFolder"/License.sublime_license" $sublimeTextDestinationFolder"/Local"
     ln -sf $sublimeTextFolder"/user-packages" $sublimeTextDestinationFolder"/Packages/User"
@@ -353,6 +356,8 @@ if [[ $installCode =~ [123] ]]; then
     [ -e $sublimeMergeDestinationFolder"/Packages/User" ] && mv -f $sublimeMergeDestinationFolder"/Packages/User" $backupFolder/sublime-merge
 
     echo $NOCOLOR$prefix"Creating Sublime Merge symlinks"$NOCOLOR
+    mkdir -p $sublimeMergeDestinationFolder"/Local"
+    mkdir -p $sublimeMergeDestinationFolder"/Packages/"
     ln -sf $sublimeMergeFolder"/License.sublime_license" $sublimeMergeDestinationFolder"/Local"
     ln -sf $sublimeMergeFolder"/user-packages" $sublimeMergeDestinationFolder"/Packages/User"
 
