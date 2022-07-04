@@ -32,6 +32,8 @@ echo $NOCOLOR$prefix"Installing git-filter-repo"$NOCOLOR
 brew install git-filter-repo
 echo $NOCOLOR$prefix"Installing ffmpeg"$NOCOLOR
 brew install ffmpeg
+echo $NOCOLOR$prefix"Installing bat"$NOCOLOR
+brew install bat
 
 # Apps
 echo $NOCOLOR$prefix"Installing Sublime Text"$NOCOLOR
