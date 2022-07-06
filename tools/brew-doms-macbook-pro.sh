@@ -5,7 +5,7 @@
 #-------------------------
 
 # Command Prefix
-prefix="[Dot-Brew-MacMini] "
+prefix="[Dot-Brew-MBP] "
 
 # Colours
 RED="\033[1;31m"
@@ -18,9 +18,5 @@ NOCOLOR="\033[0m"
 #-------------------------
 
 # Install youtube-dl
-echo $NOCOLOR$prefix"Installing youtube-dl"$NOCOLOR
-brew install youtube-dl
-
-# Install gpg
 echo $NOCOLOR$prefix"Installing gpg-suite"$NOCOLOR
 brew install --cask gpg-suite

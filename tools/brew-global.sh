@@ -37,8 +37,7 @@ brew install bat
 echo $NOCOLOR$prefix"Installing fzf"$NOCOLOR
 brew install fzf
 $(brew --prefix)/opt/fzf/install # Install useful key bindings and fuzzy completion
-echo $NOCOLOR$prefix"Installing gpg-suite"$NOCOLOR
-brew install --cask gpg-suite
+
 # Apps
 echo $NOCOLOR$prefix"Installing Sublime Text"$NOCOLOR
 brew install --cask sublime-text
