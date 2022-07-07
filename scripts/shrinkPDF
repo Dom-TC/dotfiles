@@ -8,6 +8,8 @@
 #
 # The results are a set of smaller files named compressed-[X].pdf
 # The original files are *not* deleted.
+#
+# Adapted from https://leancrew.com/all-this/2022/01/reducing-the-size-of-large-pdfs/
 
 for file do
     new=${file:r}"-compresssed.pdf"
