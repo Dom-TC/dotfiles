@@ -1,0 +1,17 @@
+#!/usr/bin/env zsh
+
+# Reduces the size of PDF plots created by Vectorworks.
+# Assumes that the files to be reduced are named [X].pdf
+# and that it's called via
+#
+#     shrinkPDF *.pdf
+#
+# The results are a set of smaller files named compressed-[X].pdf
+# The original files are *not* deleted.
+
+for file do
+    new=${file:r}"-compresssed.pdf"
+    echo "Original File:   "$file
+    gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dNOPAUSE -dQUIET -dBATCH -sOutputFile="$new" "$file"
+    echo "Compressed File: "$new
+done
