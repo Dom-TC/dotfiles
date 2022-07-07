@@ -37,6 +37,8 @@ brew install bat
 echo $NOCOLOR$prefix"Installing fzf"$NOCOLOR
 brew install fzf
 $(brew --prefix)/opt/fzf/install --key-bindings --completion --no-update-rc # Install useful key bindings and fuzzy completion
+echo $NOCOLOR$prefix"Installing ghostscript"$NOCOLOR
+brew install ghostscript
 
 # Apps
 echo $NOCOLOR$prefix"Installing Sublime Text"$NOCOLOR
