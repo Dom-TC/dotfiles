@@ -204,10 +204,14 @@ if [[ $installCode == 1 ]]; then
     else
         echo $NOCOLOR$prefix"Installing poetry"$NOCOLOR
         curl -sSL https://install.python-poetry.org | python3 -
-        poetry self update
+        poetry self update --preview
         mkdir $ZSH_CUSTOM/plugins/poetry
         poetry completions zsh > $ZSH_CUSTOM/plugins/poetry/_poetry
     fi
+
+    # poetry-dynamic-versioning-plugin
+    echo $NOCOLOR$prefix"Installing poetry-dynamic-versioning-plugin poetry plugin"$NOCOLOR
+    poetry self add poetry-dynamic-versioning-plugin
 
     # pre-commit
     if has pre-commit; then
