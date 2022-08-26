@@ -20,3 +20,7 @@ NOCOLOR="\033[0m"
 # Install youtube-dl
 echo $NOCOLOR$prefix"Installing gpg-suite"$NOCOLOR
 brew install --cask gpg-suite
+
+# Install PacketSender
+echo $NOCOLOR$prefix"Installing PacketSender"$NOCOLOR
+brew install packetsender
