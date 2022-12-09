@@ -41,6 +41,8 @@ echo $NOCOLOR$prefix"Installing ghostscript"$NOCOLOR
 brew install ghostscript
 echo $NOCOLOR$prefix"Installing gum"$NOCOLOR
 brew install gum
+echo $NOCOLOR$prefix"Installing tldr"$NOCOLOR
+brew install tldr
 
 # Apps
 echo $NOCOLOR$prefix"Installing Sublime Text"$NOCOLOR
