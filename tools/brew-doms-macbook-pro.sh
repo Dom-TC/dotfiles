@@ -24,3 +24,7 @@ brew install --cask gpg-suite
 # Install PacketSender
 echo $NOCOLOR$prefix"Installing PacketSender"$NOCOLOR
 brew install packetsender
+
+# Install Vale
+echo $NOCOLOR$prefix"Installing Vale"$NOCOLOR
+brew install vale
