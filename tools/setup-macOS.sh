@@ -370,10 +370,12 @@ if [[ $installCode =~ [123] ]]; then
     mkdir -p $backupFolder/other
     [ -e ~/.hushlogin ] && mv -f ~/.hushlogin $backupFolder/other
     [ -e ~/.screenrc ] && mv -f ~/.screenrc $backupFolder/other
+    [ -e /etc/hosts ] && sudo mv -f /etc/hosts $backupFolder/other
 
     echo $NOCOLOR$prefix"Creating remaining symlinks"$NOCOLOR
     ln -sf $dotFolder/.hushlogin ~
     ln -sf $dotFolder/.screenrc ~
+    sudo ln -sf $dotFolder/hosts /etc
 
     echo $NOCOLOR$prefix"Old configurations backed up to "$backupFolder$NOCOLOR
 fi
