@@ -24,7 +24,8 @@
   "one_dark_bigger_sidebar": true, // Uses font-size 14 for the sidebar
   "one_dark_sidebar_font_fira_light": true, // Uses Fira Light for the sidebar
 
-  "ignored_packages": ["Vintage"],
+  "ignored_packages": ["Vintage",
+  ],
 
   // Increase Font Size
   "font_size": 14,
@@ -39,5 +40,5 @@
   "tab_size": 4,
 
   // Set to true to insert spaces when tab is pressed
-  "translate_tabs_to_spaces": true
+  "translate_tabs_to_spaces": true,
 }
