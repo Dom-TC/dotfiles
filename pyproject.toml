@@ -23,3 +23,5 @@ exclude = '''
   | profiling
 )/
 '''
+
+[tool.poetry]
