@@ -7,3 +7,7 @@
 127.0.0.1	localhost
 255.255.255.255	broadcasthost
 ::1             localhost
+
+# Snailed It      
+88.80.188.227                   status.snailedit.dev snailedit-status
+2a01:7e00::f03c:93ff:fe6a:492a  status.snailedit.dev snailedit-status
