@@ -375,7 +375,7 @@ if [[ $installCode =~ [123] ]]; then
     echo $NOCOLOR$prefix"Creating remaining symlinks"$NOCOLOR
     ln -sf $dotFolder/.hushlogin ~
     ln -sf $dotFolder/.screenrc ~
-    sudo ln -sf $dotFolder/hosts /etc
+    sudo ln -f $dotFolder/hosts /etc
 
     echo $NOCOLOR$prefix"Old configurations backed up to "$backupFolder$NOCOLOR
 fi
