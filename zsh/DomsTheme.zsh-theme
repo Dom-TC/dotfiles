@@ -40,16 +40,6 @@ function put_spacing() {
         git=0
     fi
 
-    # Calculate battery charactors
-    if has batcharge; then
-        local bat=$(battery_charge)
-        if [ ${#bat} != 0 ]; then
-            ((bat = ${#bat} - 20))
-        else
-            bat=0
-        fi
-    fi
-
     # Calculate asdf_prompt_info charactors
     if has asdf; then
         local asdf=$(asdf_prompt_info)
@@ -62,7 +52,7 @@ function put_spacing() {
 
     # Calculate space neeeded
     local termwidth
-    (( termwidth = ${COLUMNS} - ${#HOST} - ${#$(get_pwd)} - ${asdf} - ${bat} - ${git} - ${#$(put_username)}))
+    (( termwidth = ${COLUMNS} - ${#HOST} - ${#$(get_pwd)} - ${asdf} - ${git} - ${#$(put_username)} + 2))
 
     # Generate spacing
     local spacing=""
@@ -78,15 +68,6 @@ function git_prompt_info() {
     echo "$(parse_git_dirty)$ZSH_THEME_GIT_PROMPT_PREFIX$(current_branch)$ZSH_THEME_GIT_PROMPT_SUFFIX"
 }
 
-# Print battery level
-function battery_charge() {
-    if has batcharge; then
-        batcharge
-    else
-        echo '';
-    fi
-}
-
 # Get Terminal Theme
 function set_terminal_theme() {
     if has setTerminalTheme; then
@@ -99,5 +80,5 @@ set_terminal_theme
 
 # Set Prompt
 PROMPT='
-$fg[cyan]$(put_username)%m: $fg[yellow]$(get_pwd)$(put_spacing)$(asdf_prompt_info) $(git_prompt_info) $(battery_charge)
+$fg[cyan]$(put_username)%m: $fg[yellow]$(get_pwd)$(put_spacing)$(asdf_prompt_info) $(git_prompt_info) 
 $reset_color➜ '
