@@ -37,6 +37,10 @@
 [url "https://github.com/"]
     insteadOf = gh:
 
+# Use SSH instead of HTTPS for github repos
+[url "git@github.com:"]
+	insteadOf = https://github.com/
+
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path =
@@ -61,3 +65,4 @@
 	user = Dom-TC
 [status]
 	submoduleSummary = true
+
