@@ -28,7 +28,7 @@
   ],
 
   // Increase Font Size
-  "font_size": 14,
+  "font_size": 13,
 
   // Use Correct English
   "dictionary": "Packages/Language - English/en_GB.dic",
