@@ -28,3 +28,11 @@ brew install packetsender
 # Install Vale
 echo $NOCOLOR$prefix"Installing Vale"$NOCOLOR
 brew install vale
+
+# Install Slack
+echo $NOCOLOR$prefix"Installing Slack"$NOCOLOR
+brew install --cask slack
+
+# Install Firefox
+echo $NOCOLOR$prefix"Installing Firefox"$NOCOLOR
+brew install --cask firefox

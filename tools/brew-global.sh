@@ -30,6 +30,8 @@ echo $NOCOLOR$prefix"Installing git"$NOCOLOR
 brew install git
 echo $NOCOLOR$prefix"Installing git-filter-repo"$NOCOLOR
 brew install git-filter-repo
+echo $NOCOLOR$prefix"Installing git-fresh"$NOCOLOR
+brew install git-fresh
 echo $NOCOLOR$prefix"Installing ffmpeg"$NOCOLOR
 brew install ffmpeg
 echo $NOCOLOR$prefix"Installing bat"$NOCOLOR
@@ -45,6 +47,8 @@ echo $NOCOLOR$prefix"Installing tldr"$NOCOLOR
 brew install tldr
 echo $NOCOLOR$prefix"Installing jq"$NOCOLOR
 brew install jq
+echo $NOCOLOR$prefix"Installing pandoc"$NOCOLOR
+brew install pandoc
 echo $NOCOLOR$prefix"Installing tmux"$NOCOLOR
 brew install tmux
 if [[ ! -e ~/.tmux/plugins/tpm ]]; then 
