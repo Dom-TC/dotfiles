@@ -48,22 +48,3 @@ whichfunc() {
     whence -v $1
     type -a $1
 }
-
-# Change Dark Mode
-function goDark() {
-    if has toggleDarkMode; then
-        toggleDarkMode dark
-        if has setTerminalTheme; then
-            setTerminalTheme "Solarized Light" "Solarized Dark"
-        fi
-    fi
-}
-
-function goLight() {
-    if has toggleDarkMode; then
-        toggleDarkMode light
-        if has setTerminalTheme; then
-            setTerminalTheme "Solarized Light" "Solarized Dark"
-        fi
-    fi
-}
