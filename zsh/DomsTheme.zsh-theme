@@ -75,8 +75,8 @@ function set_terminal_theme() {
     fi
 }
 
-# Set terminal dark mode
-set_terminal_theme
+# Set terminal dark mode - This needs updating for iTerm2
+# set_terminal_theme
 
 # Set Prompt
 PROMPT='
