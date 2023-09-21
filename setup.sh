@@ -31,6 +31,9 @@ email="dom.chester@me.com"
 # Ask for admin password up front
 sudo -v
 
+# Accept xcode license agreement
+sudo xcodebuild -license accept
+
 # Keep-alive: update existing `sudo` time stamp until `setup.sh` has finished
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
