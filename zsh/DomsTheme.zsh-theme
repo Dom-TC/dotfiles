@@ -81,4 +81,4 @@ set_terminal_theme
 # Set Prompt
 PROMPT='
 $fg[cyan]$(put_username)%m: $fg[yellow]$(get_pwd)$(put_spacing)$(asdf_prompt_info) $(git_prompt_info) 
-$reset_color➜ '
+$reset_color%{$(iterm2_prompt_mark)%} '

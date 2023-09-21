@@ -55,6 +55,9 @@ else
 fi
 
 # Apps
+echo $NOCOLOR$prefix"Installing iTerm2"$NOCOLOR
+brew install --cask iterm2
+curl -L https://iterm2.com/shell_integration/install_shell_integration_and_utilities.sh | bash
 echo $NOCOLOR$prefix"Installing Sublime Text"$NOCOLOR
 brew install --cask sublime-text
 echo $NOCOLOR$prefix"Installing Sublime Merge"$NOCOLOR

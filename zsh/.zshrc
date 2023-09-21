@@ -3,6 +3,7 @@ export PATH="$PATH":~/.scripts
 export PATH="$PATH:/Users/dom/.local/bin"
 export PATH="/opt/homebrew/bin:$PATH"
 export PATH="$(brew --prefix)/opt/coreutils/libexec/gnubin:$PATH"
+export ITERM2_SQUELCH_MARK=1
 
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/dom/.oh-my-zsh"
@@ -34,3 +35,6 @@ fi
 # Enable suggested corrections
 setopt CORRECT
 setopt CORRECT_ALL
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
