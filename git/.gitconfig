@@ -14,8 +14,8 @@
 	forceSignAnnotated = true
 
 [core]
-	# Use Atom text editor
-	editor = atom
+	# Use Sublime text editor
+	editor = '/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl' -n -w
 
 	# use global custom gittignore
 	excludesfile = ~/.gitignore
