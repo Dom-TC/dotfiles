@@ -45,6 +45,14 @@ echo $NOCOLOR$prefix"Installing tldr"$NOCOLOR
 brew install tldr
 echo $NOCOLOR$prefix"Installing jq"$NOCOLOR
 brew install jq
+echo $NOCOLOR$prefix"Installing tmux"$NOCOLOR
+brew install tmux
+if [[ ! -e ~/.tmux/plugins/tpm ]]; then 
+  echo $NOCOLOR$prefix"Installing tmux plugin manager"$NOCOLOR
+  git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+else
+  echo $NOCOLOR$prefix"Tmux plugin manager already installed.  Skipping..."$NOCOLOR
+fi
 
 # Apps
 echo $NOCOLOR$prefix"Installing Sublime Text"$NOCOLOR

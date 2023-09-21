@@ -19,6 +19,7 @@ gitFolder=$dotFolder"/git"
 scriptsFolder=$dotFolder"/scripts"
 sshFolder=$dotFolder"/ssh"
 toolsFolder=$dotFolder"/tools"
+tmuxFolder=$dotFolder"/tmux"
 zshFolder=$dotFolder"/zsh"
 fontsFolder=$dotFolder"/fonts"
 sublimeTextFolder=$dotFolder"/sublime-text"
@@ -313,6 +314,14 @@ if [[ $installCode =~ [123] ]]; then
     echo $NOCOLOR$prefix"Creating ssh symlinks"$NOCOLOR
     mkdir -p ~/.ssh
     ln -sf $sshFolder/config ~/.ssh
+
+    # tmux
+    echo $NOCOLOR$prefix"Backing up tmux configurations"$NOCOLOR
+    mkdir -p $backupFolder/tmux
+    [ -e ~/.tmux.conf ] && mv -f ~/.tmux.conf $backupFolder/tmux
+
+    echo $NOCOLOR$prefix"Creating tmux symlinks"$NOCOLOR
+    ln -sf $tmuxFolder/.tmux.conf ~
 
     # zsh
     echo $prefix"Backing up zsh configurations"
