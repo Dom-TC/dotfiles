@@ -7,3 +7,6 @@
 [submodule "scripts/z"]
 	path = scripts/z
 	url = git@github.com:rupa/z.git
+[submodule "zsh/plugins/zsh-autosuggestions"]
+	path = zsh/plugins/zsh-autosuggestions
+	url = git@github.com:zsh-users/zsh-autosuggestions.git

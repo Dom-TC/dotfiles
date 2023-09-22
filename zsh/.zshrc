@@ -19,6 +19,7 @@ plugins=(
     zsh-asdf-prompt
     dotenv
     poetry
+    zsh-autosuggestions
 )
 
 source $ZSH/oh-my-zsh.sh
