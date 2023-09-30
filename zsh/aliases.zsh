@@ -14,7 +14,7 @@ alias sudo='sudo '
 # Shortcuts
 alias projects='cd ~/Dropbox/1\ Projects'
 alias areas='cd ~/Dropbox/2\ Areas'
-alias resources='cd ~/Dropbox/3\ Resources'
+alias notes='cd ~/Dropbox/3\ Notes'
 alias archive='cd ~/Dropbox/4\ Archive'
 alias cdd="cd ~/Desktop"
 
