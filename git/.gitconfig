@@ -2,9 +2,9 @@
 [user]
 	name = Dom Chester
 	email = dom.chester@me.com
+	signingkey = ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCWW91FoMIlB2zjCfC8QU4N52z3Km1sIKdO3enpA4RefxJNE1lQlRwmfTMlG7BWl/Z3GeYgAUQxJEOpJ48A7wiItpjWq0LM3Rjf1LEjgZ665k+LzreK878teQPjm2XEoCRdKQJkcLGQjqB0+ad8DG2yt+E/QxZUvlL4rQ32VQVYBtpOzTlY4XKCB4wzkS8EqxQZw21Ej2h5DGve9/TEv6zCSBuBEFWYR9GBzgI+eeEQr2tnZdOyU8Ja1enxyJLvmXMZbckZdCpUoULGkH4PicqYriMcUUOLFmZl7GPJ4nstH7j/IXiH6AIckh3L4ZdKaSj6YGKl0y6qBYR37VHBfx+6DaX7Dm7Gp7DChn7P6FvkmoG2PoLfHfhOmADNp9qPShT9f56w4YLlw0IKg6H+DgJ7opgGeptgc/PZ7h2wEHaEEGian0XNVWbQImwFQ/2Zr+2wtDjfWYC2XgvVtL0DPqmgTGucqsifadcM0XVWtr4u1cLQ79zaqwt37kranKa2nEuwT+fQGAomz/lBeISpcScvUAiVARJxLR7Lz2MpXzQ55eMkfIcywr57vZX0KISaLUQLxTvKvxT2YdLVBK3B73Z94eDws8HmbsogNFo9YEZQSEOrXMOybo/cbz8+pXDAu2h3VGPniwnbwpw28qJXbXdNnpY9LS1lOXYr7wnkg7onDw==
 
 	# GPG key
-	signingkey = 079BB9619878F192
 
 [tag]
 	# Always sign tags
@@ -66,3 +66,8 @@
 [status]
 	submoduleSummary = true
 
+[gpg]
+	format = ssh
+[gpg "ssh"]
+	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
+	allowedSignersFile = /Users/dom/.config/git/allowed_signers

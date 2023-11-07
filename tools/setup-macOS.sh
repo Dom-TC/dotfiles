@@ -18,6 +18,7 @@ dotFolder=$HOME"/dotfiles"
 gitFolder=$dotFolder"/git"
 scriptsFolder=$dotFolder"/scripts"
 sshFolder=$dotFolder"/ssh"
+configFolder=$dotFolder"/config"
 toolsFolder=$dotFolder"/tools"
 tmuxFolder=$dotFolder"/tmux"
 zshFolder=$dotFolder"/zsh"
@@ -373,6 +374,14 @@ if [[ $installCode =~ [123] ]]; then
     mkdir -p $sublimeMergeDestinationFolder"/Packages/"
     ln -sf $sublimeMergeFolder"/License.sublime_license" $sublimeMergeDestinationFolder"/Local"
     ln -sf $sublimeMergeFolder"/user-packages" $sublimeMergeDestinationFolder"/Packages/User"
+
+    # general config files
+    echo $NOCOLOR$prefix"Backing up remaining configs"$NOCOLOR
+    mkdir -p $backupFolder/config
+    [ -e ~/.config/git/allowed_signers ] && mv -f ~/.config/git/allowed_signers $backupFolder/config
+
+    echo $NOCOLOR$prefix"Creating config symlinks"$NOCOLOR
+    ln -sf $configFolder/allowed_signers ~/.config/git
 
     # other
     echo $NOCOLOR$prefix"Backing up remaining configurations"$NOCOLOR
