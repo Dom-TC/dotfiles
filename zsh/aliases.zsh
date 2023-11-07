@@ -55,3 +55,6 @@ alias egrep='egrep --color=auto'
 
 # Print each PATH entry on a separate line
 alias path='echo -e ${PATH//:/\\n}'
+
+# Open directory / file in vscode
+alias code='/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code'
