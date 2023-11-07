@@ -1,3 +1,5 @@
+#!/usr/bin/env zsh
+
 #Add folders to $PATH
 export PATH="$PATH":~/.scripts
 export PATH="$PATH:/Users/dom/.local/bin"
@@ -19,7 +21,6 @@ plugins=(
     zsh-asdf-prompt
     dotenv
     poetry
-    zsh-autosuggestions
 )
 
 source $ZSH/oh-my-zsh.sh
