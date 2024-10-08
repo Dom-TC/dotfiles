@@ -32,6 +32,14 @@ echo $NOCOLOR$prefix"Installing git-filter-repo"$NOCOLOR
 brew install git-filter-repo
 echo $NOCOLOR$prefix"Installing git-fresh"$NOCOLOR
 brew install git-fresh
+
+
+echo $NOCOLOR$prefix"Installing oh-my-posh"$NOCOLOR
+brew install jandedobbeleer/oh-my-posh/oh-my-posh
+echo $NOCOLOR$prefix"Installing JetBrains Mono Nerd Font"$NOCOLOR
+brew install --cask font-jetbrains-mono-nerd-font
+
+
 echo $NOCOLOR$prefix"Installing ffmpeg"$NOCOLOR
 brew install ffmpeg
 echo $NOCOLOR$prefix"Installing bat"$NOCOLOR
@@ -51,20 +59,16 @@ echo $NOCOLOR$prefix"Installing pandoc"$NOCOLOR
 brew install pandoc
 echo $NOCOLOR$prefix"Installing tmux"$NOCOLOR
 brew install tmux
-if [[ ! -e ~/.tmux/plugins/tpm ]]; then 
-  echo $NOCOLOR$prefix"Installing tmux plugin manager"$NOCOLOR
-  git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+if [[ ! -e ~/.tmux/plugins/tpm ]]; then
+    echo $NOCOLOR$prefix"Installing tmux plugin manager"$NOCOLOR
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 else
-  echo $NOCOLOR$prefix"Tmux plugin manager already installed.  Skipping..."$NOCOLOR
+    echo $NOCOLOR$prefix"Tmux plugin manager already installed.  Skipping..."$NOCOLOR
 fi
 
 # Apps
 echo $NOCOLOR$prefix"Installing iTerm2"$NOCOLOR
 brew install --cask iterm2
 curl -L https://iterm2.com/shell_integration/install_shell_integration_and_utilities.sh | bash
-echo $NOCOLOR$prefix"Installing Sublime Text"$NOCOLOR
-brew install --cask sublime-text
-echo $NOCOLOR$prefix"Installing Sublime Merge"$NOCOLOR
-brew install --cask sublime-merge
 
 

@@ -191,6 +191,12 @@ if [[ $installCode == 1 ]]; then
     asdf install ruby latest
     asdf global ruby latest
 
+    # go
+    echo $NOCOLOR$prefix"Installing go asdf plugin"$NOCOLOR
+    asdf plugin add golang https://github.com/asdf-community/asdf-golang.git
+    asdf install golang latest
+    asdf global golang latest
+
     # pipx
     if has pipx; then
         echo $NOCOLOR$prefix"Pipx is already installed.  Skipping..."$NOCOLOR
@@ -304,8 +310,8 @@ if [[ $installCode =~ [123] ]]; then
     [ -e ~/.gitignore ] && mv -f ~/.gitignore $backupFolder/git
 
     echo $NOCOLOR$prefix"Creating git symlinks"$NOCOLOR
-    ln -sf $gitFolder/.gitconfig ~
-    ln -sf $gitFolder/.gitignore ~
+    ln -sf $gitFolder/.gitconfig ~/.gitconfig
+    ln -sf $gitFolder/.gitignore ~/.gitignore
 
     # ssh
     echo $NOCOLOR$prefix"Backing up ssh configurations"$NOCOLOR
@@ -334,7 +340,7 @@ if [[ $installCode =~ [123] ]]; then
     [ -e ~/.oh-my-zsh/custom/plugins ] && mv -f ~/.oh-my-zsh/custom/plugins $backupFolder/zsh
 
     echo $NOCOLOR$prefix"Creating zsh symlinks"$NOCOLOR
-    ln -sf $zshFolder/.zshrc ~
+    ln -sf $zshFolder/.zshrc ~/.zshrc
     ln -sf $zshFolder/aliases.zsh ~/.oh-my-zsh/custom
     ln -sf $zshFolder/functions.zsh ~/.oh-my-zsh/custom
     ln -sf $zshFolder/DomsTheme.zsh-theme ~/.oh-my-zsh/custom/themes
@@ -347,33 +353,6 @@ if [[ $installCode =~ [123] ]]; then
 
     echo $NOCOLOR$prefix"Creating scripts symlinks"$NOCOLOR
     ln -sf $scriptsFolder ~/.scripts
-
-    # sublime text
-    echo $NOCOLOR$prefix"Backing up Sublime Text settings"$NOCOLOR
-    mkdir -p $backupFolder/sublime-text
-    [ -e $sublimeTextDestinationFolder"/Installed Packages/Package Control.sublime-package" ] && mv -f $sublimeTextDestinationFolder"/Installed Packages/Package Control.sublime-package" $backupFolder/sublime-text
-    [ -e $sublimeTextDestinationFolder"/Local/License.sublime_license" ] && mv -f $sublimeTextDestinationFolder"/Local/License.sublime_license" $backupFolder/sublime-text
-    [ -e $sublimeTextDestinationFolder"/Packages/User" ] && mv -f $sublimeTextDestinationFolder"/Packages/User" $backupFolder/sublime-text
-
-    echo $NOCOLOR$prefix"Creating Sublime Text symlinks"$NOCOLOR
-    mkdir -p $sublimeTextDestinationFolder"/Installed Packages"
-    mkdir -p $sublimeTextDestinationFolder"/Local"
-    mkdir -p $sublimeTextDestinationFolder"/Packages/"
-    ln -sf $sublimeTextFolder"/Package Control.sublime-package" $sublimeTextDestinationFolder"/Installed Packages"
-    ln -sf $sublimeTextFolder"/License.sublime_license" $sublimeTextDestinationFolder"/Local"
-    ln -sf $sublimeTextFolder"/user-packages" $sublimeTextDestinationFolder"/Packages/User"
-
-    # sublime merge
-    echo $NOCOLOR$prefix"Backing up Sublime Merge settings"$NOCOLOR
-    mkdir -p $backupFolder/sublime-merge
-    [ -e $sublimeMergeDestinationFolder"/Local/License.sublime_license" ] && mv -f $sublimeMergeDestinationFolder"/Local/License.sublime_license" $backupFolder/sublime-merge
-    [ -e $sublimeMergeDestinationFolder"/Packages/User" ] && mv -f $sublimeMergeDestinationFolder"/Packages/User" $backupFolder/sublime-merge
-
-    echo $NOCOLOR$prefix"Creating Sublime Merge symlinks"$NOCOLOR
-    mkdir -p $sublimeMergeDestinationFolder"/Local"
-    mkdir -p $sublimeMergeDestinationFolder"/Packages/"
-    ln -sf $sublimeMergeFolder"/License.sublime_license" $sublimeMergeDestinationFolder"/Local"
-    ln -sf $sublimeMergeFolder"/user-packages" $sublimeMergeDestinationFolder"/Packages/User"
 
     # general config files
     echo $NOCOLOR$prefix"Backing up remaining configs"$NOCOLOR
@@ -391,8 +370,8 @@ if [[ $installCode =~ [123] ]]; then
     [ -e /etc/hosts ] && sudo mv -f /etc/hosts $backupFolder/other
 
     echo $NOCOLOR$prefix"Creating remaining symlinks"$NOCOLOR
-    ln -sf $dotFolder/.hushlogin ~
-    ln -sf $dotFolder/.screenrc ~
+    ln -sf $dotFolder/.hushlogin ~/.hushlogin
+    ln -sf $dotFolder/.screenrc ~/.screenrc
     sudo ln -f $dotFolder/hosts /etc
 
     echo $NOCOLOR$prefix"Old configurations backed up to "$backupFolder$NOCOLOR

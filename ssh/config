@@ -1,3 +1,7 @@
+Host domserv-001
+  HostName domserv-001
+  ForwardAgent yes
+
 Host *
   AddKeysToAgent yes
   UseKeychain yes

@@ -40,19 +40,9 @@ function put_spacing() {
         git=0
     fi
 
-    # Calculate asdf_prompt_info charactors
-    if has asdf; then
-        local asdf=$(asdf_prompt_info)
-        if [ ${#asdf} != 0 ]; then
-            ((asdf = ${#asdf} - 18))
-        else
-            asdf=0
-        fi
-    fi
-
     # Calculate space neeeded
     local termwidth
-    (( termwidth = ${COLUMNS} - ${#HOST} - ${#$(get_pwd)} - ${asdf} - ${git} - ${#$(put_username)} + 2))
+    (( termwidth = ${COLUMNS} - ${#HOST} - ${#$(get_pwd)} - ${git} - ${#$(put_username)} + 4))
 
     # Generate spacing
     local spacing=""
@@ -80,5 +70,4 @@ function set_terminal_theme() {
 
 # Set Prompt
 PROMPT='
-$fg[cyan]$(put_username)%m: $fg[yellow]$(get_pwd)$(put_spacing)$(asdf_prompt_info) $(git_prompt_info) 
-$reset_color%{$(iterm2_prompt_mark)%} '
+$fg[cyan]$(put_username)%m: $fg[yellow]$(get_pwd)$(put_spacing)$(git_prompt_info)$fg[white]→ $reset_color% '

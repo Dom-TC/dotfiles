@@ -17,8 +17,6 @@ ZSH_THEME="DomsTheme"
 plugins=(
     git
     zsh-syntax-highlighting
-    asdf
-    zsh-asdf-prompt
     dotenv
     poetry
 )
