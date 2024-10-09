@@ -28,6 +28,7 @@ ln -s "${BREW_PREFIX}/bin/gsha256sum" "${BREW_PREFIX}/bin/sha256sum"
 brew install git
 brew install git-filter-repo
 brew install git-fresh
+brew install chezmoi
 brew install jandedobbeleer/oh-my-posh/oh-my-posh
 brew install ffmpeg
 brew install bat
