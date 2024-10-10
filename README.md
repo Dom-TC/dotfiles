@@ -1,11 +1,3 @@
-To install:
+# My Dotfiles
 
-1. `cd ~`
-2. `git clone --recurse-submodules git@github.com:Dom-TC/dotfiles.git ~/dotfiles`
-3. `./dotfiles/setup.sh`
-
-To update:
-
-1. `cd ~/dotfiles`
-2. `git pull`
-3. `./setup.sh`
+I've recently switched to managing my dotfiles with Chezmoi. This is still very much an experiment to see how I like it.

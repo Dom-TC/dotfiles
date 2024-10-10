@@ -1,0 +1,8 @@
+README.md
+ToSort/
+
+# Pre-Commit Config Files
+.flake8
+.pre-commit-config.yaml
+.prettierrc.yaml
+.pyproject.toml
