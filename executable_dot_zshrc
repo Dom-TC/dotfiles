@@ -29,9 +29,7 @@ zinit light zsh-users/zsh-autosuggestions
 zinit light Aloxaf/fzf-tab
 
 # Add in snippets
-# zinit snippet OMZL::git.zsh
 zinit snippet OMZP::dotenv
-zinit snippet OMZP::poetry
 zinit snippet OMZP::sudo
 
 # Extras
