@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
 # Update $PATH
-export PATH="$PATH":~/.scripts
+export PATH="$PATH":~/bin
 export PATH="$PATH:/Users/dom/.local/bin"
 export PATH="/opt/homebrew/bin:$PATH"
 export PATH="$(brew --prefix)/opt/coreutils/libexec/gnubin:$PATH"
