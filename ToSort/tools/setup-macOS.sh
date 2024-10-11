@@ -15,35 +15,14 @@ NOCOLOR="\033[0m"
 
 # Folder Location
 dotFolder=$HOME"/dotfiles"
-gitFolder=$dotFolder"/git"
-scriptsFolder=$dotFolder"/scripts"
-sshFolder=$dotFolder"/ssh"
-configFolder=$dotFolder"/config"
 toolsFolder=$dotFolder"/tools"
-tmuxFolder=$dotFolder"/tmux"
-zshFolder=$dotFolder"/zsh"
-fontsFolder=$dotFolder"/fonts"
-sublimeTextFolder=$dotFolder"/sublime-text"
-sublimeMergeFolder=$dotFolder"/sublime-merge"
-
-
-backupRoot=$HOME"/.dotBackups/"
-backupFolder=$backupRoot$(date +"%Y-%m-%d_%H%M%S")
-
-applicationSupportFolder=$HOME"/Library/Application Support"
-sublimeTextDestinationFolder=$applicationSupportFolder"/Sublime Text"
-sublimeMergeDestinationFolder=$applicationSupportFolder"/Sublime Merge"
 
 # General
-email="dom.chester@me.com"
 hostname_full=$(hostname)
 hostname=${hostname_full//.local/}
 
 # Initialise Variables
 installCode=0
-generateSSH=0
-needRestart=false
-installFonts=0
 setMacDefaults=0
 
 #-------------------------
@@ -54,27 +33,6 @@ setMacDefaults=0
 function has() {
     type $1 &>/dev/null
 }
-
-#-------------------------
-#---- Initialisation -----
-#-------------------------
-
-# Ensure we're running in the directory we expect
-cd $(dirname $0)
-
-# Check if installing, updating, or re-linking
-while [[ $installCode =~ [^123] ]]; do
-    echo $YELLOW
-    echo $prefix"Would you like to:"
-    echo $prefix"1 - Install"
-    echo $prefix"2 - Update"
-    echo $prefix"3 - Relink"
-    read "installCode?"$prefix"Please pick an option: "
-
-    if [[ $installCode =~ [^123] ]]; then
-        echo $RED$prefix"Please pick an option from 1–3"
-    fi
-done
 
 #-------------------------
 #----- Installation ------
@@ -124,33 +82,6 @@ if [[ $installCode == 1 ]]; then
         else
             echo $YELLOW$prefix"No host-specific MacOS settings file provided"$NOCOLOR
         fi
-    fi
-
-    # Generate SSH keys
-    while [[ $generateSSH =~ [^YyNn] ]]; do
-        echo $YELLOW
-        read "generateSSH?"$prefix"Would you like to generate a SSH key? (Y/N): "
-
-        if [[ $generateSSH =~ [^YyNn] ]]; then
-            echo $RED$prefix"Please select Y or N"
-        fi
-    done
-
-    if [[ $generateSSH =~ [Yy] ]]; then
-        echo $NOCOLOR$prefix"Generating SSH key"$NOCOLOR
-        ssh-keygen -t ed25519 -C $email -f ~/.ssh/id_ed25519
-        eval "$(ssh-agent -s)"
-        ssh-add -K ~/.ssh/id_ed25519
-
-        echo $YELLOW$prefix"Run 'pbcopy < ~/.ssh/id_ed25519.pub' to get public key"$NOCOLOR
-    fi
-
-    # Install oh-my-zsh
-    if [ -e ~/.oh-my-zsh/oh-my-zsh.sh ]; then
-        echo $NOCOLOR$prefix"Oh-My-Zsh is already installed.  Skipping..."
-    else
-        echo $NOCOLOR$prefix"Installing Oh-My-Zsh"$NOCOLOR
-        sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" --unattended
     fi
 
     # Install homebrew
@@ -242,12 +173,6 @@ fi
 if [[ $installCode == 2 ]]; then
     echo $GREEN$prefix"Updating system tools"$NOCOLOR
 
-    # Update oh-my-zsh
-    if [ -e ~/.oh-my-zsh/tools/upgrade.sh ]; then
-        echo $NOCOLOR$prefix"Updating oh-my-zsh"$NOCOLOR
-        zsh ~/.oh-my-zsh/tools/upgrade.sh
-    fi
-
     # Update homebrew
     echo $NOCOLOR$prefix"Updating homebrew"$NOCOLOR
     brew update
@@ -279,132 +204,4 @@ if [[ $installCode == 2 ]]; then
     # Update poetry
     echo $NOCOLOR$prefix"Updating poetry"$NOCOLOR
     poetry self update
-fi
-
-# If install or update...
-if [[ $installCode =~ [12] ]]; then
-    # Install global brew formulae
-    echo $NOCOLOR$prefix"Installing global brew formulae"$NOCOLOR
-    zsh $toolsFolder/brew-global.sh
-
-    # Install host-specific brew formulae
-    if [ -e $toolsFolder/brew-$hostname.sh ]; then
-        echo $NOCOLOR$prefix"Installing host-specific brew formulae"$NOCOLOR
-        zsh $toolsFolder/brew-$hostname.sh
-    else
-        echo $YELLOW$prefix"No host-specific brew file provided"$NOCOLOR
-    fi
-
-    # Clean outdated brew plugins
-    echo $NOCOLOR$prefix"Cleaning up brew"$NOCOLOR
-    brew cleanup
-fi
-
-# If install, update or relink...
-if [[ $installCode =~ [123] ]]; then
-    # Build symlinks
-    # git
-    echo $NOCOLOR$prefix"Backing up git configurations"$NOCOLOR
-    mkdir -p $backupFolder/git
-    [ -e ~/.gitconfig ] && mv -f ~/.gitconfig $backupFolder/git
-    [ -e ~/.gitignore ] && mv -f ~/.gitignore $backupFolder/git
-
-    echo $NOCOLOR$prefix"Creating git symlinks"$NOCOLOR
-    ln -sf $gitFolder/.gitconfig ~/.gitconfig
-    ln -sf $gitFolder/.gitignore ~/.gitignore
-
-    # ssh
-    echo $NOCOLOR$prefix"Backing up ssh configurations"$NOCOLOR
-    mkdir -p $backupFolder/ssh
-    [ -e ~/.ssh/config ] && mv -f ~/.ssh/config $backupFolder/ssh
-
-    echo $NOCOLOR$prefix"Creating ssh symlinks"$NOCOLOR
-    mkdir -p ~/.ssh
-    ln -sf $sshFolder/config ~/.ssh
-
-    # tmux
-    echo $NOCOLOR$prefix"Backing up tmux configurations"$NOCOLOR
-    mkdir -p $backupFolder/tmux
-    [ -e ~/.tmux.conf ] && mv -f ~/.tmux.conf $backupFolder/tmux
-
-    echo $NOCOLOR$prefix"Creating tmux symlinks"$NOCOLOR
-    ln -sf $tmuxFolder/.tmux.conf ~
-
-    # zsh
-    echo $prefix"Backing up zsh configurations"
-    mkdir -p $backupFolder/zsh
-    [ -e ~/.zshrc ] && mv -f ~/.zshrc $backupFolder/zsh
-    [ -e ~/.oh-my-zsh/custom/aliases.zsh ] && mv -f ~/.oh-my-zsh/custom/aliases.zsh $backupFolder/zsh
-    [ -e ~/.oh-my-zsh/custom/functions.zsh ] && mv -f ~/.oh-my-zsh/custom/functions.zsh $backupFolder/zsh
-    [ -e ~/.oh-my-zsh/custom/themes/DomsTheme.zsh-theme ] && mv -f ~/.oh-my-zsh/custom/themes/DomsTheme.zsh-theme $backupFolder/zsh
-    [ -e ~/.oh-my-zsh/custom/plugins ] && mv -f ~/.oh-my-zsh/custom/plugins $backupFolder/zsh
-
-    echo $NOCOLOR$prefix"Creating zsh symlinks"$NOCOLOR
-    ln -sf $zshFolder/.zshrc ~/.zshrc
-    ln -sf $zshFolder/aliases.zsh ~/.oh-my-zsh/custom
-    ln -sf $zshFolder/functions.zsh ~/.oh-my-zsh/custom
-    ln -sf $zshFolder/DomsTheme.zsh-theme ~/.oh-my-zsh/custom/themes
-    ln -sf $zshFolder/plugins ~/.oh-my-zsh/custom/plugins
-
-    # scripts
-    echo $prefix"Backing up scripts"
-    mkdir -p $backupFolder/scripts
-    [ -e ~/.scripts ] && mv -f ~/.scripts $backupFolder/scripts
-
-    echo $NOCOLOR$prefix"Creating scripts symlinks"$NOCOLOR
-    ln -sf $scriptsFolder ~/.scripts
-
-    # general config files
-    echo $NOCOLOR$prefix"Backing up remaining configs"$NOCOLOR
-    mkdir -p $backupFolder/config
-    [ -e ~/.config/git/allowed_signers ] && mv -f ~/.config/git/allowed_signers $backupFolder/config
-
-    echo $NOCOLOR$prefix"Creating config symlinks"$NOCOLOR
-    ln -sf $configFolder/allowed_signers ~/.config/git
-
-    # other
-    echo $NOCOLOR$prefix"Backing up remaining configurations"$NOCOLOR
-    mkdir -p $backupFolder/other
-    [ -e ~/.hushlogin ] && mv -f ~/.hushlogin $backupFolder/other
-    [ -e ~/.screenrc ] && mv -f ~/.screenrc $backupFolder/other
-    [ -e /etc/hosts ] && sudo mv -f /etc/hosts $backupFolder/other
-
-    echo $NOCOLOR$prefix"Creating remaining symlinks"$NOCOLOR
-    ln -sf $dotFolder/.hushlogin ~/.hushlogin
-    ln -sf $dotFolder/.screenrc ~/.screenrc
-    sudo ln -f $dotFolder/hosts /etc
-
-    echo $NOCOLOR$prefix"Old configurations backed up to "$backupFolder$NOCOLOR
-fi
-
-# If install...
-if [[ $installCode == 1 ]]; then
-    # Install fonts
-    while [[ $installFonts =~ [^YyNn] ]]; do
-        echo $YELLOW
-        read "installFonts?"$prefix"Would you like to install font files? (Y/N): "
-
-        if [[ $installFonts =~ [^YyNn] ]]; then
-            echo $RED$prefix"Please select Y or N"$NOCOLOR
-        fi
-
-        if [[ $installFonts =~ [Yy] ]]; then
-            echo $NOCOLOR$prefix"Installing fonts"$NOCOLOR
-            for font in $fontsFolder/*; do
-                font_name=$font:t
-                if [ ! -e $HOME"/Library/Fonts/"$font_name ]; then
-                    echo $NOCOLOR$prefix"Installing "$font_name$NOCOLOR
-                    cp $font $HOME"/Library/Fonts/"
-                fi
-            done
-        fi
-    done
-fi
-
-# Run host specific postflight
-if [ -e $toolsFolder/postflight-$hostname.sh ]; then
-    echo $NOCOLOR$prefix"Running host-specific postflight"$NOCOLOR
-    zsh $toolsFolder/postflight-$hostname.sh $installCode
-else
-    echo $YELLOW$prefix"No host-specific postflight provided"$NOCOLOR
 fi
