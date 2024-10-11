@@ -31,6 +31,7 @@ zinit light Aloxaf/fzf-tab
 # Add in snippets
 zinit snippet OMZP::dotenv
 zinit snippet OMZP::sudo
+zinit snippet OMZP::chezmoi
 
 # Extras
 source ~/.config/zsh/aliases.zsh
