@@ -33,8 +33,8 @@ zinit snippet OMZP::dotenv
 zinit snippet OMZP::sudo
 
 # Extras
-source ~/.zshaliases.zsh
-source ~/.zshfunctions.zsh
+source ~/.config/zsh/aliases.zsh
+source ~/.config/zsh/functions.zsh
 
 # Load autocompletions
 autoload -Uz compinit && compinit
