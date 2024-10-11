@@ -1,5 +1,6 @@
 README.md
 ToSort/
+.sym_assets/ # Used to save symlink destination files
 
 # Pre-Commit Config Files
 .flake8
