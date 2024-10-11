@@ -12,7 +12,7 @@
 # Adapted from https://leancrew.com/all-this/2022/01/reducing-the-size-of-large-pdfs/
 
 for file do
-    new=${file:r}"-compresssed.pdf"
+    new=${file:r}"-compressed.pdf"
     echo "Original File:   "$file
     gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dNOPAUSE -dQUIET -dBATCH -sOutputFile="$new" "$file"
     echo "Compressed File: "$new

@@ -58,3 +58,7 @@ repos:
     rev: v6.2.1
     hooks:
       - id: beautysh
+  - repo: "https://github.com/crate-ci/typos"
+    rev: v1.26.0
+    hooks:
+      - id: typos

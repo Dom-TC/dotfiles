@@ -24,4 +24,5 @@ exclude = '''
 )/
 '''
 
-[tool.poetry]
+[tool.typos]
+default.extend-words = { iterm = "iterm" }
