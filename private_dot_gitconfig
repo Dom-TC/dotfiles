@@ -15,7 +15,7 @@
 
 [core]
 	# Use Sublime text editor
-	editor = '/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl' -n -w
+	editor = '/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code'
 
 	# use global custom gittignore
 	excludesfile = ~/.gitignore
@@ -41,14 +41,6 @@
 [url "git@github.com:"]
 	insteadOf = https://github.com/
 
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path =
-
-[mergetool "sourcetree"]
-	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
-
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
@@ -63,26 +55,34 @@
 
 [github]
 	user = Dom-TC
+
 [status]
 	submoduleSummary = true
 
 [gpg]
 	format = ssh
+
 [gpg "ssh"]
 	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
 	allowedSignersFile = /Users/dom/.config/git/allowed_signers
+
 [diff]
 	tool = Kaleidoscope
+
 [difftool "Kaleidoscope"]
 	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+
 [difftool]
 	prompt = false
 	trustExitCode = true
+
 [merge]
 	tool = Kaleidoscope
+
 [mergetool "Kaleidoscope"]
 	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
 	trustExitCode = true
+	
 [mergetool]
 	prompt = false
 	keepBackup = true
