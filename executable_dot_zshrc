@@ -34,10 +34,13 @@ zinit snippet OMZP::sudo
 zinit snippet OMZP::chezmoi
 
 # Extras
+source "$HOME/.asdf/asdf.sh"
 source ~/.config/zsh/aliases.zsh
 source ~/.config/zsh/functions.zsh
 
 # Load autocompletions
+fpath=(${ASDF_DIR}/completions $fpath)
+
 autoload -Uz compinit && compinit
 zinit cdreplay -q
 
