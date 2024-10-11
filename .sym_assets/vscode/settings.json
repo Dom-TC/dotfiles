@@ -1,0 +1,23 @@
+{
+    "workbench.colorTheme": "Solarized Dark",
+    "editor.minimap.enabled": false,
+    "python.analysis.autoFormatStrings": true,
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.black-formatter",
+    },
+    "editor.codeActionsOnSave": {
+        "source.organizeImports": "always"
+    },
+    "git.confirmSync": false,
+    "autoDocstring.docstringFormat": "numpy",
+    "githubPullRequests.fileListLayout": "tree",
+    "githubPullRequests.pullBranch": "never",
+    "python.analysis.diagnosticMode": "workspace",
+    "python.analysis.diagnosticSeverityOverrides": {},
+    "flake8.ignorePatterns": [
+        "tests/"
+    ],
+    "editor.fontFamily": "'JetBrainsMono NF', Menlo, Monaco, 'Courier New', monospace",
+    "editor.accessibilitySupport": "off",
+    "editor.fontLigatures": true,
+}
