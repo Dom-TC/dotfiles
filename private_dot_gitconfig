@@ -14,8 +14,8 @@
 	forceSignAnnotated = true
 
 [core]
-	# Use Sublime text editor
-	editor = '/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code'
+	# Use VS Code text editor
+	editor = '/Applications/Visual Studio Code.app/Contents/Resources/app/bin/code'
 
 	# use global custom gittignore
 	excludesfile = ~/.gitignore
