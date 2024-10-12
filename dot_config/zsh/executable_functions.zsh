@@ -26,7 +26,7 @@ if [ ! $(uname -s) = 'Darwin' ]; then
 fi
 
 # Create a new directory and enter it
-function mkd() {
+function mkcd() {
     mkdir -p "$@" && cd "$@"
 }
 

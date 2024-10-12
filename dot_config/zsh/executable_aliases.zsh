@@ -58,3 +58,6 @@ alias path='echo -e ${PATH//:/\\n}'
 
 # Open directory / file in vscode
 alias code='/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code'
+
+# Alias mkd back to mkcd incase anything is still using it
+alias mkd='mkcd'
