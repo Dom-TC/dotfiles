@@ -1,11 +1,1 @@
-ToSort/
 .sym_assets/ # Used to save symlink destination files
-
-# Repo Configuration Files
-.flake8
-.pre-commit-config.yaml
-.prettierrc.yaml
-pyproject.toml
-README.md
-.typos_toml
-pyproject.toml
