@@ -11,6 +11,7 @@ repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v5.0.0
     hooks:
+      - id: check-added-large-files
       - id: check-ast
       - id: check-case-conflict
       - id: check-executables-have-shebangs
@@ -27,6 +28,8 @@ repos:
       - id: name-tests-test
         args:
           - "--pytest-test-first"
+      - id: trailing-whitespace
+      - id: requirements-txt-fixer
   - repo: https://github.com/PyCQA/flake8
     rev: 7.1.1
     hooks:
