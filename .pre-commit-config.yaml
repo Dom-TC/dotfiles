@@ -1,3 +1,4 @@
+---
 repos:
   - repo: https://github.com/psf/black
     rev: 24.10.0
@@ -24,6 +25,8 @@ repos:
       - id: detect-private-key
       - id: fix-byte-order-marker
       - id: name-tests-test
+        args:
+          - "--pytest-test-first"
   - repo: https://github.com/PyCQA/flake8
     rev: 7.1.1
     hooks:
@@ -58,6 +61,15 @@ repos:
     rev: v6.2.1
     hooks:
       - id: beautysh
+        language_version: "3.11"
+  - repo: https://github.com/koalaman/shellcheck-precommit
+    rev: v0.10.0
+    hooks:
+      - id: shellcheck
+  - repo: https://github.com/hadolint/hadolint
+    rev: v2.13.1-beta
+    hooks:
+      - id: hadolint
   - repo: "https://github.com/crate-ci/typos"
     rev: v1.26.0
     hooks:
@@ -66,3 +78,8 @@ repos:
     rev: v8.20.1
     hooks:
       - id: gitleaks
+  - repo: https://github.com/adrienverge/yamllint.git
+    rev: v1.35.1
+    hooks:
+      - id: yamllint
+        args: [--strict]

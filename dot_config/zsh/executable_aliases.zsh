@@ -36,16 +36,16 @@ else # macOS `ls`
 fi
 
 # List all files colorized in long format
-alias l="ls -lF ${colorflag}"
+alias l='ls -lF ${colorflag}'
 
 # List all files colorized in long format, excluding . and ..
-alias la="ls -lAF ${colorflag}"
+alias la='ls -lAF ${colorflag}'
 
 # List only directories
-alias lsd="ls -lF ${colorflag} | grep --color=never '^d'"
+alias lsd='ls -lF ${colorflag} | grep --color=never '^d''
 
 # Always use color output for `ls`
-alias ls="command ls ${colorflag}"
+alias ls='command ls ${colorflag}'
 
 # Always enable colored `grep` output
 # Note: `GREP_OPTIONS="--color=auto"` is deprecated, hence the alias usage.

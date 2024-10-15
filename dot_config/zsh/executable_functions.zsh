@@ -2,7 +2,7 @@
 
 # Change working directory to the top-most Finder window location
 function cdf() { # short for `cdfinder`
-    cd "$(osascript -e 'tell app "Finder" to POSIX path of (insertion location as alias)')";
+    cd "$(osascript -e 'tell app "Finder" to POSIX path of (insertion location as alias)')" || return
 }
 
 # `o` with no arguments opens the current directory, otherwise opens the given location
@@ -16,7 +16,7 @@ function o() {
 
 # Normalize `open` across Linux, macOS, and Windows.
 # This is needed to make the `o` function (see below) cross-platform.
-if [ ! $(uname -s) = 'Darwin' ]; then
+if [ ! "$(uname -s)" = 'Darwin' ]; then
     if grep -q Microsoft /proc/version; then
         # Ubuntu on Windows using the Linux subsystem
         alias open='explorer.exe';
@@ -27,12 +27,12 @@ fi
 
 # Create a new directory and enter it
 function mkcd() {
-    mkdir -p "$@" && cd "$@"
+    mkdir -p "$@" && cd "$@" || return
 }
 
 # Open man pages in new tab
 function man() {
-    open x-man-page://$@ ;
+    open x-man-page://"$*" ;
 }
 
 # Check if a command exists, can be a binary in PATH or a shell
@@ -40,13 +40,13 @@ function man() {
 # Use as:
 # if has cd; then ...; fi
 function has() {
-    type $1 &>/dev/null
+    type "$1" &>/dev/null
 }
 
 # Where is a function defined?
 whichfunc() {
-    whence -v $1
-    type -a $1
+    whence -v "$1"
+    type -a "$1"
 }
 
 # Change Dark Mode
