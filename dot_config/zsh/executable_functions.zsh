@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 
 # Change working directory to the top-most Finder window location
 function cdf() { # short for `cdfinder`
