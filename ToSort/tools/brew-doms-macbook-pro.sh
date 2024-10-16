@@ -36,3 +36,5 @@ brew install --cask slack
 # Install Firefox
 echo $NOCOLOR$prefix"Installing Firefox"$NOCOLOR
 brew install --cask firefox
+
+brew install 1password-cli
