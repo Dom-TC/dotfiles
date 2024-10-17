@@ -1,0 +1,52 @@
+[packages]
+    [packages.homebrew.common]
+        casks = [
+            "1password-cli",        # 1Password CLI tooling
+            "gpg-suite",            # GPG Tooling
+            "iterm2",               # Terminal emulator
+            "visual-studio-code"    # VS Code Editor
+        ]
+        formulae = [
+            "bat",                  # Bat with syntax highlighting and Git integration
+            "chezmoi",              # Dotfile manager
+            "coreutils",
+            "fzf",                  # Fuzzy finder
+            "ghostscript",          # Interpreter for PostScript and PDF
+            "git-filter-repo",     # Utility to rewrite git history
+            "git-fresh",            # Utility to keep git repos fresh
+            "git",
+            "gum",                  # Provides pretty shell-scripts
+            "jq",                   # Lightweight and flexible command-line JSON processor
+            "mas",                  # Mac App Store command-line interface
+            "oh-my-posh",           # Zsh theme
+            "tealdeer",             # A faster implementation of tldr man pages in rust
+            "zoxide",               # A faster way to navigate your filesystem
+        ]
+
+    [packages.homebrew.dev_computer]
+        casks = [
+            "slack"
+        ]
+        formulae = [
+            "hugo",                 # Hugo static site generator
+            "pipx",                 # Isolated python environments for packages
+            "tmux"
+        ]
+
+    [packages.homebrew.server]
+        casks = [
+
+        ]
+        formulae = [
+            "ffmpeg",               # Tools for dealing with audio and video
+            "youtube-dl"            # Tooling for downloading from youtube
+        ]
+
+    [packages.homebrew.personal_computer]
+        casks = [
+            "packetsender",
+            "slack"
+        ]
+        formulae = [
+        ]
+

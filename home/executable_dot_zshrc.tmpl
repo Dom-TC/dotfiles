@@ -8,9 +8,10 @@ export PATH="$(brew --prefix)/opt/coreutils/libexec/gnubin:$PATH"
 
 # Exports
 export ITERM2_SQUELCH_MARK=1
-export LDFLAGS="-L/usr/local/opt/openssl/lib"                   # Needed for SSL in python with asdf
-export CPPFLAGS="-I/usr/local/opt/openssl/include"              # Needed for SSL in python with asdf
-export PKG_CONFIG_PATH="/usr/local/opt/openssl/lib/pkgconfig"   # Needed for SSL in python with asdf
+export LDFLAGS="-L/usr/local/opt/openssl/lib"                           # Needed for SSL in python with asdf
+export CPPFLAGS="-I/usr/local/opt/openssl/include"                      # Needed for SSL in python with asdf
+export PKG_CONFIG_PATH="/usr/local/opt/openssl/lib/pkgconfig"           # Needed for SSL in python with asdf
+export TEALDEER_CONFIG_DIR="{{- .chezmoi.homeDir -}}/.config/tealdeer/" # Set the config directory for tealdeer to ~/.config/tealdeer
 
 
 # Set the directory to store zinit and plugins

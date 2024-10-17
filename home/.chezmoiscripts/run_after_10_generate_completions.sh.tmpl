@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 
-function has() {
-    type "$1" &>/dev/null
-}
+{{ template "shared_utility_scripts.sh.tmpl" . }}
 
 if has docker; then
     docker completion zsh > ~/.config/zsh/completions/_docker

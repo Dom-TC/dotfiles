@@ -1,0 +1,26 @@
+{{- if eq .osid "darwin" -}}
+#!/usr/bin/env sh
+
+{{ template "shared_utility_scripts.sh.tmpl" . }}
+
+# Set default shell to zsh
+if [[ ! $(echo $SHELL) == $(which zsh) ]]; then
+    chsh -s $(which zsh)
+fi
+
+# Install command line tools
+xcode-select --install
+
+# Install rosetta if on M-Series chip
+if [[ $CPUTYPE == arm64 ]]; then
+    echo $NOCOLOR$prefix"Installing rosetta"$NOCOLOR
+    softwareupdate --install-rosetta --agree-to-license
+fi
+
+if [[ ! $(command -v brew) ]]; then
+    echo "Installing Homebrew"
+    NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    brew analytics off
+fi
+
+{{- end -}}

@@ -7,6 +7,7 @@
     "dot_bashrc*": "shellscript",
     "dot_profile*": "shellscript",
     "dot_zshrc*": "shellscript",
-    "*.json5": "jsonc"
+    "*.json5": "jsonc",
+    "*_zshrc.tmpl": "shellscript"
   }
 }

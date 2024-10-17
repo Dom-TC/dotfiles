@@ -1,0 +1,92 @@
+{{- if eq .osid "darwin" -}}
+#!/usr/bin/env bash
+
+# Script heavily inspired / stolen from https://github.com/natelandau/dotfiles/
+
+{{ template "shared_utility_scripts.sh.tmpl" . }}
+
+# packages.toml hash: {{ include ".chezmoidata/packages.toml" | sha256sum }}
+
+# Set ENVs
+export HOMEBREW_CASK_OPTS="--appdir=~/Applications --fontdir=/Library/Fonts"
+
+# Calculate formulae
+formulae=(
+    {{ range $package := .packages.homebrew.common.formulae }}
+    "{{ $package }}"
+    {{ end }}
+
+    {{ if .dev_computer }}
+    {{ range $package := .packages.homebrew.dev_computer.formulae }}
+    "{{ $package }}"
+    {{ end }}
+    {{ end }}
+
+    {{ if .server }}
+    {{ range $package := .packages.homebrew.server.formulae }}
+    "{{ $package }}"
+    {{ end }}
+    {{ end }}
+
+    {{ if .personal_computer }}
+    {{ range $package := .packages.homebrew.personal_computer.formulae }}
+    "{{ $package }}"
+    {{ end }}
+    {{ end }}
+)
+
+# Calculate casks
+casks=(
+    {{ range $package := .packages.homebrew.common.casks }}
+    "{{ $package }}"
+    {{ end }}
+
+    {{ if .dev_computer }}
+    {{ range $package := .packages.homebrew.dev_computer.casks }}
+    "{{ $package }}"
+    {{ end }}
+    {{ end }}
+
+    {{ if .server }}
+    {{ range $package := .packages.homebrew.server.casks }}
+    "{{ $package }}"
+    {{ end }}
+    {{ end }}
+
+    {{ if .personal_computer }}
+    {{ range $package := .packages.homebrew.personal_computer.casks }}
+    "{{ $package }}"
+    {{ end }}
+    {{ end }}
+)
+
+# Remove duplicates
+formulae=($(printf "%s\n" "${formulae[@]}" | sort -u))
+casks=($(printf "%s\n" "${casks[@]}" | sort -u))
+
+# Check what brew currently has installed
+currently_installed_formulae=($(brew list --formula -1))
+currently_installed_casks=($(brew list --cask -1))
+
+brew update
+
+BREW_DIR="$(brew --prefix)/bin/"
+
+for formula in ${formulae[@]}; do
+    if ! _inArray_ -i "${formula}" "${currently_installed_formulae[@]}"; then
+        if [[ ! -e "${BREW_DIR}/${formula}" ]]; then
+            brew install -q --formula ${formula}
+        fi
+    fi
+done
+
+{{ if not .ephemeral }}
+for cask in ${casks[@]}; do
+    if ! _inArray_ -i "${cask}" "${currently_installed_casks[@]}"; then
+        brew install -q --cask ${cask}
+    fi
+
+done
+{{ end }}
+
+{{- end }}
