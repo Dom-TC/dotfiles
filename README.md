@@ -11,6 +11,7 @@ I've recently switched to managing my dotfiles with Chezmoi. This is still very 
   - Environment variables?
 - Set MacOS settings
 - Prettify script output
+- Install Mac apps with mas cli - https://github.com/mas-cli/mas
 
 ## Credit
 
