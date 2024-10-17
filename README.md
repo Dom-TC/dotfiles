@@ -11,3 +11,11 @@ I've recently switched to managing my dotfiles with Chezmoi. This is still very 
   - Environment variables?
 - Set MacOS settings
 - Prettify script output
+
+## Credit
+
+I took inspiration from a lot of dotfiles repos, especially during the process of moving to Chezmoi, but special thanks to the following:
+
+- https://github.com/barrydobson/dotfiles/
+- https://github.com/natelandau/dotfiles/
+- https://github.com/barrucadu/dotfiles/
