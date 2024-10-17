@@ -18,7 +18,6 @@ if [[ $CPUTYPE == arm64 ]]; then
 fi
 
 if [[ ! $(command -v brew) ]]; then
-    echo "Installing Homebrew"
     NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     brew analytics off
 fi
