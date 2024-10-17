@@ -17,3 +17,7 @@ fi
 if has tailscale; then
     tailscale completion zsh > ~/.config/zsh/completions/_tailscale
 fi
+
+if has poetry; then
+    poetry completions zsh > ~/.config/zsh/completions/_poetry
+fi
