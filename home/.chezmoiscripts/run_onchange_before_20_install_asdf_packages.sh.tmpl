@@ -1,0 +1,24 @@
+{{- if (and (eq .osid "darwin") (.dev_computer)) -}}
+#!/usr/bin/env bash
+
+{{ template "shared_utility_scripts.sh.tmpl" . }}
+
+# Run if any of the following have changed
+# packages.toml hash: {{ include ".chezmoidata/packages.toml" | sha256sum }}
+# dot_toolversions hash: {{ include "dot_tool-versions" | sha256sum }}
+
+if ! has asdf; then
+    git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.10.0
+    source $HOME/.asdf/asdf.sh
+fi
+
+# Update to latest version
+asdf update
+
+# Install latest version of all declared plugins
+{{ range $package := .packages.asdf.plugins }}
+asdf plugin add {{ $package }}
+asdf install {{ $package }} latest || true
+{{ end }}
+
+{{- end -}}

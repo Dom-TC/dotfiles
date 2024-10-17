@@ -26,41 +26,6 @@ if [[ $installCode == 1 ]]; then
         fi
     fi
 
-    # Install development environments
-    # asdf
-    if has asdf; then
-        echo $NOCOLOR$prefix"asdf is already installed.  Skipping..."$NOCOLOR
-    else
-        echo $NOCOLOR$prefix"Installing asdf"$NOCOLOR
-        git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.10.0
-        . $HOME/.asdf/asdf.sh
-        asdf update
-    fi
-
-    # python
-    echo $NOCOLOR$prefix"Installing python asdf plugin"$NOCOLOR
-    asdf plugin add python
-    asdf install python latest
-    asdf global python latest
-
-    # nodejs
-    echo $NOCOLOR$prefix"Installing nodejs asdf plugin"$NOCOLOR
-    asdf plugin add nodejs
-    asdf install nodejs latest
-    asdf global nodejs latest
-
-    # ruby
-    echo $NOCOLOR$prefix"Installing ruby asdf plugin"$NOCOLOR
-    asdf plugin add ruby
-    asdf install ruby latest
-    asdf global ruby latest
-
-    # go
-    echo $NOCOLOR$prefix"Installing go asdf plugin"$NOCOLOR
-    asdf plugin add golang https://github.com/asdf-community/asdf-golang.git
-    asdf install golang latest
-    asdf global golang latest
-
     # pipx
     if has pipx; then
         echo $NOCOLOR$prefix"Pipx is already installed.  Skipping..."$NOCOLOR

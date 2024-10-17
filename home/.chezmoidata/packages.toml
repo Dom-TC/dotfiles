@@ -21,6 +21,10 @@
             "oh-my-posh",           # Zsh theme
             "tealdeer",             # A faster implementation of tldr man pages in rust
             "zoxide",               # A faster way to navigate your filesystem
+            "openssl@3",            # Cryptography and SSL/TLS toolkit
+            "readline",             # Command linte editing library
+            "libyaml",              # YAML parser
+            "gmp",                  # GNU precision math library
         ]
 
     [packages.homebrew.dev_computer]
@@ -57,4 +61,16 @@
             "nodejs",
             "python",
             "ruby",
+        ]
+
+    [packages.pipx]
+        packages = [
+            "poetry",                       # Python package and dependency manager
+            "pre-commit",                   # Manage pre-commit hooks
+        ]
+
+    [packages.pipx.poetry]
+        plugins = [
+            "poetry-dynamic-versioning",    # Enable dynamic versioning based on VCS tags
+            "poetry-plugin-export",         # Export the dependencies to various formats
         ]
