@@ -50,3 +50,11 @@
         formulae = [
         ]
 
+
+    [packages.asdf]
+        plugins = [
+            "golang",
+            "nodejs",
+            "python",
+            "ruby",
+        ]

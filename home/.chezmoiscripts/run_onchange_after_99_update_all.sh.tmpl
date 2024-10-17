@@ -1,0 +1,37 @@
+{{- if eq .osid "darwin" -}}
+#!/usr/bin/env bash
+
+{{ template "shared_utility_scripts.sh.tmpl" . }}
+
+# Run every month
+# https://www.chezmoi.io/user-guide/frequently-asked-questions/usage/#how-do-i-run-a-script-periodically
+# {{ output "date" "+%m" | trim }}
+
+# Run if any of the following have changed
+# packages.toml hash: {{ include ".chezmoidata/packages.toml" | sha256sum }}
+# dot_toolversions hash: {{ include "dot_tool-versions" | sha256sum }}
+
+# Update Homebrew
+brew update
+brew upgrade
+brew cleanup
+
+{{ if .dev_computer }}
+# Update asdf
+asdf update
+asdf plugin update --all
+
+# Install latest version of all declared plugins
+{{ range $package := .packages.asdf.plugins }}
+asdf install {{ $package }} latest
+{{ end }}
+
+# Ensure plugins specified in .tool-versions are installed
+asdf install
+
+{{- end -}}
+
+# Update oh-my-posh
+oh-my-posh upgrade
+
+{{- end -}}
