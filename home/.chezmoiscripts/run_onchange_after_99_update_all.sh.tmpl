@@ -12,26 +12,32 @@
 # dot_toolversions hash: {{ include "dot_tool-versions" | sha256sum }}
 
 # Update Homebrew
-brew update
-brew upgrade
-brew cleanup
+if has brew; then
+    brew update
+    brew upgrade
+    brew cleanup
+fi
 
 {{ if .dev_computer }}
-# Update asdf
-asdf update
-asdf plugin update --all
+if has asdf; then
+    # Update asdf
+    asdf update
+    asdf plugin update --all
 
-# Install latest version of all declared plugins
-{{ range $package := .packages.asdf.plugins }}
-asdf install {{ $package }} latest
-{{ end }}
+    # Install latest version of all declared plugins
+    {{ range $package := .packages.asdf.plugins }}
+    asdf install {{ $package }} latest
+    {{ end }}
 
-# Ensure plugins specified in .tool-versions are installed
-asdf install
+    # Ensure plugins specified in .tool-versions are installed
+    asdf install
+fi
+
 
 {{- end }}
 
-# Update oh-my-posh
-oh-my-posh upgrade
-
+if has oh-my-posh; then
+    # Update oh-my-posh
+    oh-my-posh upgrade
+fi
 {{- end -}}
