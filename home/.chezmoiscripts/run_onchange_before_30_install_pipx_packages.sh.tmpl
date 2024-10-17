@@ -1,0 +1,25 @@
+{{- if (and (eq .osid "darwin") (.dev_computer)) -}}
+#!/usr/bin/env bash
+
+{{ template "shared_utility_scripts.sh.tmpl" . }}
+
+# Run if any of the following have changed
+# packages.toml hash: {{ include ".chezmoidata/packages.toml" | sha256sum }}
+
+if has pipx; then
+    # Confirm all paths exist
+    pipx ensurepath
+
+    # Install latest version of all declared packages
+    {{ range $package := .packages.pipx.packages }}
+    pipx install {{ $package }}
+    {{ end }}
+
+    if has poetry; then
+        {{ range $package := .packages.pipx.poetry.plugins }}
+        pipx inject poetry {{ $package }}
+        {{ end }}
+    fi
+fi
+
+{{- end -}}

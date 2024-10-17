@@ -25,36 +25,4 @@ if [[ $installCode == 1 ]]; then
             echo $YELLOW$prefix"No host-specific MacOS settings file provided"$NOCOLOR
         fi
     fi
-
-    # pipx
-    if has pipx; then
-        echo $NOCOLOR$prefix"Pipx is already installed.  Skipping..."$NOCOLOR
-    else
-        echo $NOCOLOR$prefix"Installing pipx"$NOCOLOR
-        brew install pipx
-        pipx ensurepath
-    fi
-
-    # poetry
-    if has poetry; then
-        echo $NOCOLOR$prefix"Poetry is already installed.  Skipping..."$NOCOLOR
-    else
-        echo $NOCOLOR$prefix"Installing poetry"$NOCOLOR
-        curl -sSL https://install.python-poetry.org | python3 -
-        poetry self update --preview
-        mkdir $ZSH_CUSTOM/plugins/poetry
-        poetry completions zsh > $ZSH_CUSTOM/plugins/poetry/_poetry
-    fi
-
-    # poetry-dynamic-versioning-plugin
-    echo $NOCOLOR$prefix"Installing poetry-dynamic-versioning-plugin poetry plugin"$NOCOLOR
-    poetry self add poetry-dynamic-versioning-plugin
-
-    # pre-commit
-    if has pre-commit; then
-        echo $NOCOLOR$prefix"Pre-commit is already installed.  Skipping..."$NOCOLOR
-    else
-        echo $NOCOLOR$prefix"Installing pre-commit"$NOCOLOR
-        pipx install pre-commit
-    fi
 fi

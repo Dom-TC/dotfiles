@@ -33,6 +33,9 @@ if has asdf; then
     asdf install
 fi
 
+if has pipx; then
+    pipx upgrade-all
+fi
 
 {{- end }}
 
