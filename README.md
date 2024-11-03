@@ -16,6 +16,9 @@ I've recently switched to managing my dotfiles with Chezmoi. This is still very 
 - Prettify script output
 - Install Mac apps with mas cli - https://github.com/mas-cli/mas
 - Add pipx completions
+- Remove unused files
+  - .zprofile
+- Temporarily assign brew to path for first install
 
 ## Credit
 
