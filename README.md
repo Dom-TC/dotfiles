@@ -2,6 +2,9 @@
 
 I've recently switched to managing my dotfiles with Chezmoi. This is still very much an experiment to see how I like it.
 
+## Installation
+`sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply dom-tc`
+
 ## To Do
 
 - Consider asdf-direnv
