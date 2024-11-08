@@ -13,12 +13,16 @@ I've recently switched to managing my dotfiles with Chezmoi. This is still very 
   - Ask questions on run?
   - Environment variables?
 - Set MacOS settings
+  - Customise dock?
 - Prettify script output
 - Install Mac apps with mas cli - https://github.com/mas-cli/mas
 - Add pipx completions
 - Remove unused files
   - .zprofile
 - Temporarily assign brew to path for first install
+- Set `HOMEBREW_NO_ENV_HINTS` to true as part of homebrew install to tidy output
+- Install / activate tailscale
+- Automatically set iterm to use synced settings
 
 ## Credit
 
