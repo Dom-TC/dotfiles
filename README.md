@@ -23,7 +23,7 @@ I've recently switched to managing my dotfiles with Chezmoi. This is still very 
 - Set `HOMEBREW_NO_ENV_HINTS` to true as part of homebrew install to tidy output
 - Install / activate tailscale
 - Automatically set iterm to use synced settings
-
+- Dynamically set username in PATH in .zshrc
 ## Credit
 
 I took inspiration from a lot of dotfiles repos, especially during the process of moving to Chezmoi, but special thanks to the following:
