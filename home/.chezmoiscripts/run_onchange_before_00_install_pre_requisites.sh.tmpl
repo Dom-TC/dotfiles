@@ -19,7 +19,7 @@ fi
 
 if [[ ! $(command -v brew) ]]; then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    brew analytics off
+    /opt/homebrew/bin/brew analytics off
 fi
 
 {{- end -}}
