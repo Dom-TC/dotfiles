@@ -1,0 +1,62 @@
+{{- if eq .osid "darwin" -}}
+#!/usr/bin/env bash
+
+# Script heavily inspired / stolen from https://github.com/natelandau/dotfiles/
+
+{{ template "shared_utility_scripts.sh.tmpl" . }}
+
+# Add brew to path if it's not already
+# Needed for first install
+function has() {
+    type "$1" &>/dev/null
+}
+
+if ! has brew; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+
+# Calculate apps
+apps=(
+    {{ range $package := .packages.mas.common.apps }}
+    "{{ $package }}"
+    {{ end }}
+
+    {{ if .dev_computer }}
+    {{ range $package := .packages.mas.dev_computer.apps }}
+    "{{ $package }}"
+    {{ end }}
+    {{ end }}
+
+    {{ if .server }}
+    {{ range $package := .packages.mas.server.apps }}
+    "{{ $package }}"
+    {{ end }}
+    {{ end }}
+
+    {{ if .personal_computer }}
+    {{ range $package := .packages.mas.personal_computer.apps }}
+    "{{ $package }}"
+    {{ end }}
+    {{ end }}
+
+    {{ if .sound_computer }}
+    {{ range $package := .packages.mas.sound_computer.apps }}
+    "{{ $package }}"
+    {{ end }}
+    {{ end }}
+)
+
+# Remove duplicates
+apps=($(printf "%s\n" "${apps[@]}" | sort -u))
+
+# Install apps
+if [[ $(command -v mas) ]]; then
+    for app in "${apps[@]}"; do
+        if mas list | awk '{print $1}' | grep -E "^${app}$" &>/dev/null; then
+            continue
+        fi
+        mas install ${app}
+    done
+fi
+
+{{- end }}

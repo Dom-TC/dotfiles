@@ -91,3 +91,34 @@
             "poetry-dynamic-versioning",    # Enable dynamic versioning based on VCS tags
             "poetry-plugin-export",         # Export the dependencies to various formats
         ]
+
+    [packages.mas.common]
+        apps = [
+            "1592917505",                   # Noir
+            "1365531024",                   # 1Blocker
+            "409201541",                    # Pages
+            "409203825",                    # Numbers
+            "899247664",                    # TestFlight
+        ]
+
+    [packages.mas.dev_computer]
+        apps = [
+            "497799835",                    # XCode
+            "1667260533",                   # Sketch
+        ]
+
+    [packages.mas.server]
+        apps = [
+
+        ]
+
+    [packages.mas.personal_computer]
+        apps = [
+            "1529448980",                   # Reeder
+            "1474335294",                   # GoodLinks
+        ]
+
+    [packages.mas.sound_computer]
+        apps = [
+
+        ]

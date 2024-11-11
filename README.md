@@ -18,7 +18,6 @@ I've recently switched to managing my dotfiles with Chezmoi. This is still very 
 - Set MacOS settings
   - Customise dock?
 - Prettify script output
-- Install Mac apps with mas cli - https://github.com/mas-cli/mas
 - Add pipx completions
 - Set `HOMEBREW_NO_ENV_HINTS` to true as part of homebrew install to tidy output
 - Install / activate tailscale
