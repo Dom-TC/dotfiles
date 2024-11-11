@@ -3,8 +3,7 @@
 
 {{ template "shared_utility_scripts.sh.tmpl" . }}
 
-# Run if any of the following have changed
-# packages.toml hash: {{ include ".chezmoidata/packages.toml" | sha256sum }}
+# Run if dot_toolversions has changed
 # dot_toolversions hash: {{ include "dot_tool-versions" | sha256sum }}
 
 if ! has asdf; then

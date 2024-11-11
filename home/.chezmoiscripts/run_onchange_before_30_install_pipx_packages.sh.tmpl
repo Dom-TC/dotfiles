@@ -3,9 +3,6 @@
 
 {{ template "shared_utility_scripts.sh.tmpl" . }}
 
-# Run if any of the following have changed
-# packages.toml hash: {{ include ".chezmoidata/packages.toml" | sha256sum }}
-
 if has pipx; then
     # Confirm all paths exist
     pipx ensurepath
