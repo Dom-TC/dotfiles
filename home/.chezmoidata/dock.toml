@@ -1,0 +1,9 @@
+[dock]
+    apps = [
+        "Finder",
+        "Mail",
+        "OmniFocus",
+        "Calendar",
+        "Safari",
+        "Messages",
+    ]

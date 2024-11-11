@@ -30,6 +30,7 @@
             "readline",                     # Command linte editing library
             "libyaml",                      # YAML parser
             "gmp",                          # GNU precision math library
+            "dockutil"                      # Tool for managing dock items
         ]
 
     [packages.homebrew.dev_computer]

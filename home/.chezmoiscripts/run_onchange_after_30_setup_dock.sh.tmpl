@@ -1,0 +1,28 @@
+{{- if eq .osid "darwin" -}}
+#!/usr/bin/env bash
+
+# Remove all items from Dock to start fresh
+dockutil --remove all
+
+# Loop through each app in the TOML-defined list
+{{- range $app := .dock.apps }}
+    app_path=""
+
+    # Check for app in /Applications, ~/Applications, and /System/Applications, set path if found
+    if [ -e "/Applications/{{ $app }}.app" ]; then
+        app_path="/Applications/{{ $app }}.app"
+    elif [ -e "$HOME/Applications/{{ $app }}.app" ]; then
+        app_path="$HOME/Applications/{{ $app }}.app"
+    elif [ -e "/System/Applications/{{ $app }}.app" ]; then
+        app_path="/System/Applications/{{ $app }}.app"
+    fi
+
+    # If app path is set, add it to the Dock
+    if [ -n "$app_path" ]; then
+        dockutil --add "$app_path"
+    fi
+
+    sleep 0.1
+
+{{- end }}
+{{- end }}
