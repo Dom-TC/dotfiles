@@ -5,8 +5,6 @@
 
 {{ template "shared_utility_scripts.sh.tmpl" . }}
 
-# packages.toml hash: {{ include ".chezmoidata/packages.toml" | sha256sum }}
-
 # Set ENVs
 export HOMEBREW_CASK_OPTS="--appdir=/Applications --fontdir=/Library/Fonts"
 
@@ -43,6 +41,12 @@ formulae=(
     "{{ $package }}"
     {{ end }}
     {{ end }}
+
+    {{ if .sound_computer }}
+    {{ range $package := .packages.homebrew.sound_computer.formulae }}
+    "{{ $package }}"
+    {{ end }}
+    {{ end }}
 )
 
 # Calculate casks
@@ -65,6 +69,12 @@ casks=(
 
     {{ if .personal_computer }}
     {{ range $package := .packages.homebrew.personal_computer.casks }}
+    "{{ $package }}"
+    {{ end }}
+    {{ end }}
+
+    {{ if .sound_computer }}
+    {{ range $package := .packages.homebrew.sound_computer.casks }}
     "{{ $package }}"
     {{ end }}
     {{ end }}
