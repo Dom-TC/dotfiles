@@ -9,7 +9,7 @@
             "backblaze",
             "tailscale",
             "carbon-copy-cloner",
-            "alfred"
+            "alfred",
         ]
         formulae = [
             "bat",                          # Bat with syntax highlighting and Git integration
@@ -38,12 +38,15 @@
             "slack",
             "tower",
             "docker",
-            "omnifocus"
+            "omnifocus",
+            "sketch",
+            "discord",
+            "zoom",
         ]
         formulae = [
             "hugo",                         # Hugo static site generator
             "pipx",                         # Isolated python environments for packages
-            "tmux"
+            "tmux",
         ]
 
     [packages.homebrew.server]
@@ -52,13 +55,15 @@
         ]
         formulae = [
             "ffmpeg",                       # Tools for dealing with audio and video
-            "youtube-dl"                    # Tooling for downloading from youtube
+            "youtube-dl",                   # Tooling for downloading from youtube
         ]
 
     [packages.homebrew.personal_computer]
         casks = [
             "firefox",
-            "omnifocus"
+            "omnifocus",
+            "discord",
+            "zoom",
         ]
         formulae = [
         ]
@@ -69,6 +74,8 @@
             "omnifocus",
             "slack",
             "packetsender",
+            "discord",
+            "zoom",
         ]
         formulae = [
         ]
@@ -105,7 +112,6 @@
     [packages.mas.dev_computer]
         apps = [
             "497799835",                    # XCode
-            "1667260533",                   # Sketch
         ]
 
     [packages.mas.server]
