@@ -1,0 +1,17 @@
+{{- if eq .osid "darwin" -}}
+#!/usr/bin/env bash
+
+CODE='/Applications/Visual Studio Code.app/Contents/Resources/app/bin/code'
+
+# Get the list of currently installed extensions
+installed_extensions=$("$CODE" --list-extensions)
+
+# Iterate through all extensions listed in vscode-extensions.toml
+{{- range $extension := .vscode.extensions }}
+
+# Check if the extension is not already installed and install it
+if ! echo "$installed_extensions" | grep -q "^{{ $extension }}$"; then
+    "$CODE" --force --install-extension {{ $extension }}
+fi
+{{- end }}
+{{- end }}

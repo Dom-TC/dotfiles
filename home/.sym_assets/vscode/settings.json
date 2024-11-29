@@ -18,5 +18,27 @@
   "editor.fontFamily": "'JetBrainsMono NF', Menlo, Monaco, 'Courier New', monospace",
   "editor.accessibilitySupport": "off",
   "editor.fontLigatures": true,
-  "go.toolsManagement.autoUpdate": true
+  "go.toolsManagement.autoUpdate": true,
+  "files.associations": {
+    "*.toml.tmpl": "toml",
+    "*.yaml.tmpl": "gotmpl",
+    "*.sh.tmpl": "shellscript",
+    "*.bat.tmpl": "bat",
+    "dot_bashrc*": "shellscript",
+    "dot_profile*": "shellscript",
+    "dot_zshrc*": "shellscript",
+    "*.json5": "jsonc",
+    "*_zshrc.tmpl": "shellscript",
+    ".env*": "dotenv"
+  },
+  "editor.tokenColorCustomizations": {
+    "textMateRules": [
+      {
+        "scope": "keyword.other.dotenv",
+        "settings": {
+          "foreground": "#FF000000"
+        }
+      }
+    ]
+  }
 }
