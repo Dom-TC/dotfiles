@@ -20,6 +20,20 @@ I've recently switched to managing my dotfiles with Chezmoi. This is still very 
 - Add pipx completions
 - Install / activate tailscale
 - Automatically set iterm to use synced settings
+- Install Applications
+  - VectorWorks
+  - DVS
+  - Dante Controller
+  - WWB
+  - CleanShot X
+  - Veija
+  - Lasso
+  - Smaart
+  - IP Scanner
+  - Wifi Scanner Pro
+  - Hazel
+- Setup Mail Accounts
+- Create VS Code extension to automatacially update list when extensions are installed
 
 ## Credit
 
