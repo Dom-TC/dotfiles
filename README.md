@@ -17,7 +17,6 @@ I've recently switched to managing my dotfiles with Chezmoi. This is still very 
   - Environment variables?
 - Set MacOS settings
 - Prettify script output
-- Add pipx completions
 - Install / activate tailscale
 - Automatically set iterm to use synced settings
 - Install Applications

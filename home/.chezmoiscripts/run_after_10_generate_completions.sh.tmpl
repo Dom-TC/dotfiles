@@ -21,3 +21,7 @@ fi
 if has op; then
     op completion zsh > ~/.config/zsh/completions/_op
 fi
+
+if has pipx; then
+    register-python-argcomplete pipx > ~/.config/zsh/completions/_pipx
+fi

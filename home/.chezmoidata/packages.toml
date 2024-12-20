@@ -100,6 +100,7 @@
         packages = [
             "poetry",                       # Python package and dependency manager
             "pre-commit",                   # Manage pre-commit hooks
+            "argcomplete",                  # Needed for pipx autocompletions
         ]
 
     [packages.pipx.poetry]
