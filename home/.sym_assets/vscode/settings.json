@@ -40,5 +40,6 @@
         }
       }
     ]
-  }
+  },
+  "chat.commandCenter.enabled": false
 }
