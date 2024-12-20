@@ -6,7 +6,7 @@ I've recently switched to managing my dotfiles with Chezmoi. This is still very 
 
 1. Install 1Password
 2. Active 1Password SSH Agent (`Settings>Developer>Use the SSH Agent`)
-3. `sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply dom-tc`
+3. `sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply dom-tc` This may require running twice if git isn't already installed.
 
 ## To Do
 
@@ -17,7 +17,7 @@ I've recently switched to managing my dotfiles with Chezmoi. This is still very 
   - Environment variables?
 - Set MacOS settings
 - Prettify script output
-- Install / activate tailscale
+- Activate tailscale
 - Automatically set iterm to use synced settings
 - Install Applications
   - VectorWorks
@@ -33,6 +33,7 @@ I've recently switched to managing my dotfiles with Chezmoi. This is still very 
   - Hazel
 - Setup Mail Accounts
 - Create VS Code extension to automatacially update list when extensions are installed
+- Pass password into scripts to avoid repeat password requests?
 
 ## Credit
 
