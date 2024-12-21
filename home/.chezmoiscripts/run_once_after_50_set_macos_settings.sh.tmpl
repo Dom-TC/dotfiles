@@ -1,0 +1,156 @@
+{{- if eq .osid "darwin" -}}
+#!/usr/bin/env bash
+
+{{ template "shared_utility_scripts.sh.tmpl" . }}
+
+# Mac OS X configuration
+# Heavily customized from Jeff Geerling's Dotfiles. Original notes below:
+# ==============================================================
+#
+# This configuration has been created with macOS 14.6 and sets up preferences 
+# and configurations for all the built-in services and apps
+#
+# If you want to figure out what default needs changing, do the following:
+#
+#   1. `cd /tmp`
+#   2. Store current defaults in file: `defaults read > before`
+#   3. Make a change to your system.
+#   4. Store new defaults in file: `defaults read > after`
+#   5. Diff the files: `diff before after`
+
+# Inspired by:
+# - https://github.com/geerlingguy/dotfiles/blob/master/.osx
+# - https://github.com/mathiasbynens/dotfiles/blob/main/.macos
+# - https://github.com/barrydobson/dotfiles/blob/main/home/.chezmoiscripts/darwin/run_onchange_after_10_configure-darwin.tmpl
+# - https://github.com/natelandau/dotfiles/blob/master/dotfiles/bin/executable_osx-defaults.sh.tmpl
+# - https://github.com/kevinSuttle/macOS-Defaults/blob/master/.macos
+
+# Close any open System Preferences panes, to prevent them from overriding
+# settings we're about to change
+for app in \
+    "System Settings" \
+	"Mail" \
+	"App Store" \
+    "Safari" \
+    ; do
+	killall "${app}" &> /dev/null
+done
+
+##############
+#   GENERAL  #
+##############
+
+# Expand save / print panel by default
+defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
+defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
+defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
+defaults write NSGlobalDomain PMPrintingExpandedStateForPrint2 -bool true
+
+# Save to disk by default (instead of iCloud)
+defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
+
+###########
+#  AUDIO  #
+###########
+
+defaults write NSGlobalDomain com.apple.sound.beep.feedback -bool false
+defaults write NSGlobalDomain com.apple.sound.uiaudio.enabled -bool false
+defaults write NSGlobalDomain com.apple.sound.beep.feedback -bool false
+
+#############
+#   FINDER  #
+#############
+
+# Hide status and path bar
+defaults write com.apple.finder ShowStatusBar -bool false
+defaults write com.apple.finder ShowPathbar -bool false	
+
+# Disable warning before removing from iCloud Drive
+defaults write com.apple.finder FXEnableRemoveFromICloudDriveWarning -bool false
+
+# Keep folders on top when sorting by name
+defaults write com.apple.finder _FXSortFoldersFirst -bool true
+
+# Avoid creating .DS_Store files on network or USB volumes
+defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
+
+# Use list view in all Finder windows by default
+# Four-letter codes for the other view modes: `icnv`, `Nlsv`, `glyv`
+defaults write com.apple.finder FXPreferredViewStyle -string "clmv"
+
+# Set Desktop as the default location for new Finder windows
+# For other paths, use `PfLo` and `file:///full/path/here/`
+defaults write com.apple.finder NewWindowTarget -string "PfDe"
+defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}/Desktop/"
+
+# Set icons for hard drives, servers, and removable media on the desktop
+defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool true
+defaults write com.apple.finder ShowHardDrivesOnDesktop -bool false
+defaults write com.apple.finder ShowMountedServersOnDesktop -bool true
+defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool false
+
+############
+#  SAFARI  #
+############
+
+defaults write com.apple.Safari ShowDevelopMenu -bool true
+
+##########
+#  DOCK  #
+##########
+
+# Minimize windows into their application's icon
+defaults write com.apple.dock minimize-to-application -bool true
+
+# Show indicator lights for open applications in the Dock
+defaults write com.apple.dock show-process-indicators -bool false
+
+# Don't show recent applications in Dock
+defaults write com.apple.dock show-recents -bool false
+
+# Hot corners
+# Possible values:
+#  0: no-op
+#  2: Mission Control
+#  3: Show application windows
+#  4: Desktop
+#  5: Start screen saver
+#  6: Disable screen saver
+#  7: Dashboard
+# 10: Put display to sleep
+# 11: Launchpad
+# 12: Notification Center
+# 13: Lock Screen
+
+# Top left
+defaults write com.apple.dock wvous-tl-corner -int 0
+defaults write com.apple.dock wvous-tl-modifier -int 0
+# Top right
+defaults write com.apple.dock wvous-tr-corner -int 0
+defaults write com.apple.dock wvous-tr-modifier -int 0
+# Bottom left
+defaults write com.apple.dock wvous-bl-corner -int 0
+defaults write com.apple.dock wvous-bl-modifier -int 0
+# Bottom right
+defaults write com.apple.dock wvous-br-corner -int 0
+defaults write com.apple.dock wvous-br-modifier -int 0
+
+##########
+#  MAIL  #
+##########
+
+# Copy email addresses as `foo@example.com` instead of `Foo Bar <foo@example.com>` in Mail.app
+defaults write com.apple.mail AddressesIncludeNameOnPasteboard -bool false
+
+###############
+#  APP STORE  #
+###############
+
+# Disable in-app rating requests from apps downloaded from the App Store.
+defaults write com.apple.appstore InAppReviewEnabled -int 0
+
+# Reload Finder
+killall "Finder"
+
+{{- end }}

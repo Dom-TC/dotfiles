@@ -15,7 +15,6 @@ I've recently switched to managing my dotfiles with Chezmoi. This is still very 
 - Implement solution to set .chezmoi.toml data
   - Ask questions on run?
   - Environment variables?
-- Set MacOS settings
 - Prettify script output
 - Activate tailscale
 - Install Applications
