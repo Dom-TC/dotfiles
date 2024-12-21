@@ -18,7 +18,6 @@ I've recently switched to managing my dotfiles with Chezmoi. This is still very 
 - Set MacOS settings
 - Prettify script output
 - Activate tailscale
-- Automatically set iterm to use synced settings
 - Install Applications
   - VectorWorks
   - DVS
