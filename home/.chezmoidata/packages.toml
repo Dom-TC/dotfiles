@@ -32,7 +32,8 @@
             "readline",                     # Command linte editing library
             "libyaml",                      # YAML parser
             "gmp",                          # GNU precision math library
-            "dockutil"                      # Tool for managing dock items
+            "dockutil",                     # Tool for managing dock items
+            "eza"                           # LS replacement
         ]
 
     [packages.homebrew.dev_computer]
@@ -86,6 +87,7 @@
             "cleanshot",
         ]
         formulae = [
+            "nmap",                         # Port scanning utility
         ]
 
     [packages.asdf]
