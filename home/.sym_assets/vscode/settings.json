@@ -41,5 +41,6 @@
       }
     ]
   },
-  "chat.commandCenter.enabled": false
+  "chat.commandCenter.enabled": false,
+  "security.workspace.trust.untrustedFiles": "open"
 }
