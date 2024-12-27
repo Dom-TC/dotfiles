@@ -1,1 +1,6 @@
 .sym_assets/ # Used to save symlink destination files
+
+# Ignore Library folder unless on MacOS and not ephemeral
+{{ if or (ne .osid "darwin") (.ephemeral) }}
+Library/
+{{ end }}
