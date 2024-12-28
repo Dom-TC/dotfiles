@@ -11,7 +11,7 @@ export ITERM2_SQUELCH_MARK=1
 export LDFLAGS="-L/opt/homebrew/opt/openssl@3/lib"                     # Needed for SSL with asdf
 export CPPFLAGS="-I/opt/homebrew/opt/openssl@3/include"                # Needed for SSL with asdf
 export PKG_CONFIG_PATH="/opt/homebrew/opt/openssl@3/lib/pkgconfig"      # Needed for SSL with asdf
-export TEALDEER_CONFIG_DIR="{{- .chezmoi.homeDir -}}/.config/tealdeer/" # Set the config directory for tealdeer to ~/.config/tealdeer
+export TEALDEER_CONFIG_DIR="{{- .home -}}/.config/tealdeer/"            # Set the config directory for tealdeer to ~/.config/tealdeer
 
 
 # Set the directory to store zinit and plugins
