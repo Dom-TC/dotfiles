@@ -8,13 +8,23 @@ I've recently switched to managing my dotfiles with Chezmoi. This is still very 
 2. Active 1Password SSH Agent (`Settings>Developer>Use the SSH Agent`)
 3. `sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply dom-tc` This may require running twice if git isn't already installed.
 
+## Configuration
+
+By default, the configuration is set via prompts on the command line.
+
+If you'd like to run a non-interactive version set `DF_NON_INTERACTIVE` to true.
+
+You can then set the following environment variables to adjust what tools will be installed.
+
+- `DF_DEV_COMPUTER`
+- `DF_SOUND_COMPUTER`
+- `DF_PERSONAL_COMPUTER`
+- `DF_SERVER`
+
 ## To Do
 
 - Consider asdf-direnv
 - Move to XDG_BASE_DIR - See: <https://wiki.archlinux.org/index.php/XDG_Base_Directory>
-- Implement solution to set .chezmoi.toml data
-  - Ask questions on run?
-  - Environment variables?
 - Prettify script output - See: <https://github.com/natelandau/dotfiles/blob/master/dotfiles/.chezmoitemplates/shared_script_utils.bash>
 - Activate tailscale
 - Install Applications
@@ -39,6 +49,9 @@ I've recently switched to managing my dotfiles with Chezmoi. This is still very 
   - Log into accounts
   - Activate Safari extensions
   - etc.
+- Switch to promptBoolOnce to avoid repeat questions on init
+  - Had an issue with either the prompt not being called if you pre-set the variables
+  - But if you didn't, and only set them within the if block, the data section was erroring as unassigned
 
 ## Credit
 
