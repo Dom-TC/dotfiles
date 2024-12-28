@@ -52,6 +52,10 @@ You can then set the following environment variables to adjust what tools will b
 - Switch to promptBoolOnce to avoid repeat questions on init
   - Had an issue with either the prompt not being called if you pre-set the variables
   - But if you didn't, and only set them within the if block, the data section was erroring as unassigned
+- Install fonts
+  - JetBrains Mono NL <https://github.com/ryanoasis/nerd-fonts?tab=readme-ov-file#option-2-homebrew-fonts>
+  - DinPRO
+  - Equity etc.
 
 ## Credit
 
