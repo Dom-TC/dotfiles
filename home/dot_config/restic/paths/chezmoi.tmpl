@@ -1,0 +1,8 @@
+{{- if .does_backup -}}
+{{- $hostname := .hostname | lower -}}
+{{- $paths := index .restic.paths $hostname -}}
+
+{{- range $index, $path := $paths.paths -}}
+{{ $path }}
+{{ end -}}
+{{- end -}}

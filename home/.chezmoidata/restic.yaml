@@ -1,0 +1,10 @@
+restic:
+  paths:
+    doms-macbook-air:
+      paths:
+        - "/test/path"
+        - "/another/path"
+        - "/third/path"
+    other-host:
+      paths:
+        - "/some/path"

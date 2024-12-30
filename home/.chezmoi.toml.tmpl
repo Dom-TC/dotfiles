@@ -2,7 +2,7 @@
 {{- /* Eg. "darwin", "linux-ubuntu", "linux-arch" etc */ -}}
 {{- $osid := .chezmoi.os -}}
 {{- if hasKey .chezmoi.osRelease "id" -}}
-{{-   $osid = printf "%s-%s" .chezmoi.os .chezmoi.osRelease.id -}}
+    {{- $osid = printf "%s-%s" .chezmoi.os .chezmoi.osRelease.id -}}
 {{- end -}}
 
 {{- /* Check if this is an ephemeral machine. Default is false. */ -}}
@@ -14,29 +14,42 @@
 {{- $githubactions := env "GITHUB_ACTIONS" | not | not -}}
 
 {{- if or $ephemeralEnv $codespaces $devcontainer $githubactions -}}
-  {{- $ephemeral = true -}}
+    {{- $ephemeral = true -}}
 {{- end -}}
 
 {{- /* Check whether to prompt for input based on DF_NON_INTERACTIVE or if the shell is not interactive */ -}}
 {{- $not_interactive_env := env "DF_NON_INTERACTIVE" | not | not -}}
 {{- $interactive_shell := stdinIsATTY -}}
 
+{{- /* If non interactive, we will fill variables from env vars */ -}}
+{{- $use_envs := or $not_interactive_env (not $interactive_shell) -}}
+
 {{- $dev_computer := false -}}
 {{- $sound_computer := false -}}
 {{- $personal_computer := false -}}
 {{- $server := false -}}
+{{- $does_backup := true -}}
 
-{{- /* If non interactive, fill variables from env vars */ -}}
-{{- if or $not_interactive_env (not $interactive_shell) -}}
+{{- if $use_envs -}}
     {{- $dev_computer = env "DF_DEV_COMPUTER" | not | not -}}
     {{- $sound_computer = env "DF_SOUND_COMPUTER" | not | not -}}
     {{- $personal_computer = env "DF_PERSONAL_COMPUTER" | not | not -}}
     {{- $server = env "DF_SERVER" | not | not -}}
+    {{- if not $ephemeral -}}
+        {{- $does_backup = env "DF_DOES_BACKUP" | not | not -}}
+    {{- else -}}
+        {{- $does_backup := false -}}
+    {{- end -}}
 {{- else -}}
     {{- $dev_computer = promptBool "Is this a computer for development work? (true/false)" -}}
     {{- $sound_computer = promptBool "Is this a computer for sound work? (true/false)" -}}
     {{- $personal_computer = promptBool "Is this a computer for personal use? (true/false)" -}}
     {{- $server = promptBool "Is this a server? (true/false)" -}}
+    {{- if not $ephemeral -}}
+        {{- $does_backup = promptBool "Should this machine be backed up to B2? (true/false)" -}}
+    {{- else -}}
+        {{- $does_backup := false -}}
+    {{- end -}}
 {{- end -}}
 
 [data]
@@ -52,3 +65,5 @@
 
     home = {{ .chezmoi.homeDir | quote }}
     user = {{ .chezmoi.username | quote }}
+
+    does_backup = {{ $does_backup }}
