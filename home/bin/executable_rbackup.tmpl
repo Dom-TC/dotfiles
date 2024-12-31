@@ -1,0 +1,214 @@
+{{- if .does_backup -}}
+
+#!/bin/zsh
+
+set -Ee
+
+# Clean credentials on exit
+trap 'unset RESTIC_PASSWORD_COMMAND' EXIT
+trap 'unset B2_ACCOUNT_ID' EXIT
+trap 'unset B2_ACCOUNT_KEY' EXIT
+
+# Set some default values
+PATHS_FOLDER="{{- .home -}}/.config/restic/paths"
+LOG_FILE="/restic/rbackup.log"
+
+LOG_TO_FILE=false
+LOG_DEBUG=false
+COMMAND=""
+RESTIC_ARGS=()
+
+# Export some env vars for restic settings
+export RESTIC_REPOSITORY="b2:domtc-backups:backups/restic"
+export RESTIC_PASSWORD_COMMAND="op read "op://infra-keys/restic-encryption-key/password" --account=domchestersoundltd.1password.com"
+export B2_ACCOUNT_ID=$(op read "op://infra-keys/Backblaze Application Key - rbackup/username" --account=domchestersoundltd.1password.com)
+export B2_ACCOUNT_KEY=$(op read "op://infra-keys/Backblaze Application Key - rbackup/credential" --account=domchestersoundltd.1password.com)
+
+log_message() {
+    local level="$1"
+    local message="$2"
+    local log_dir=$(dirname "$LOG_FILE")
+
+    # If LOG_DEBUG is false and the level is 'debug', don't output logs
+    if [[ $level == "debug" && $LOG_DEBUG == "false" ]]; then
+        return
+    fi
+
+    if $LOG_TO_FILE; then
+        # Check if the directory exists, and create it if it doesn't
+        if [[ ! -d $log_dir ]]; then
+            mkdir -p $log_dir
+        fi
+
+        # Check if the log file exists, and create it if it doesn't
+        if [[ ! -f $LOG_FILE ]]; then
+            touch $LOG_FILE
+            echo "$(date +"%Y-%m-%d %H:%M:%S") [info] Created log file" >> $LOG_FILE
+        fi
+        echo "$(date +"%Y-%m-%d %H:%M:%S") [$level] $message" >> $LOG_FILE
+    else
+        echo "$(date +"%Y-%m-%d %H:%M:%S") [$level] $message"
+    fi
+}
+
+check_initialised() {
+    log_message debug "Checking if repo is initialised"
+    # Check if the restic repository is initialized using 'restic cat config'
+    if ! restic cat config > /dev/null 2>&1; then
+        log_message error "The restic repository is not initialized"
+        exit 1
+    fi
+}
+
+gather_paths() {
+    local target_variable="$1"  # The variable name to populate
+    local paths_array=()
+
+    log_message debug "Gathering paths from $PATHS_FOLDER"
+
+    for path_file in $PATHS_FOLDER/*; do
+        if [[ -f "$path_file" ]]; then
+            # Read paths from the file and append them to the 'paths_array' array
+            while IFS= read -r line; do
+                if [[ -n "$line" ]]; then
+                    # Append path to array
+                    paths_array+=("$(eval echo "$line")")
+                fi
+            done < "$path_file"
+        fi
+    done
+
+    log_message debug "paths_array: ${paths_array[*]}"
+
+    # Use eval to set the target variable in the caller's scope
+    eval "$target_variable=(\"\${paths_array[@]}\")"
+}
+
+backup() {
+    log_message debug "Running command: backup"
+
+    check_initialised
+    
+    paths=() # The variable to set the output of gather_paths to.
+    gather_paths "paths"
+
+    # If no paths are found, exit with an error
+    if [[ ${#paths[@]} -eq 0 ]]; then
+        log_message error "No backup paths found in $PATHS_FOLDER"
+        exit 1
+    fi
+
+    # Run the backup command with all collected paths
+    log_message debug "Running restic backup with paths:"
+    for path_line in "${paths[@]}"; do
+        log_message debug "- '$path_line'"
+    done
+
+    restic backup "${paths[@]}" $RESTIC_ARGS
+}
+
+init() {
+    log_message debug "Running command: init"
+    restic init $RESTIC_ARGS
+}
+
+check() {
+    log_message debug "Running command: check"
+    restic check $RESTIC_ARGS
+}
+
+snapshots() {
+    log_message debug "Running command: snapshots"
+    restic snapshots $RESTIC_ARGS
+}
+
+restore() {
+    log_message debug "Running command: restore"
+
+    SNAPSHOT=$1
+    shift
+    log_message debug "Snapshot: $SNAPSHOT"
+
+    if [[ -z "$SNAPSHOT" ]]; then
+      log_message error "Usage: 'restore <snapshot> [<restore-dir>]'"
+      exit 1
+    fi
+
+    RESTORE_DIR=$1
+    if [[ -z "$RESTORE_DIR" ]]; then
+      RESTORE_DIR="/tmp/restic-restore-${SNAPSHOT}"
+    else
+      shift
+    fi
+    log_message debug "Restore Directory: $RESTORE_DIR"
+
+    restic restore "$SNAPSHOT" --target "$RESTORE_DIR" "$@"
+}
+
+help() {
+    log_message debug "Running command: help"
+    echo "Usage: rbackup [options] <command> [-- restic arguments]"
+    echo "Commands:"
+    echo "  init              "
+    echo "  backup            "
+    echo "  check             "
+    echo "  snapshots         "
+    echo "  restore           "
+    echo "  help              Show this help message"
+    echo "Options:"
+    echo "  --log-to-file     Log output to a file instead of stdout"
+}
+
+zparseopts -E -D -- \
+    -log-to-file=log_to_file \
+    -debug=debug
+
+if [[ -n $log_to_file ]]; then
+    LOG_TO_FILE=true
+fi
+
+if [[ -n $debug ]]; then
+    LOG_DEBUG=true
+fi
+
+# Capture the first positional argument as the command
+if [[ $# -ge 1 ]]; then
+    COMMAND=$1
+    shift
+else
+    COMMAND="backup"
+fi
+
+# Remaining arguments are passed to restic
+RESTIC_ARGS=("$@")
+
+log_message debug "Command: $COMMAND"
+log_message debug "Restic args: $RESTIC_ARGS"
+log_message debug "LOG_TO_FILE: $LOG_TO_FILE"
+log_message debug "LOG_DEBUG: $LOG_DEBUG"
+log_message debug "RESTIC_REPOSITORY: $RESTIC_REPOSITORY"
+log_message debug "RESTIC_PASSWORD_COMMAND: $RESTIC_PASSWORD_COMMAND"
+log_message debug "PATHS_FOLDER: $PATHS_FOLDER"
+log_message debug "LOG_FILE: $LOG_FILE"
+
+# Define a list of allowed commands (functions)
+ALLOWED_COMMANDS=("backup" "init" "check" "snapshots" "restore" "help")
+
+# Check if the command is in the allowed list
+if [[ " ${ALLOWED_COMMANDS[@]} " =~ " $COMMAND " ]]; then
+    # Call the command function dynamically if it's allowed
+    "$COMMAND" $RESTIC_ARGS
+else
+    log_message error "Unknown command: '$COMMAND'"
+    exit 1
+fi
+
+log_message debug "Cleaning credentials"
+
+unset RESTIC_PASSWORD_COMMAND
+unset B2_ACCOUNT_ID
+unset B2_ACCOUNT_KEY
+
+log_message debug "Script complete"
+
+{{- end -}}
