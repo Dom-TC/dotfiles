@@ -65,5 +65,6 @@
 
     home = {{ .chezmoi.homeDir | quote }}
     user = {{ .chezmoi.username | quote }}
+    personal_email = {{ onepasswordRead "op://Private/Personal/Internet Details/email" $op_personal_account_id | quote }}
 
     does_backup = {{ $does_backup }}

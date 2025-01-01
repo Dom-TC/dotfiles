@@ -1,7 +1,7 @@
 # User settings
 [user]
 	name = Dom Chester
-	email = dom.chester@me.com
+	email = {{ .personal_email }}
 	signingkey = ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCWW91FoMIlB2zjCfC8QU4N52z3Km1sIKdO3enpA4RefxJNE1lQlRwmfTMlG7BWl/Z3GeYgAUQxJEOpJ48A7wiItpjWq0LM3Rjf1LEjgZ665k+LzreK878teQPjm2XEoCRdKQJkcLGQjqB0+ad8DG2yt+E/QxZUvlL4rQ32VQVYBtpOzTlY4XKCB4wzkS8EqxQZw21Ej2h5DGve9/TEv6zCSBuBEFWYR9GBzgI+eeEQr2tnZdOyU8Ja1enxyJLvmXMZbckZdCpUoULGkH4PicqYriMcUUOLFmZl7GPJ4nstH7j/IXiH6AIckh3L4ZdKaSj6YGKl0y6qBYR37VHBfx+6DaX7Dm7Gp7DChn7P6FvkmoG2PoLfHfhOmADNp9qPShT9f56w4YLlw0IKg6H+DgJ7opgGeptgc/PZ7h2wEHaEEGian0XNVWbQImwFQ/2Zr+2wtDjfWYC2XgvVtL0DPqmgTGucqsifadcM0XVWtr4u1cLQ79zaqwt37kranKa2nEuwT+fQGAomz/lBeISpcScvUAiVARJxLR7Lz2MpXzQ55eMkfIcywr57vZX0KISaLUQLxTvKvxT2YdLVBK3B73Z94eDws8HmbsogNFo9YEZQSEOrXMOybo/cbz8+pXDAu2h3VGPniwnbwpw28qJXbXdNnpY9LS1lOXYr7wnkg7onDw==
 
 	# GPG key
@@ -18,7 +18,7 @@
 	editor = '/Applications/Visual Studio Code.app/Contents/Resources/app/bin/code'
 
 	# use global custom gittignore
-	excludesfile = ~/.gitignore
+	excludesfile = {{ .home }}/.gitignore
 
 [color]
 	# Use coloured output
@@ -31,7 +31,7 @@
 [commit]
 	# Sign all commits
 	gpgsign = true
-	template = /Users/dom/.stCommitMsg
+	template = {{ .home }}/.stCommitMsg
 
 # Substitutes :gh to github in urls
 [url "https://github.com/"]
@@ -64,25 +64,4 @@
 
 [gpg "ssh"]
 	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
-	allowedSignersFile = /Users/dom/.config/git/allowed_signers
-
-[diff]
-	tool = Kaleidoscope
-
-[difftool "Kaleidoscope"]
-	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
-
-[difftool]
-	prompt = false
-	trustExitCode = true
-
-[merge]
-	tool = Kaleidoscope
-
-[mergetool "Kaleidoscope"]
-	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
-	trustExitCode = true
-	
-[mergetool]
-	prompt = false
-	keepBackup = true
+	allowedSignersFile = {{ .home }}/.config/git/allowed_signers

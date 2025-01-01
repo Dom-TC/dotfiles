@@ -9,6 +9,7 @@
     "dot_zshrc*": "shellscript",
     "*.json5": "jsonc",
     "*_zshrc.tmpl": "shellscript",
+    "*_gitconfig.tmpl": "toml",
     "executable_*.tmpl": "shellscript"
   }
 }
