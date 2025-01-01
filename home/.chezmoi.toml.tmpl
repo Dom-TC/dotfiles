@@ -28,7 +28,9 @@
 {{- $sound_computer := false -}}
 {{- $personal_computer := false -}}
 {{- $server := false -}}
-{{- $does_backup := true -}}
+{{- $does_backup_backblaze := true -}}
+{{- $does_backup_b2 := true -}}
+
 
 {{- if $use_envs -}}
     {{- $dev_computer = env "DF_DEV_COMPUTER" | not | not -}}
@@ -36,9 +38,15 @@
     {{- $personal_computer = env "DF_PERSONAL_COMPUTER" | not | not -}}
     {{- $server = env "DF_SERVER" | not | not -}}
     {{- if not $ephemeral -}}
-        {{- $does_backup = env "DF_DOES_BACKUP" | not | not -}}
+        {{- if eq $osid "darwin" -}}
+            {{- $does_backup_backblaze = env "DF_DOES_BACKUP_BACKBLAZE" | not | not -}}
+        {{- else -}}
+            {{- $does_backup_backblaze := false -}}
+        {{- end -}}
+        {{- $does_backup_b2 = env "DF_DOES_BACKUP_B2" | not | not -}}
     {{- else -}}
-        {{- $does_backup := false -}}
+        {{- $does_backup_backblaze := false -}}
+        {{- $does_backup_b2 := false -}}
     {{- end -}}
 {{- else -}}
     {{- $dev_computer = promptBool "Is this a computer for development work? (true/false)" -}}
@@ -46,11 +54,22 @@
     {{- $personal_computer = promptBool "Is this a computer for personal use? (true/false)" -}}
     {{- $server = promptBool "Is this a server? (true/false)" -}}
     {{- if not $ephemeral -}}
-        {{- $does_backup = promptBool "Should this machine be backed up to B2? (true/false)" -}}
+        {{- if eq $osid "darwin" -}}
+            {{- $does_backup_backblaze = promptBool "Should this machine be backed up to Backblaze? (true/false)" -}}
+        {{- else -}}
+            {{- $does_backup_backblaze := false -}}
+        {{- end -}}
+        {{- $does_backup_b2 = promptBool "Should this machine be backed up to B2? (true/false)" -}}
     {{- else -}}
-        {{- $does_backup := false -}}
+        {{- $does_backup_backblaze := false -}}
+        {{- $does_backup_b2 := false -}}
     {{- end -}}
 {{- end -}}
+
+{{- /* Assign these here so we can use them within this template directly */ -}}
+{{- $op_personal_account_id := "4AJFPVWM6RED5MW6XZQ3B4MOLQ" -}}
+{{- $op_snailed_account_id := "AMBWLKZBBRH47FSA4FDBAAXOFU" -}}
+{{- $op_sound_account_id := "6HIWXKNESVA4DIJ7ZSX7ECSS4M" -}}
 
 [data]
     osid = {{ $osid | quote }}
@@ -63,8 +82,13 @@
     server = {{ $server }}
     ephemeral = {{ $ephemeral }}
 
+    op_personal_account_id = {{ $op_personal_account_id | quote }}
+    op_snailed_account_id = {{ $op_snailed_account_id | quote }}
+    op_sound_account_id = {{ $op_sound_account_id | quote }}
+
     home = {{ .chezmoi.homeDir | quote }}
     user = {{ .chezmoi.username | quote }}
     personal_email = {{ onepasswordRead "op://Private/Personal/Internet Details/email" $op_personal_account_id | quote }}
 
-    does_backup = {{ $does_backup }}
+    does_backup_backblaze = {{ $does_backup_backblaze }}
+    does_backup_b2 = {{ $does_backup_b2 }}

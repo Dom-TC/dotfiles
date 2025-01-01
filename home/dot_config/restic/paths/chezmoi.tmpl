@@ -1,10 +1,9 @@
-{{- if .does_backup -}}
+{{- if .does_backup_b2 -}}
 {{- $hostname := .hostname | lower -}}
 {{- if hasKey .restic.paths $hostname -}}
 {{- $paths := index .restic.paths $hostname -}}
 {{- range $index, $path := $paths.paths -}}
 {{ $path }}
-{{- end -}}
 {{- end -}}
 {{- end -}}
 {{- end -}}

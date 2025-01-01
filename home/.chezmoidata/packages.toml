@@ -6,7 +6,6 @@
             "iterm2",                       # Terminal emulator
             "visual-studio-code",           # VS Code Editor
             "dropbox",
-            "backblaze",
             "tailscale",
             "carbon-copy-cloner",
             "alfred",

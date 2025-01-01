@@ -29,7 +29,8 @@
     "dot_zshrc*": "shellscript",
     "*.json5": "jsonc",
     "*_zshrc.tmpl": "shellscript",
-    ".env*": "dotenv"
+    ".env*": "dotenv",
+    "executable_*.tmpl": "shellscript"
   },
   "editor.tokenColorCustomizations": {
     "textMateRules": []
