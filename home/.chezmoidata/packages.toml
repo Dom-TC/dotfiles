@@ -32,7 +32,8 @@
             "libyaml",                      # YAML parser
             "gmp",                          # GNU precision math library
             "dockutil",                     # Tool for managing dock items
-            "eza"                           # LS replacement
+            "eza",                          # LS replacement
+            "restic",                       # Backup tool
         ]
 
     [packages.homebrew.dev_computer]
