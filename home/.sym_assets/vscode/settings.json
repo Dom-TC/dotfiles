@@ -30,7 +30,8 @@
     "*.json5": "jsonc",
     "*_zshrc.tmpl": "shellscript",
     ".env*": "dotenv",
-    "executable_*.tmpl": "shellscript"
+    "executable_*.tmpl": "shellscript",
+    "*_gitconfig.tmpl": "toml"
   },
   "editor.tokenColorCustomizations": {
     "textMateRules": []
