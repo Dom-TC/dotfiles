@@ -6,7 +6,7 @@
 {{- end -}}
 
 {{- /* Check if this is an ephemeral machine. Default is false. */ -}}
-{{- $ephemeral := false -}}  
+{{- $ephemeral := false -}}
 
 {{- $ephemeralEnv := env "EPHEMERAL" | not | not -}}
 {{- $codespaces := env "CODESPACES" | not | not -}}
