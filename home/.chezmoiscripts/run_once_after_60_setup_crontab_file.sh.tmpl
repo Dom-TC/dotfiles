@@ -1,0 +1,6 @@
+{{ if (not .ephemeral) -}}
+#!/usr/bin/env bash
+
+echo "Installing custom crontab..."
+crontab {{ .home -}}/.config/cron/crontab
+{{- end -}}

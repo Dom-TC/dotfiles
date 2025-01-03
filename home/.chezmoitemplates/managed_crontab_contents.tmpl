@@ -1,0 +1,8 @@
+# THIS FILE IS PARTIALLY MANAGED VIA CHEZMOI
+
+PATH="/opt/homebrew/bin:{{- .home -}}/bin"
+
+{{ if .does_backup_b2 -}}
+# Run rbackup every hour.
+0 * * * * flock -n /tmp/rbackup.lock rbackup --log-to-file backup
+{{- end }}

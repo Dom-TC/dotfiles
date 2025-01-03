@@ -11,7 +11,7 @@ trap 'unset B2_ACCOUNT_KEY' EXIT
 
 # Set some default values
 PATHS_FOLDER="{{- .home -}}/.config/restic/paths"
-LOG_FILE="/restic/rbackup.log"
+LOG_FILE="{{- .home -}}/.local/state/restic/rbackup.log"
 
 LOG_TO_FILE=false
 LOG_DEBUG=false

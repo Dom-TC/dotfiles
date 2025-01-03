@@ -18,7 +18,7 @@
             "coreutils",
             "fzf",                          # Fuzzy finder
             "ghostscript",                  # Interpreter for PostScript and PDF
-            "git-filter-repo",               # Utility to rewrite git history
+            "git-filter-repo",              # Utility to rewrite git history
             "git-fresh",                    # Utility to keep git repos fresh
             "git",
             "gum",                          # Provides pretty shell-scripts
@@ -34,6 +34,7 @@
             "dockutil",                     # Tool for managing dock items
             "eza",                          # LS replacement
             "restic",                       # Backup tool
+            "flock",                        # Multi-platform Flock(1) replacement
         ]
 
     [packages.homebrew.dev_computer]

@@ -1,0 +1,30 @@
+#!/bin/zsh
+
+# Generate the content from the template using chezmoi
+MANAGED_CONTENT={{- includeTemplate "managed_crontab_contents.tmpl" . | quote }}
+
+# Define the markers
+START_MARKER="#### CHEZMOI START ####"
+END_MARKER="#### CHEZMOI END ####"
+
+# Copy the input data to a temporary file
+tmpfile=$(mktemp)
+trap "rm -f ${tmpfile}" EXIT
+cat > "${tmpfile}"
+
+# Check if the file is empty (i.e., no input provided)
+if [[ ! -s "${tmpfile}" ]]; then
+    # No input: output the managed content with markers
+    echo "$START_MARKER"
+    echo "$MANAGED_CONTENT"
+    echo "$END_MARKER"
+    exit 0
+fi
+
+# Process the file, replacing the content between the markers
+awk -v start="$START_MARKER" -v end="$END_MARKER" -v content="$MANAGED_CONTENT" '
+    BEGIN { in_block = 0 }
+    $0 == start { print; print content; in_block = 1; next }
+    $0 == end { print; in_block = 0; next }
+    !in_block { print }
+' "${tmpfile}"
