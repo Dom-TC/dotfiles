@@ -1,5 +1,6 @@
 {{- if (and (.does_backup_backblaze) (eq .osid "darwin")) -}}
 
+
 #!/bin/bash
 
 # This script is taken verbatim from Backblaze.
@@ -103,7 +104,7 @@ kill_syspref
 
 # Check to see if Backblaze is installed already, if so update it. Else continue as planned.
 if open -Ra "Backblaze" ; then
-	echo "Backblaze already installed, attempting to update"
+	echo "Backblaze already installed"
 	update_backblaze
 	if [ "$return" == "BZERROR:1001" ]; then
 		echo "Backblaze successfully updated"
@@ -116,7 +117,7 @@ if open -Ra "Backblaze" ; then
 			success_exit
 		else
 			echo "Backblaze was already installed but failed to update"
-			failure_exit
+			success_exit
 		fi
 	fi
 else
