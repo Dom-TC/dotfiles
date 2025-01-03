@@ -56,8 +56,6 @@ You can then set the following environment variables to adjust what tools will b
   - JetBrains Mono NL <https://github.com/ryanoasis/nerd-fonts?tab=readme-ov-file#option-2-homebrew-fonts>
   - DinPRO
   - Equity etc.
-- Create script to configure cron job for backups
-  - Does it need to init on every new machine?
 
 ## Credit
 
