@@ -50,20 +50,14 @@ whichfunc() {
 }
 
 # Change Dark Mode
-function goDark() {
+function go_dark() {
     if has toggleDarkMode; then
         toggleDarkMode dark
-        if has setTerminalTheme; then
-            setTerminalTheme "Solarized Light" "Solarized Dark"
-        fi
     fi
 }
 
-function goLight() {
+function go_light() {
     if has toggleDarkMode; then
         toggleDarkMode light
-        if has setTerminalTheme; then
-            setTerminalTheme "Solarized Light" "Solarized Dark"
-        fi
     fi
 }
