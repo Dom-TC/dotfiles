@@ -11,6 +11,7 @@
             "alfred",
             "rocket",
             "keyboard-maestro",
+            "moom",                         # Window Manager
         ]
         formulae = [
             "bat",                          # Bat with syntax highlighting and Git integration

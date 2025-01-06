@@ -33,7 +33,6 @@ You can then set the following environment variables to adjust what tools will b
   - Dante Controller
   - WWB
   - CleanShot X
-  - Lasso
   - Smaart
   - IP Scanner
   - Wifi Scanner Pro
