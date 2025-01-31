@@ -17,7 +17,7 @@
   "flake8.ignorePatterns": ["tests/"],
   "editor.fontFamily": "'JetBrainsMono NF', Menlo, Monaco, 'Courier New', monospace",
   "editor.accessibilitySupport": "off",
-  "editor.fontLigatures": true,
+  "editor.fontLigatures": false,
   "go.toolsManagement.autoUpdate": true,
   "files.associations": {
     "*.toml.tmpl": "toml",
