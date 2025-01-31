@@ -12,6 +12,7 @@
             "rocket",
             "keyboard-maestro",
             "moom",                         # Window Manager
+            "jordanbaird-ice"               # Ice Menu Bar Manager
         ]
         formulae = [
             "bat",                          # Bat with syntax highlighting and Git integration
@@ -49,6 +50,7 @@
             "zoom",
             "obsidian",
             "cleanshot",
+            "soulver",
         ]
         formulae = [
             "hugo",                         # Hugo static site generator
@@ -87,6 +89,7 @@
             "zoom",
             "obsidian",
             "cleanshot",
+            "soulver",
         ]
         formulae = [
             "nmap",                         # Port scanning utility
