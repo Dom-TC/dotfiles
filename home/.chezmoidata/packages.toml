@@ -37,6 +37,7 @@
             "eza",                          # LS replacement
             "restic",                       # Backup tool
             "flock",                        # Multi-platform Flock(1) replacement
+            "topgrade"                      # Update everything
         ]
 
     [packages.homebrew.dev_computer]
@@ -56,6 +57,7 @@
             "hugo",                         # Hugo static site generator
             "pipx",                         # Isolated python environments for packages
             "tmux",
+            "hadolint",
         ]
 
     [packages.homebrew.server]
@@ -90,6 +92,7 @@
             "obsidian",
             "cleanshot",
             "soulver",
+            "reaper",
         ]
         formulae = [
             "nmap",                         # Port scanning utility
@@ -108,6 +111,9 @@
             "poetry",                       # Python package and dependency manager
             "pre-commit",                   # Manage pre-commit hooks
             "argcomplete",                  # Needed for pipx autocompletions
+            "jupyter-console",              # Jupyter REPL
+            "jupyterlab",                   # Jupyter Web Interface
+            "djlint"                        # Jinja linter
         ]
 
     [packages.pipx.poetry]
