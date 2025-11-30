@@ -31,7 +31,9 @@
     "*_zshrc.tmpl": "shellscript",
     ".env*": "dotenv",
     "executable_*.tmpl": "shellscript",
-    "*_gitconfig.tmpl": "toml"
+    "*_gitconfig.tmpl": "toml",
+    "*.jinja": "jinja",
+    ".yamllint": "yaml"
   },
   "editor.tokenColorCustomizations": {
     "textMateRules": []
@@ -41,5 +43,12 @@
   "dotenv.enableAutocloaking": false,
   "workbench.preferredDarkColorTheme": "Solarized Dark",
   "workbench.preferredLightColorTheme": "Solarized Light",
-  "window.autoDetectColorScheme": true
+  "window.autoDetectColorScheme": true,
+  "python.analysis.typeCheckingMode": "standard",
+  "djlint.useVenv": false,
+  "djlint.pythonPath": "/Users/dom/.local/pipx/venvs/djlint/bin/python",
+  "editor.unicodeHighlight.nonBasicASCII": false,
+  "editor.unicodeHighlight.invisibleCharacters": false,
+  "editor.unicodeHighlight.ambiguousCharacters": false,
+  "claudeCode.preferredLocation": "panel"
 }
