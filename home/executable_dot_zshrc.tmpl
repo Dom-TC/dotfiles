@@ -10,9 +10,9 @@ export PATH="$(brew --prefix)/opt/coreutils/libexec/gnubin:$PATH"
 export ITERM2_SQUELCH_MARK=1
 export LDFLAGS="-L/opt/homebrew/opt/openssl@3/lib"                     # Needed for SSL with asdf
 export CPPFLAGS="-I/opt/homebrew/opt/openssl@3/include"                # Needed for SSL with asdf
-export PKG_CONFIG_PATH="/opt/homebrew/opt/openssl@3/lib/pkgconfig"      # Needed for SSL with asdf
-export TEALDEER_CONFIG_DIR="{{- .home -}}/.config/tealdeer/"            # Set the config directory for tealdeer to ~/.config/tealdeer
-
+export PKG_CONFIG_PATH="/opt/homebrew/opt/openssl@3/lib/pkgconfig"     # Needed for SSL with asdf
+export TEALDEER_CONFIG_DIR="{{- .home -}}/.config/tealdeer/"           # Set the tealdeer config directory
+export HOMEBREW_NO_ENV_HINTS=1                                         # Disable homebrews hints
 
 # Set the directory to store zinit and plugins
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
