@@ -20,6 +20,7 @@ You can then set the following environment variables to adjust what tools will b
 - `DF_SOUND_COMPUTER`
 - `DF_PERSONAL_COMPUTER`
 - `DF_SERVER`
+- `DF_PERSONAL_EMAIL`
 
 ## To Do
 
