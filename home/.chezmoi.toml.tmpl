@@ -36,9 +36,10 @@
 {{- $does_backup_backblaze := true -}}
 {{- $does_backup_b2 := true -}}
 
+{{- if not $server -}}
 {{- /* Get email from 1Password */ -}}
 {{ $personal_email := onepasswordRead "op://Private/Personal/Internet Details/email" $op_personal_account_id | quote }}
-
+{{- end -}}
 
 {{- if $use_envs -}}
     {{- $dev_computer = env "DF_DEV_COMPUTER" | not | not -}}
@@ -56,7 +57,7 @@
         {{- $does_backup_backblaze := false -}}
         {{- $does_backup_b2 := false -}}
     {{- end -}}
-    {{- $personal_email = env "DF_PERSONAL_EMAIL" | not | not -}}
+    {{- $personal_email := env "DF_PERSONAL_EMAIL" | not | not -}}
 {{- else -}}
     {{- $dev_computer = promptBool "Is this a computer for development work? (true/false)" -}}
     {{- $sound_computer = promptBool "Is this a computer for sound work? (true/false)" -}}
