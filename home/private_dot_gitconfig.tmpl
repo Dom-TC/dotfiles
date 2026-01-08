@@ -44,9 +44,11 @@
 [url "https://github.com/"]
     insteadOf = gh:
 
+{{- if not .server -}}
 # Use SSH instead of HTTPS for github repos
 [url "git@github.com:"]
 	insteadOf = https://github.com/
+{{- end -}}
 
 [filter "lfs"]
 	clean = git-lfs clean -- %f
