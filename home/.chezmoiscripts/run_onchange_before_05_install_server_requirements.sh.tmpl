@@ -1,0 +1,33 @@
+{{- if .server -}}
+#!/usr/bin/env bash
+
+{{ template "shared_utility_scripts.sh.tmpl" . }}
+
+# Curl commands
+curl_commands=(
+    {{ range $package := .packages.server.curl.commands }}
+    "{{ $package }}"
+    {{ end }}
+)
+
+# Calculate casks
+apt_packages=(
+    {{ range $package := .packages.server.apt.packages }}
+    "{{ $package }}"
+    {{ end }}
+)
+
+# Remove duplicates
+curl_commands=($(printf "%s\n" "${curl_commands[@]}" | sort -u))
+apt_packages=($(printf "%s\n" "${apt_packages[@]}" | sort -u))
+
+
+for curl_command in "${curl_commands[@]}"; do
+    eval "curl -sSfL $curl_command | bash -s"
+done
+
+for apt_package in "${apt_packages[@]}"; do
+    sudo apt install -y "${apt_package}"
+done
+
+{{- end }}

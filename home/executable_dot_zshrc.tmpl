@@ -4,7 +4,10 @@
 export PATH="$PATH":~/bin
 export PATH="$PATH:{{- .chezmoi.homeDir -}}/.local/bin"
 export PATH="/opt/homebrew/bin:$PATH"
+
+{{- if not .server -}}
 export PATH="$(brew --prefix)/opt/coreutils/libexec/gnubin:$PATH"
+{{- end -}}
 
 # Exports
 export ITERM2_SQUELCH_MARK=1

@@ -138,11 +138,6 @@
             "497799835",                    # XCode
         ]
 
-    [packages.mas.server]
-        apps = [
-
-        ]
-
     [packages.mas.personal_computer]
         apps = [
             "1529448980",                   # Reeder
@@ -152,4 +147,15 @@
     [packages.mas.sound_computer]
         apps = [
 
+        ]
+
+    [packages.server.curl]
+        commands = [
+            "https://ohmyposh.dev/install.sh",
+            "https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh"
+        ]
+
+    [packages.server.apt]
+        packages = [
+            "fzf"
         ]
