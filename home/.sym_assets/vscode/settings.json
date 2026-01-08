@@ -33,7 +33,8 @@
     "executable_*.tmpl": "shellscript",
     "*_gitconfig.tmpl": "toml",
     "*.jinja": "jinja",
-    ".yamllint": "yaml"
+    ".yamllint": "yaml",
+    "*.zsh.tmpl": "shellscript"
   },
   "editor.tokenColorCustomizations": {
     "textMateRules": []

@@ -17,6 +17,11 @@
     {{- $ephemeral = true -}}
 {{- end -}}
 
+{{- /* Assign these here so we can use them within this template directly */ -}}
+{{- $op_personal_account_id := "4AJFPVWM6RED5MW6XZQ3B4MOLQ" -}}
+{{- $op_snailed_account_id := "AMBWLKZBBRH47FSA4FDBAAXOFU" -}}
+{{- $op_sound_account_id := "6HIWXKNESVA4DIJ7ZSX7ECSS4M" -}}
+
 {{- /* Check whether to prompt for input based on DF_NON_INTERACTIVE or if the shell is not interactive */ -}}
 {{- $not_interactive_env := env "DF_NON_INTERACTIVE" | not | not -}}
 {{- $interactive_shell := stdinIsATTY -}}
@@ -30,6 +35,9 @@
 {{- $server := false -}}
 {{- $does_backup_backblaze := true -}}
 {{- $does_backup_b2 := true -}}
+
+{{- /* Get email from 1Password */ -}}
+{{ $personal_email := onepasswordRead "op://Private/Personal/Internet Details/email" $op_personal_account_id | quote }}
 
 
 {{- if $use_envs -}}
@@ -48,6 +56,7 @@
         {{- $does_backup_backblaze := false -}}
         {{- $does_backup_b2 := false -}}
     {{- end -}}
+    {{- $personal_email = env "PERSONAL_EMAIL" | not | not -}}
 {{- else -}}
     {{- $dev_computer = promptBool "Is this a computer for development work? (true/false)" -}}
     {{- $sound_computer = promptBool "Is this a computer for sound work? (true/false)" -}}
@@ -66,11 +75,6 @@
     {{- end -}}
 {{- end -}}
 
-{{- /* Assign these here so we can use them within this template directly */ -}}
-{{- $op_personal_account_id := "4AJFPVWM6RED5MW6XZQ3B4MOLQ" -}}
-{{- $op_snailed_account_id := "AMBWLKZBBRH47FSA4FDBAAXOFU" -}}
-{{- $op_sound_account_id := "6HIWXKNESVA4DIJ7ZSX7ECSS4M" -}}
-
 [data]
     osid = {{ $osid | quote }}
     hostname = {{ .chezmoi.hostname | quote }}
@@ -88,7 +92,8 @@
 
     home = {{ .chezmoi.homeDir | quote }}
     user = {{ .chezmoi.username | quote }}
-    personal_email = {{ onepasswordRead "op://Private/Personal/Internet Details/email" $op_personal_account_id | quote }}
+
+    personal_email =  {{ $personal_email }}
 
     does_backup_backblaze = {{ $does_backup_backblaze }}
     does_backup_b2 = {{ $does_backup_b2 }}
