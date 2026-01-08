@@ -17,11 +17,6 @@
     {{- $ephemeral = true -}}
 {{- end -}}
 
-{{- /* Assign these here so we can use them within this template directly */ -}}
-{{- $op_personal_account_id := "4AJFPVWM6RED5MW6XZQ3B4MOLQ" -}}
-{{- $op_snailed_account_id := "AMBWLKZBBRH47FSA4FDBAAXOFU" -}}
-{{- $op_sound_account_id := "6HIWXKNESVA4DIJ7ZSX7ECSS4M" -}}
-
 {{- /* Check whether to prompt for input based on DF_NON_INTERACTIVE or if the shell is not interactive */ -}}
 {{- $not_interactive_env := env "DF_NON_INTERACTIVE" | not | not -}}
 {{- $interactive_shell := stdinIsATTY -}}
@@ -35,12 +30,7 @@
 {{- $server := false -}}
 {{- $does_backup_backblaze := true -}}
 {{- $does_backup_b2 := true -}}
-
-{{ $personal_email := ""}}
-{{- if not $server -}}
-{{- /* Get email from 1Password */ -}}
-{{ $personal_email = onepasswordRead "op://Private/Personal/Internet Details/email" $op_personal_account_id | quote }}
-{{- end -}}
+{{- $personal_email := "" -}}
 
 {{- if $use_envs -}}
     {{- $dev_computer = env "DF_DEV_COMPUTER" | not | not -}}
@@ -51,12 +41,12 @@
         {{- if eq $osid "darwin" -}}
             {{- $does_backup_backblaze = env "DF_DOES_BACKUP_BACKBLAZE" | not | not -}}
         {{- else -}}
-            {{- $does_backup_backblaze := false -}}
+            {{- $does_backup_backblaze = false -}}
         {{- end -}}
         {{- $does_backup_b2 = env "DF_DOES_BACKUP_B2" | not | not -}}
     {{- else -}}
-        {{- $does_backup_backblaze := false -}}
-        {{- $does_backup_b2 := false -}}
+        {{- $does_backup_backblaze = false -}}
+        {{- $does_backup_b2 = false -}}
     {{- end -}}
     {{- $personal_email = env "DF_PERSONAL_EMAIL" -}}
 {{- else -}}
@@ -68,13 +58,23 @@
         {{- if eq $osid "darwin" -}}
             {{- $does_backup_backblaze = promptBool "Should this machine be backed up to Backblaze? (true/false)" -}}
         {{- else -}}
-            {{- $does_backup_backblaze := false -}}
+            {{- $does_backup_backblaze = false -}}
         {{- end -}}
         {{- $does_backup_b2 = promptBool "Should this machine be backed up to B2? (true/false)" -}}
     {{- else -}}
-        {{- $does_backup_backblaze := false -}}
-        {{- $does_backup_b2 := false -}}
+        {{- $does_backup_backblaze = false -}}
+        {{- $does_backup_b2 = false -}}
     {{- end -}}
+{{- end -}}
+
+{{- /* Assign these here so we can use them within this template directly */ -}}
+{{- $op_personal_account_id := "4AJFPVWM6RED5MW6XZQ3B4MOLQ" -}}
+{{- $op_snailed_account_id := "AMBWLKZBBRH47FSA4FDBAAXOFU" -}}
+{{- $op_sound_account_id := "6HIWXKNESVA4DIJ7ZSX7ECSS4M" -}}
+
+{{- if and (not $server) (not $use_envs) -}}
+{{- /* Get email from 1Password */ -}}
+{{- $personal_email = onepasswordRead "op://Private/Personal/Internet Details/email" $op_personal_account_id -}}
 {{- end -}}
 
 [data]
@@ -95,7 +95,7 @@
     home = {{ .chezmoi.homeDir | quote }}
     user = {{ .chezmoi.username | quote }}
 
-    personal_email =  {{ $personal_email }}
+    personal_email =  {{ $personal_email | quote }}
 
     does_backup_backblaze = {{ $does_backup_backblaze }}
     does_backup_b2 = {{ $does_backup_b2 }}
