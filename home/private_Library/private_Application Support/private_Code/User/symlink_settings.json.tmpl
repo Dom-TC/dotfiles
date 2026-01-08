@@ -1,1 +1,3 @@
+{{- if eq .osid "darwin" -}}
 {{ .chezmoi.sourceDir }}/.sym_assets/vscode/settings.json
+{{- end -}}

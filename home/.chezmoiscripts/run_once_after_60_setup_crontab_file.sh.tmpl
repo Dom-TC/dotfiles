@@ -1,4 +1,4 @@
-{{ if (not .ephemeral) -}}
+{{ if and (not .ephemeral) (not .server) -}}
 #!/usr/bin/env bash
 
 echo "Installing custom crontab..."

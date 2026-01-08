@@ -1,3 +1,5 @@
+{{- if and not .server -}}
+
 #!/usr/bin/env zsh
 
 # Reduces the size of PDF plots created by Vectorworks.
@@ -17,3 +19,5 @@ for file do
     gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dNOPAUSE -dQUIET -dBATCH -sOutputFile="$new" "$file"
     echo "Compressed File: "$new
 done
+
+{{- end -}}

@@ -1,4 +1,4 @@
-{{- if eq .osid "darwin" -}}
+{{- if and (eq .osid "darwin") (not .server) -}}
 #!/usr/bin/env bash
 
 {{ template "shared_utility_scripts.sh.tmpl" . }}

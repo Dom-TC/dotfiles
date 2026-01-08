@@ -8,11 +8,13 @@ export PATH="$(brew --prefix)/opt/coreutils/libexec/gnubin:$PATH"
 
 # Exports
 export ITERM2_SQUELCH_MARK=1
+export TEALDEER_CONFIG_DIR="{{- .home -}}/.config/tealdeer/"           # Set the tealdeer config directory
+{{- if not .server -}}
 export LDFLAGS="-L/opt/homebrew/opt/openssl@3/lib"                     # Needed for SSL with asdf
 export CPPFLAGS="-I/opt/homebrew/opt/openssl@3/include"                # Needed for SSL with asdf
 export PKG_CONFIG_PATH="/opt/homebrew/opt/openssl@3/lib/pkgconfig"     # Needed for SSL with asdf
-export TEALDEER_CONFIG_DIR="{{- .home -}}/.config/tealdeer/"           # Set the tealdeer config directory
 export HOMEBREW_NO_ENV_HINTS=1                                         # Disable homebrews hints
+{{- end -}}
 
 # Set the directory to store zinit and plugins
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
@@ -38,12 +40,17 @@ zinit snippet OMZP::dotenv
 zinit snippet OMZP::sudo
 
 # Extras
+{{- if not .server -}}
 source "$HOME/.asdf/asdf.sh"
+{{- end -}}
+
 source ~/.config/zsh/aliases.zsh
 source ~/.config/zsh/functions.zsh
 
 # Load autocompletions
+{{- if not .server -}}
 fpath=(${ASDF_DIR}/completions $fpath)
+{{- end -}}
 fpath=(~/.config/zsh/completions $fpath)
 
 autoload -Uz compinit && compinit

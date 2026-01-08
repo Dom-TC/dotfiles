@@ -4,6 +4,7 @@
     "*.yaml.tmpl": "gotmpl",
     "*.sh.tmpl": "shellscript",
     "*.bat.tmpl": "bat",
+    "*.zsh.tmpl": "shellscript",
     "dot_bashrc*": "shellscript",
     "dot_profile*": "shellscript",
     "dot_zshrc*": "shellscript",

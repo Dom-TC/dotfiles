@@ -14,19 +14,26 @@
 	forceSignAnnotated = true
 
 [core]
+	{{- if and (eq .osid "darwin") (not .server) -}}
 	# Use VS Code text editor
 	editor = '/Applications/Visual Studio Code.app/Contents/Resources/app/bin/code'
+	{{- end -}}
+
+	{{- if .server -}}
+	# Use nano
+	editor = 'nano'
+	{{- end -}}
 
 	# use global custom gittignore
 	excludesfile = {{ .home }}/.gitignore
 
 [color]
 	# Use coloured output
-  ui = auto
+	ui = auto
 
 [push]
 	# Defaults 'git push origin' to push the current branch only
-  default = current
+	default = current
 
 [commit]
 	# Sign all commits
@@ -62,6 +69,8 @@
 [gpg]
 	format = ssh
 
+{{- if and (eq .osid "darwin") (not .server) -}}
 [gpg "ssh"]
 	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
 	allowedSignersFile = {{ .home }}/.config/git/allowed_signers
+{{- end -}}

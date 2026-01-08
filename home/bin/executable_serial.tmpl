@@ -1,3 +1,5 @@
+{{- if and (eq .osid "darwin") (not .server) -}}
+
 #!/usr/bin/env zsh
 
 # I never remember the screen command to connect to serial devices.
@@ -50,3 +52,5 @@ while (( delay > 1 )); do
 done
 
 screen $selectedDevice 9600
+
+{{- end -}}

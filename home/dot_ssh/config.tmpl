@@ -1,3 +1,5 @@
+{{- if not .server -}}
+
 Host domserv-001
   HostName domserv-001
   ForwardAgent yes
@@ -9,3 +11,5 @@ Host *
 
 Host *
   IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
+
+{{- end -}}

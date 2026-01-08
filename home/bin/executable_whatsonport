@@ -1,3 +1,5 @@
+{{- if and (eq .osid "darwin") (not .server) -}}
+
 #!/usr/bin/env bash
 
 # Find out what PID is running on a port
@@ -5,3 +7,5 @@
 
 PASS=$(op read op://Private/Laptop/password --account my.1password.com)
 echo $PASS | sudo -S -p "" lsof -nP -iTCP:$1 -sTCP:LISTEN
+
+{{- end -}}
