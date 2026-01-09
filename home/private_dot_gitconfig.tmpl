@@ -71,7 +71,7 @@
 [gpg]
 	format = ssh
 
-{{- if and (eq .osid "darwin") (not .server) -}}
+{{ if and (eq .osid "darwin") (not .server) -}}
 [gpg "ssh"]
 	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
 	allowedSignersFile = {{ .home }}/.config/git/allowed_signers

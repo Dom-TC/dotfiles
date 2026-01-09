@@ -1,4 +1,3 @@
-{{- if eq .osid "darwin" -}}
 #!/usr/bin/env bash
 
 {{ template "shared_utility_scripts.sh.tmpl" . }}
@@ -9,16 +8,18 @@
 
 # Run if any of the following have changed
 # packages.toml hash: {{ include ".chezmoidata/packages.toml" | sha256sum }}
-# dot_toolversions hash: {{ include "dot_tool-versions" | sha256sum }}
+# dot_toolversions hash: {{ include "dot_tool-versions.tmpl" | sha256sum }}
 
+{{- if eq .osid "darwin" -}}
 # Update Homebrew
 if has brew; then
     brew update
     brew upgrade
     brew cleanup
 fi
+{{ end }}
 
-{{ if .dev_computer }}
+{{ if and (eq .osid "darwin") (.dev_computer) }}
 if has asdf; then
     # Update asdf
     asdf update
@@ -32,15 +33,15 @@ if has asdf; then
     # Ensure plugins specified in .tool-versions are installed
     asdf install
 fi
+{{ end }}
 
+{{- if eq .osid "darwin" -}}
 if has pipx; then
     pipx upgrade-all
 fi
-
-{{- end }}
+{{ end }}
 
 if has oh-my-posh; then
     # Update oh-my-posh
     oh-my-posh upgrade
 fi
-{{- end -}}
