@@ -22,7 +22,7 @@ final_space = true
 
   [[blocks.segments]]
     type = 'text'
-    template = '{{ if .Env.SSH_CONNECTION }}{{ .User }}@{{ .Host }}: {{ end }}'
+    template = '{{ if .Env.SSH_CONNECTION }}{{ .UserName }}@{{ .HostName }}: {{ end }}'
     foreground = 'green'
     background = 'transparent'
     style = 'plain'
