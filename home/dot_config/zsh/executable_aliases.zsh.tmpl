@@ -18,13 +18,13 @@ alias areas='cd ~/Dropbox/2\ Areas'
 alias notes='cd ~/Dropbox/3\ Notes'
 alias archive='cd ~/Dropbox/4\ Archive'
 alias cdd="cd ~/Desktop"
-{{- end -}}
+{{- end }}
 
 # Show/hide hidden files in Finder
 {{- if eq .osid "darwin" -}}
 alias showFiles="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
 alias hideFiles="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
-{{- end -}}
+{{- end }}
 
 # Reload terminal
 alias reload='exec zsh'
@@ -48,7 +48,7 @@ alias path='echo -e ${PATH//:/\\n}'
 # Open directory / file in vscode
 alias code='/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code'
 alias tower='open -a "Tower" '
-{{- end -}}
+{{- end }}
 
 # Alias mkd back to mkcd incase anything is still using it
 alias mkd='mkcd'

@@ -45,7 +45,7 @@ zinit snippet OMZP::sudo
 # Extras
 {{- if not .server -}}
 source "$HOME/.asdf/asdf.sh"
-{{- end -}}
+{{- end }}
 
 source ~/.config/zsh/aliases.zsh
 source ~/.config/zsh/functions.zsh
@@ -53,7 +53,7 @@ source ~/.config/zsh/functions.zsh
 # Load autocompletions
 {{- if not .server -}}
 fpath=(${ASDF_DIR}/completions $fpath)
-{{- end -}}
+{{- end }}
 fpath=(~/.config/zsh/completions $fpath)
 
 autoload -Uz compinit && compinit
