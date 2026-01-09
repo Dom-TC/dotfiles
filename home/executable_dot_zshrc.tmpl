@@ -17,7 +17,7 @@ export LDFLAGS="-L/opt/homebrew/opt/openssl@3/lib"                     # Needed 
 export CPPFLAGS="-I/opt/homebrew/opt/openssl@3/include"                # Needed for SSL with asdf
 export PKG_CONFIG_PATH="/opt/homebrew/opt/openssl@3/lib/pkgconfig"     # Needed for SSL with asdf
 export HOMEBREW_NO_ENV_HINTS=1                                         # Disable homebrews hints
-{{- end -}}
+{{- end }}
 
 # Set the directory to store zinit and plugins
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
