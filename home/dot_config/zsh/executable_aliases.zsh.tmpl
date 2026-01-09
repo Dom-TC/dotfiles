@@ -11,8 +11,8 @@ alias python='python3'
 # Enable aliases to be sudo’ed
 alias sudo='sudo '
 
+{{ if and (eq .osid "darwin") (not .server) -}}
 # Shortcuts
-{{- if and (eq .osid "darwin") (not .server) -}}
 alias projects='cd ~/Dropbox/1\ Projects'
 alias areas='cd ~/Dropbox/2\ Areas'
 alias notes='cd ~/Dropbox/3\ Notes'
@@ -20,8 +20,8 @@ alias archive='cd ~/Dropbox/4\ Archive'
 alias cdd="cd ~/Desktop"
 {{- end }}
 
+{{ if eq .osid "darwin" -}}
 # Show/hide hidden files in Finder
-{{- if eq .osid "darwin" -}}
 alias showFiles="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
 alias hideFiles="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
 {{- end }}
@@ -44,7 +44,7 @@ alias egrep='egrep --color=auto'
 # Print each PATH entry on a separate line
 alias path='echo -e ${PATH//:/\\n}'
 
-{{- if and (eq .osid "darwin") (.dev_computer) -}}
+{{ if and (eq .osid "darwin") (.dev_computer) -}}
 # Open directory / file in vscode
 alias code='/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code'
 alias tower='open -a "Tower" '
