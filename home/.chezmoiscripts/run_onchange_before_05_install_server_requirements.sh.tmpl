@@ -21,13 +21,14 @@ apt_packages=(
 curl_commands=($(printf "%s\n" "${curl_commands[@]}" | sort -u))
 apt_packages=($(printf "%s\n" "${apt_packages[@]}" | sort -u))
 
+for apt_package in "${apt_packages[@]}"; do
+    sudo apt install -y "${apt_package}"
+done
 
 for curl_command in "${curl_commands[@]}"; do
     eval "curl -sSfL $curl_command | bash -s"
 done
 
-for apt_package in "${apt_packages[@]}"; do
-    sudo apt install -y "${apt_package}"
-done
+
 
 {{- end }}
