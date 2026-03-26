@@ -2,6 +2,7 @@
 
 # Update $PATH
 export PATH="$PATH":~/bin
+export PATH="$PATH":~/.local/bin
 export PATH="$PATH:{{- .chezmoi.homeDir -}}/.local/bin"
 
 {{- if .dev_computer -}}
