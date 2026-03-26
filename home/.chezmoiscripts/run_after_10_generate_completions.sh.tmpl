@@ -25,3 +25,7 @@ fi
 if has pipx; then
     register-python-argcomplete pipx > ~/.config/zsh/completions/_pipx
 fi
+
+if has asdf; then
+    asdf completion zsh > ~/.config/zsh/completions/_asdf
+fi

@@ -4,6 +4,10 @@
 export PATH="$PATH":~/bin
 export PATH="$PATH:{{- .chezmoi.homeDir -}}/.local/bin"
 
+{{- if .dev_computer -}}
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
+{{ end }}
+
 {{- if not .server -}}
 export PATH="/opt/homebrew/bin:$PATH"
 export PATH="$(brew --prefix)/opt/coreutils/libexec/gnubin:$PATH"
@@ -50,9 +54,6 @@ source ~/.config/zsh/aliases.zsh
 source ~/.config/zsh/functions.zsh
 
 # Load autocompletions
-{{- if not .server -}}
-fpath=(${ASDF_DIR}/completions $fpath)
-{{- end }}
 fpath=(~/.config/zsh/completions $fpath)
 
 autoload -Uz compinit && compinit

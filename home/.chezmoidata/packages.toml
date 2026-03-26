@@ -15,6 +15,7 @@
             "jordanbaird-ice"               # Ice Menu Bar Manager
         ]
         formulae = [
+            "asdf",                         # dev runtime manager
             "bat",                          # Bat with syntax highlighting and Git integration
             "chezmoi",                      # Dotfile manager
             "coreutils",
